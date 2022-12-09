@@ -22,7 +22,6 @@ import java.util.logging.Logger;
 public class databaseConnection {
     
     public Connection con;
-    private static int orderId = 0;
     
     public databaseConnection()
     {
@@ -38,8 +37,12 @@ public class databaseConnection {
             Connection con = getConnection();
             PreparedStatement create_usertable = con.prepareStatement("CREATE TABLE IF NOT EXISTS usertable(id int NOT NULL AUTO_INCREMENT, first_name VARCHAR(255), last_name VARCHAR(255), email_id VARCHAR(255), phone_number VARCHAR(255), user_name VARCHAR(255), password VARCHAR(255), PRIMARY KEY(id))");
             PreparedStatement create_petfood = con.prepareStatement("CREATE TABLE IF NOT EXISTS petfood(id int NOT NULL AUTO_INCREMENT, food_name VARCHAR(255), food_price int, available_quantity int, PRIMARY KEY(id))");
+            PreparedStatement create_orders = con.prepareStatement("CREATE TABLE IF NOT EXISTS orders(id int NOT NULL AUTO_INCREMENT, user_id INT, product VARCHAR(255), order_total INT, item_type VARCHAR(255), PRIMARY KEY(id))");
+            PreparedStatement create_pet_accessories = con.prepareStatement("CREATE TABLE IF NOT EXISTS petaccessories(id int NOT NULL AUTO_INCREMENT, accessory_name VARCHAR(255), accessory_price int, available_quantity int, PRIMARY KEY(id))");
             create_usertable.executeUpdate();
             create_petfood.executeUpdate();
+            create_orders.executeUpdate();
+            create_pet_accessories.executeUpdate();
             return con;
         } catch(Exception e){System.out.println(e);}
         finally{System.out.println("Table Created!");
@@ -92,6 +95,14 @@ public class databaseConnection {
         updateQty.executeUpdate();   
     }
     
+    public void executePetAccessoryUpdate(String query, int quantity, String accessoryName) throws Exception
+    {
+        PreparedStatement updateQty = con.prepareStatement(query);
+        updateQty.setInt(1,quantity);
+        updateQty.setString(2,accessoryName);
+        updateQty.executeUpdate();   
+    }
+    
     public void executePetFoodUpdate(String query, int foodPrice, int id) throws Exception
     {
         PreparedStatement updateQty = con.prepareStatement(query);
@@ -100,12 +111,99 @@ public class databaseConnection {
         updateQty.executeUpdate();   
     }
     
-    public void insertOrderItem(int userId, String applaws, String pedigree, String naturals, String tikiCat, int applawsQty, int pedigreeQty, int naturalsQty, int tikiCatQty) throws Exception
-    {
-        if(applawsQty != 0)
+    public void insertOrderItem(int userId, int applawsOrderPrice, int pedigreeOrderPrice, int naturalsOrderPrice, int tikiCatOrderPrice) throws Exception
+    {        
+        if(applawsOrderPrice != 0)
         {
-            
+            PreparedStatement insertOrder = con.prepareStatement("INSERT INTO orders (user_id, product, order_total, item_type) VALUES (?, ?, ?, ?)");
+            insertOrder.setInt(1, userId);
+            insertOrder.setString(2, "Applaws");
+            insertOrder.setInt(3, applawsOrderPrice);
+            insertOrder.setString(4, "Food");
+            insertOrder.executeUpdate();
         }
+        
+        if(pedigreeOrderPrice != 0)
+        {
+            PreparedStatement insertOrder = con.prepareStatement("INSERT INTO orders (user_id, product, order_total, item_type) VALUES (?, ?, ?, ?)");
+            insertOrder.setInt(1, userId);
+            insertOrder.setString(2, "Pedigree");
+            insertOrder.setInt(3, pedigreeOrderPrice);
+            insertOrder.setString(4, "Food");
+            insertOrder.executeUpdate();
+        }
+                
+        if(naturalsOrderPrice != 0)
+        {
+            PreparedStatement insertOrder = con.prepareStatement("INSERT INTO orders (user_id, product, order_total, item_type) VALUES (?, ?, ?, ?)");
+            insertOrder.setInt(1, userId);
+            insertOrder.setString(2, "Naturals");
+            insertOrder.setInt(3, naturalsOrderPrice);
+            insertOrder.setString(4, "Food");
+            insertOrder.executeUpdate();
+        }
+        
+        if(tikiCatOrderPrice != 0)
+        {
+            PreparedStatement insertOrder = con.prepareStatement("INSERT INTO orders (user_id, product, order_total, item_type) VALUES (?, ?, ?, ?)");
+            insertOrder.setInt(1, userId);
+            insertOrder.setString(2, "Tiki Cat");
+            insertOrder.setInt(3, tikiCatOrderPrice);
+            insertOrder.setString(4, "Food");
+            insertOrder.executeUpdate();
+        }  
+    }
+    
+    public void insertOrderItemA(int userId, int latexToysOrderPrice, int chuckitOrderPrice, int nylaboneOrderPrice, int collarNecklacePrice) throws Exception
+    {        
+        if(latexToysOrderPrice != 0)
+        {
+            PreparedStatement insertOrder = con.prepareStatement("INSERT INTO orders (user_id, product, order_total, item_type) VALUES (?, ?, ?, ?)");
+            insertOrder.setInt(1, userId);
+            insertOrder.setString(2, "Latex Toys");
+            insertOrder.setInt(3, latexToysOrderPrice);
+            insertOrder.setString(4, "Accessory");
+            insertOrder.executeUpdate();
+        }
+        
+        if(chuckitOrderPrice != 0)
+        {
+            PreparedStatement insertOrder = con.prepareStatement("INSERT INTO orders (user_id, product, order_total, item_type) VALUES (?, ?, ?, ?)");
+            insertOrder.setInt(1, userId);
+            insertOrder.setString(2, "Chuckit");
+            insertOrder.setInt(3, chuckitOrderPrice);
+            insertOrder.setString(4, "Accessory");
+            insertOrder.executeUpdate();
+        }
+                
+        if(nylaboneOrderPrice != 0)
+        {
+            PreparedStatement insertOrder = con.prepareStatement("INSERT INTO orders (user_id, product, order_total, item_type) VALUES (?, ?, ?, ?)");
+            insertOrder.setInt(1, userId);
+            insertOrder.setString(2, "Nylabone");
+            insertOrder.setInt(3, nylaboneOrderPrice);
+            insertOrder.setString(4, "Accessory");
+            insertOrder.executeUpdate();
+        }
+        
+        if(collarNecklacePrice != 0)
+        {
+            PreparedStatement insertOrder = con.prepareStatement("INSERT INTO orders (user_id, product, order_total, item_type) VALUES (?, ?, ?, ?)");
+            insertOrder.setInt(1, userId);
+            insertOrder.setString(2, "Collar Necklace");
+            insertOrder.setInt(3, collarNecklacePrice);
+            insertOrder.setString(4, "Accessory");
+            insertOrder.executeUpdate();
+        }  
+    }
+    
+    
+    public ResultSet executeSelect(int userID) throws Exception
+    {
+        PreparedStatement select = con.prepareStatement("SELECT item_type, product, SUM(order_total) as total_user_orders FROM orders WHERE user_id = ? GROUP BY item_type, product");
+        select.setInt(1, userID);
+        ResultSet result = select.executeQuery();
+        return result;
     }
  
 }

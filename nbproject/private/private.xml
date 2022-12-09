@@ -2,6 +2,13 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Northeastern/Courses/AED/AED_Final_Project/src/model/databaseConnection.java</file>
+            <file>file:/C:/Northeastern/Courses/AED/AED_Final_Project/src/ui/petAccessoryJPanel.java</file>
+            <file>file:/C:/Northeastern/Courses/AED/AED_Final_Project/src/ui/petFoodJPanel.java</file>
+            <file>file:/C:/Northeastern/Courses/AED/AED_Final_Project/src/ui/userJPanel.java</file>
+            <file>file:/C:/Northeastern/Courses/AED/AED_Final_Project/src/model/sendSMS.java</file>
+            <file>file:/C:/Northeastern/Courses/AED/AED_Final_Project/src/ui/StartPage.java</file>
+        </group>
     </open-files>
 </project-private>
