@@ -6,8 +6,6 @@ package ui;
 
 import java.awt.Image;
 import java.awt.image.BufferedImage;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -514,6 +512,12 @@ public class petFoodJPanel extends javax.swing.JPanel {
         }
         
         populateFields();
+        
+        try {
+            databaseConnection.insertOrderItem(userID, applawsQty*applawsPrice, pedigreeQty*pedigreePrice, naturalsQty*naturalsPrice, tikiCatQty*tikiCatPrice);
+        } catch (Exception ex) {
+            Logger.getLogger(petFoodJPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
         String emailID = getEmailID(userID);
         if(emailID != null)
