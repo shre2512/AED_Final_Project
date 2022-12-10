@@ -26,6 +26,7 @@ public class StartPage extends javax.swing.JFrame {
     sendEmail emailNotification;
     sendSMS smsNotification;
     private final Admin foodStoreAdmin;
+    private final Admin kennelAdmin;
     public databaseConnection databaseConnection;
     
     public StartPage() {
@@ -33,6 +34,7 @@ public class StartPage extends javax.swing.JFrame {
         this.emailNotification = new sendEmail();
         this.smsNotification = new sendSMS();
         this.foodStoreAdmin = new Admin("Food Store Admin", "Food Store Admin", "Food Store Admin");
+        this.kennelAdmin = new Admin("Kennel Admin", "Kennel Admin", "Kennel Admin");
         this.databaseConnection = new databaseConnection();
     }
 
@@ -214,7 +216,7 @@ public class StartPage extends javax.swing.JFrame {
         loginAs.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         loginAs.setText("Role : ");
 
-        selectRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "User", "Food Store Admin" }));
+        selectRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "User", "Food Store Admin", "Kennel Admin" }));
         selectRole.setMinimumSize(new java.awt.Dimension(72, 30));
         selectRole.setPreferredSize(new java.awt.Dimension(72, 30));
 
@@ -339,7 +341,7 @@ public class StartPage extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(splitPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1115, Short.MAX_VALUE)
+            .addComponent(splitPane)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -376,6 +378,15 @@ public class StartPage extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Logged In As Food Store Admin");
                 petFoodAdmin petFoodAdminJPanel = new petFoodAdmin(databaseConnection);
                 splitPane.setRightComponent(petFoodAdminJPanel);
+                buttonLogOut.setVisible(true);
+            } catch(Exception e){System.out.println(e);}
+        }
+        else if(kennelAdmin.getAdminRole().equals(selectRole.getSelectedItem().toString()) && kennelAdmin.getAdminUserName().equals(txtloginUserName.getText()) && kennelAdmin.getAdminPassWord().equals(txtloginPassword.getText()))
+        {
+            try{
+                JOptionPane.showMessageDialog(this, "Logged In As Kennel Admin");
+                kennelAdmin kennelAdminJPanel = new kennelAdmin(databaseConnection);
+                splitPane.setRightComponent(kennelAdminJPanel);
                 buttonLogOut.setVisible(true);
             } catch(Exception e){System.out.println(e);}
         }

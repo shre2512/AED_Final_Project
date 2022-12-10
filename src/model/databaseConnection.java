@@ -41,11 +41,13 @@ public class databaseConnection {
             PreparedStatement create_orders = con.prepareStatement("CREATE TABLE IF NOT EXISTS orders(id int NOT NULL AUTO_INCREMENT, user_id INT, product VARCHAR(255), order_total INT, item_type VARCHAR(255), PRIMARY KEY(id))");
             PreparedStatement create_pet_accessories = con.prepareStatement("CREATE TABLE IF NOT EXISTS petaccessories(id int NOT NULL AUTO_INCREMENT, accessory_name VARCHAR(255), accessory_price int, available_quantity int, PRIMARY KEY(id))");
             PreparedStatement create_kennelbooking = con.prepareStatement("CREATE TABLE IF NOT EXISTS kennelbooking(id int NOT NULL AUTO_INCREMENT,user_id INT, kennel_name VARCHAR(255), kennel_address VARCHAR(255), kennel_to VARCHAR(255),kennel_from VARCHAR(255),kennel_price_per_day INT,kennel_number_of_days INT, kennel_rent INT, kennel_pickup VARCHAR(255), PRIMARY KEY(id))");
+            PreparedStatement create_kennel = con.prepareStatement("CREATE TABLE IF NOT EXISTS kennel(id int NOT NULL AUTO_INCREMENT, kennel_name VARCHAR(255), kennel_address VARCHAR(255), price_per_day int, PRIMARY KEY(id))");
             create_usertable.executeUpdate();
             create_petfood.executeUpdate();
             create_orders.executeUpdate();
             create_pet_accessories.executeUpdate();
             create_kennelbooking.executeUpdate();
+            create_kennel.executeUpdate();
             return con;
         } catch(Exception e){System.out.println(e);}
         finally{System.out.println("Table Created!");
@@ -128,6 +130,14 @@ public class databaseConnection {
             insertOrder.setString(9, pickup);
             insertOrder.executeUpdate();
         }
+    
+        public void executeKennelPriceUpdate(String query, int price_per_day, int id) throws Exception
+    {
+        PreparedStatement updateQty = con.prepareStatement(query);
+        updateQty.setInt(1,price_per_day);
+        updateQty.setInt(2,id);
+        updateQty.executeUpdate();   
+    }
     
     public void insertOrderItem(int userId, int applawsOrderPrice, int pedigreeOrderPrice, int naturalsOrderPrice, int tikiCatOrderPrice) throws Exception
     {        
@@ -220,6 +230,14 @@ public class databaseConnection {
     {
         PreparedStatement select = con.prepareStatement("SELECT item_type, product, SUM(order_total) as total_user_orders FROM orders WHERE user_id = ? GROUP BY item_type, product");
         select.setInt(1, userID);
+        ResultSet result = select.executeQuery();
+        return result;
+    }
+    
+    public ResultSet executeSelectKennel(String kennel_name) throws Exception
+    {
+        PreparedStatement select = con.prepareStatement("SELECT price_per_day FROM kennel WHERE kennel_name = ?");
+        select.setString(1, kennel_name);
         ResultSet result = select.executeQuery();
         return result;
     }

@@ -1,9 +1,11 @@
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package ui;
 
+import java.sql.ResultSet;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -71,11 +73,30 @@ public class kennelJPanel extends javax.swing.JPanel {
         jXMapViewer1.setAddressLocation(geo);
         jXMapViewer1.setZoom(5);
         
+        txtKennelName.setEditable(false);
+        txtKennelAddress.setEditable(false);
+        txtPricePerDay.setEditable(false);
+        
         MouseInputListener mm = new PanMouseInputListener(jXMapViewer1);
         jXMapViewer1.addMouseListener(mm);
         jXMapViewer1.addMouseMotionListener(mm);
         jXMapViewer1.addMouseWheelListener(new ZoomMouseWheelListenerCenter(jXMapViewer1));
         event=getEvent();
+    }
+    
+        private void populateFields(String kennel_name)
+    {
+        try {
+            ResultSet result = databaseConnection.executeSelectKennel(kennel_name);
+            
+            while(result.next())
+            {
+                int kennelPrice = result.getInt("price_per_day");
+                txtPricePerDay.setText(String.valueOf(kennelPrice));
+            }
+        }catch (Exception ex) {
+            Logger.getLogger(kennelAdminUpdatePrice.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     private void initWaypoint(){
@@ -93,6 +114,7 @@ public class kennelJPanel extends javax.swing.JPanel {
             public void selected(MyWaypoint waypoint){
                 txtKennelName.setText(waypoint.getName());
                 txtKennelAddress.setText(waypoint.getAddress());
+                populateFields(waypoint.getName());
             }
         };
     }
@@ -258,6 +280,7 @@ public class kennelJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         waypoints.add(new MyWaypoint("The Mindful Mutt","16 Harvard Ave, Allston, MA 02134",event,new GeoPosition(42.36114667727058, -71.13242913502957)));
         waypoints.add(new MyWaypoint("The Urban Hound Hotel & Daycare","129 W Malden St, Boston, MA 02118",event,new GeoPosition(42.3441904832612, -71.06726660373947)));
+        waypoints.add(new MyWaypoint("The Dog Port","236 Sumner St, East Boston, MA 02128",event,new GeoPosition(42.376150664565635, -71.03823688912777)));
         initWaypoint();
     }//GEN-LAST:event_btnKennelsOnMapActionPerformed
 
