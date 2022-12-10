@@ -13,6 +13,7 @@ import java.sql.ResultSet;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.Date; 
 
 /**
  *
@@ -39,10 +40,12 @@ public class databaseConnection {
             PreparedStatement create_petfood = con.prepareStatement("CREATE TABLE IF NOT EXISTS petfood(id int NOT NULL AUTO_INCREMENT, food_name VARCHAR(255), food_price int, available_quantity int, PRIMARY KEY(id))");
             PreparedStatement create_orders = con.prepareStatement("CREATE TABLE IF NOT EXISTS orders(id int NOT NULL AUTO_INCREMENT, user_id INT, product VARCHAR(255), order_total INT, item_type VARCHAR(255), PRIMARY KEY(id))");
             PreparedStatement create_pet_accessories = con.prepareStatement("CREATE TABLE IF NOT EXISTS petaccessories(id int NOT NULL AUTO_INCREMENT, accessory_name VARCHAR(255), accessory_price int, available_quantity int, PRIMARY KEY(id))");
+            PreparedStatement create_kennelbooking = con.prepareStatement("CREATE TABLE IF NOT EXISTS kennelbooking(id int NOT NULL AUTO_INCREMENT,user_id INT, kennel_name VARCHAR(255), kennel_address VARCHAR(255), kennel_to VARCHAR(255),kennel_from VARCHAR(255),kennel_price_per_day INT,kennel_number_of_days INT, kennel_rent INT, kennel_pickup VARCHAR(255), PRIMARY KEY(id))");
             create_usertable.executeUpdate();
             create_petfood.executeUpdate();
             create_orders.executeUpdate();
             create_pet_accessories.executeUpdate();
+            create_kennelbooking.executeUpdate();
             return con;
         } catch(Exception e){System.out.println(e);}
         finally{System.out.println("Table Created!");
@@ -110,6 +113,21 @@ public class databaseConnection {
         updateQty.setInt(2, id);
         updateQty.executeUpdate();   
     }
+    
+    public void insertKennelBooking(int userId, String name, String address, String toDate, String fromDate, int pricePerDay, int numberOfDays, int rent,String pickup) throws Exception
+    {
+            PreparedStatement insertOrder = con.prepareStatement("INSERT INTO kennelbooking (user_id, kennel_name, kennel_address, kennel_to, kennel_from,kennel_price_per_day, kennel_number_of_days, kennel_rent, kennel_pickup) VALUES (?, ?, ?, ?,?,?,?,?,?)");
+            insertOrder.setInt(1, userId);
+            insertOrder.setString(2, name);
+            insertOrder.setString(3, address);
+            insertOrder.setString(4, toDate);
+            insertOrder.setString(5, fromDate);
+            insertOrder.setInt(6, pricePerDay);
+            insertOrder.setInt(7, numberOfDays);
+            insertOrder.setInt(8, rent);
+            insertOrder.setString(9, pickup);
+            insertOrder.executeUpdate();
+        }
     
     public void insertOrderItem(int userId, int applawsOrderPrice, int pedigreeOrderPrice, int naturalsOrderPrice, int tikiCatOrderPrice) throws Exception
     {        

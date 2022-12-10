@@ -46,8 +46,8 @@ public class userJPanel extends javax.swing.JPanel {
         public void init(){
         try {
             // TODO add your handling code here:
-           kennelJPanel kennelPanel = new kennelJPanel();
-            kennelSplitPane.setRightComponent(kennelPanel);
+           kennelJPanel kennelPanel = new kennelJPanel(databaseConnection,  userID, emailNotification, smsNotification);
+           kennelSplitPane.setRightComponent(kennelPanel);
         } catch (Exception ex) {
             Logger.getLogger(userJPanel.class.getName()).log(Level.SEVERE, null, ex);
         }

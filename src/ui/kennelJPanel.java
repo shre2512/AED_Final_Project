@@ -4,6 +4,11 @@
  */
 package ui;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
+import static java.time.temporal.ChronoUnit.DAYS;
 import java.util.HashSet;
 import java.util.Set;
 import javax.swing.JOptionPane;
@@ -20,6 +25,11 @@ import waypoint.EventWaypoint;
 import waypoint.MyWaypoint;
 import waypoint.WaypointRender;
 import java.util.Date; 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import model.databaseConnection;
+import model.sendEmail;
+import model.sendSMS;
 
 
 /**
@@ -33,11 +43,25 @@ public class kennelJPanel extends javax.swing.JPanel {
      */
     private Set<MyWaypoint> waypoints = new HashSet<>();
     private EventWaypoint event;
+    private Date fromDate;
+    private Date toDate;
+    private int numberOfDays;
+    private String name;
+    private String address;
+    private String pickup;
+    private int pricePerDay;
+    private int rent;
+    private int userID;
+    sendEmail emailNotification;
+    sendSMS smsNotification;
+    databaseConnection databaseConnection;
     
     
-    public kennelJPanel() {
+    public kennelJPanel(databaseConnection databaseConnection, int userID, sendEmail emailNotification, sendSMS smsNotification) {
        initComponents();
        init();
+       this.userID=userID;
+       this.databaseConnection=databaseConnection;
     }
     private void init(){
         TileFactoryInfo info =new OSMTileFactoryInfo();
@@ -52,8 +76,6 @@ public class kennelJPanel extends javax.swing.JPanel {
         jXMapViewer1.addMouseMotionListener(mm);
         jXMapViewer1.addMouseWheelListener(new ZoomMouseWheelListenerCenter(jXMapViewer1));
         event=getEvent();
-
-
     }
     
     private void initWaypoint(){
@@ -90,6 +112,15 @@ public class kennelJPanel extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         txtKennelName = new javax.swing.JTextField();
         txtKennelAddress = new javax.swing.JTextField();
+        dateChooserToDateKennel = new com.toedter.calendar.JDateChooser();
+        jLabel3 = new javax.swing.JLabel();
+        dateChooserFromDateKennel = new com.toedter.calendar.JDateChooser();
+        jLabel4 = new javax.swing.JLabel();
+        btnSave = new javax.swing.JButton();
+        txtPricePerDay = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        lblPickup = new javax.swing.JLabel();
+        cmbPickup = new javax.swing.JComboBox<>();
 
         btnKennelsOnMap.setText("View kennels");
         btnKennelsOnMap.addActionListener(new java.awt.event.ActionListener() {
@@ -133,21 +164,67 @@ public class kennelJPanel extends javax.swing.JPanel {
             }
         });
 
+        jLabel3.setText("From");
+
+        jLabel4.setText("To");
+
+        btnSave.setText("Save");
+        btnSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaveActionPerformed(evt);
+            }
+        });
+
+        txtPricePerDay.setPreferredSize(new java.awt.Dimension(71, 30));
+        txtPricePerDay.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPricePerDayActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setText("Price per day");
+
+        lblPickup.setText("Pickup required?");
+
+        cmbPickup.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Yes", "No" }));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jXMapViewer1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGap(100, 100, 100)
-                .addComponent(jLabel2)
-                .addGap(45, 45, 45)
-                .addComponent(txtKennelName, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(89, 89, 89)
-                .addComponent(jLabel1)
-                .addGap(37, 37, 37)
-                .addComponent(txtKennelAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(103, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(100, 100, 100)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel4))
+                                .addGap(45, 45, 45))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(dateChooserToDateKennel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtKennelName, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE)
+                            .addComponent(txtPricePerDay, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE))
+                        .addGap(89, 89, 89)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel3)
+                            .addComponent(lblPickup))
+                        .addGap(37, 37, 37)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtKennelAddress, javax.swing.GroupLayout.DEFAULT_SIZE, 264, Short.MAX_VALUE)
+                            .addComponent(dateChooserFromDateKennel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cmbPickup, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(429, 429, 429)
+                        .addComponent(btnSave)))
+                .addContainerGap(53, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -159,7 +236,21 @@ public class kennelJPanel extends javax.swing.JPanel {
                     .addComponent(txtKennelName, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1)
                     .addComponent(txtKennelAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(197, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel3)
+                    .addComponent(dateChooserFromDateKennel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel4)
+                    .addComponent(dateChooserToDateKennel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtPricePerDay, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5)
+                    .addComponent(lblPickup)
+                    .addComponent(cmbPickup, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
+                .addComponent(btnSave)
+                .addGap(25, 25, 25))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -178,13 +269,51 @@ public class kennelJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtKennelAddressActionPerformed
 
+    private void txtPricePerDayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPricePerDayActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPricePerDayActionPerformed
+
+    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
+        // TODO add your handling code here:
+        name=txtKennelName.getText();
+        address=txtKennelAddress.getText();
+        toDate=dateChooserToDateKennel.getDate();
+        System.out.println(toDate);
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");  
+        String toDateString = dateFormat.format(toDate);
+        System.out.println(toDateString);
+        fromDate=dateChooserFromDateKennel.getDate();
+        String fromDateString = dateFormat.format(fromDate);
+        numberOfDays=(int)( (fromDate.getTime() - toDate.getTime()) / (1000 * 60 * 60 * 24));
+        pricePerDay=Integer.parseInt(txtPricePerDay.getText());
+        rent=numberOfDays*pricePerDay;
+        System.out.println(numberOfDays);
+        System.out.println(rent);
+        pickup=cmbPickup.getSelectedItem().toString();
+        
+        try {
+            databaseConnection.insertKennelBooking(userID,name,address,toDateString,fromDateString,pricePerDay,numberOfDays,rent,pickup);
+        } catch (Exception ex) {
+            Logger.getLogger(petFoodJPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnSaveActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnKennelsOnMap;
+    private javax.swing.JButton btnSave;
+    private javax.swing.JComboBox<String> cmbPickup;
+    private com.toedter.calendar.JDateChooser dateChooserFromDateKennel;
+    private com.toedter.calendar.JDateChooser dateChooserToDateKennel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private org.jxmapviewer.JXMapViewer jXMapViewer1;
+    private javax.swing.JLabel lblPickup;
     private javax.swing.JTextField txtKennelAddress;
     private javax.swing.JTextField txtKennelName;
+    private javax.swing.JTextField txtPricePerDay;
     // End of variables declaration//GEN-END:variables
 }
