@@ -265,6 +265,13 @@ public class userJPanel extends javax.swing.JPanel {
 
     private void btnPetGroomingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPetGroomingActionPerformed
         // TODO add your handling code here:
+        try {
+            // TODO add your handling code here:
+            petGroomingJPanel petGroomingPanel = new petGroomingJPanel(databaseConnection, userID, emailNotification, smsNotification);
+            foodAccsSplitPane.setRightComponent(petGroomingPanel);
+        } catch (Exception ex) {
+            Logger.getLogger(userJPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnPetGroomingActionPerformed
 
     private void btnPetAccessoriesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPetAccessoriesActionPerformed

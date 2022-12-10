@@ -24,7 +24,7 @@ public class petFoodAdminUpdatePrice extends javax.swing.JPanel {
     public petFoodAdminUpdatePrice(databaseConnection databaseConnection) {
         initComponents();
         this.databaseConnection = databaseConnection;
-        txtProductFoodName.setEditable(false);
+        txtFoodName.setEditable(false);
         populateTable();
     }
     
@@ -59,11 +59,11 @@ public class petFoodAdminUpdatePrice extends javax.swing.JPanel {
         jScrollPane2 = new javax.swing.JScrollPane();
         tablePetFood = new javax.swing.JTable();
         lblUpdateFoodPrice = new javax.swing.JLabel();
-        lblName = new javax.swing.JLabel();
-        txtProductFoodName = new javax.swing.JTextField();
-        lblProductFoodNewPrice = new javax.swing.JLabel();
-        txtProductFoodNewPrice = new javax.swing.JTextField();
-        btnUpdatePrice = new javax.swing.JButton();
+        lblFoodName = new javax.swing.JLabel();
+        txtFoodName = new javax.swing.JTextField();
+        lblFoodNewPrice = new javax.swing.JLabel();
+        txtFoodNewPrice = new javax.swing.JTextField();
+        btnUpdateFoodPrice = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(0, 255, 255));
 
@@ -99,33 +99,33 @@ public class petFoodAdminUpdatePrice extends javax.swing.JPanel {
         lblUpdateFoodPrice.setForeground(new java.awt.Color(255, 0, 0));
         lblUpdateFoodPrice.setText("                                                                  Select a Product to Update Price");
 
-        lblName.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        lblName.setText("Product Name :");
+        lblFoodName.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        lblFoodName.setText("Product Name :");
 
-        txtProductFoodName.setPreferredSize(new java.awt.Dimension(71, 30));
-        txtProductFoodName.addActionListener(new java.awt.event.ActionListener() {
+        txtFoodName.setPreferredSize(new java.awt.Dimension(71, 30));
+        txtFoodName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtProductFoodNameActionPerformed(evt);
+                txtFoodNameActionPerformed(evt);
             }
         });
 
-        lblProductFoodNewPrice.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        lblProductFoodNewPrice.setText("New Price :");
+        lblFoodNewPrice.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        lblFoodNewPrice.setText("New Price :");
 
-        txtProductFoodNewPrice.setPreferredSize(new java.awt.Dimension(71, 30));
-        txtProductFoodNewPrice.addActionListener(new java.awt.event.ActionListener() {
+        txtFoodNewPrice.setPreferredSize(new java.awt.Dimension(71, 30));
+        txtFoodNewPrice.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtProductFoodNewPriceActionPerformed(evt);
+                txtFoodNewPriceActionPerformed(evt);
             }
         });
 
-        btnUpdatePrice.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        btnUpdatePrice.setForeground(new java.awt.Color(255, 0, 0));
-        btnUpdatePrice.setText("Update Price");
-        btnUpdatePrice.setPreferredSize(new java.awt.Dimension(76, 30));
-        btnUpdatePrice.addActionListener(new java.awt.event.ActionListener() {
+        btnUpdateFoodPrice.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        btnUpdateFoodPrice.setForeground(new java.awt.Color(255, 0, 0));
+        btnUpdateFoodPrice.setText("Update Price");
+        btnUpdateFoodPrice.setPreferredSize(new java.awt.Dimension(76, 30));
+        btnUpdateFoodPrice.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUpdatePriceActionPerformed(evt);
+                btnUpdateFoodPriceActionPerformed(evt);
             }
         });
 
@@ -144,17 +144,17 @@ public class petFoodAdminUpdatePrice extends javax.swing.JPanel {
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblProductFoodNewPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lblFoodNewPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(29, 29, 29)
-                                .addComponent(txtProductFoodNewPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtFoodNewPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblName, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lblFoodName, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(29, 29, 29)
-                                .addComponent(txtProductFoodName, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(txtFoodName, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(246, 246, 246))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnUpdatePrice, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnUpdateFoodPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(309, 309, 309))
         );
         layout.setVerticalGroup(
@@ -166,63 +166,63 @@ public class petFoodAdminUpdatePrice extends javax.swing.JPanel {
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(96, 96, 96)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtProductFoodName, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblName, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtFoodName, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblFoodName, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtProductFoodNewPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblProductFoodNewPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtFoodNewPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblFoodNewPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(74, 74, 74)
-                .addComponent(btnUpdatePrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnUpdateFoodPrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(97, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtProductFoodNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtProductFoodNameActionPerformed
+    private void txtFoodNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFoodNameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtProductFoodNameActionPerformed
+    }//GEN-LAST:event_txtFoodNameActionPerformed
 
-    private void txtProductFoodNewPriceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtProductFoodNewPriceActionPerformed
+    private void txtFoodNewPriceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFoodNewPriceActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtProductFoodNewPriceActionPerformed
+    }//GEN-LAST:event_txtFoodNewPriceActionPerformed
 
-    private void btnUpdatePriceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdatePriceActionPerformed
+    private void btnUpdateFoodPriceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateFoodPriceActionPerformed
         try {
             // TODO add your handling code here:
             DefaultTableModel model = (DefaultTableModel) tablePetFood.getModel();
             int selectedRowIndex = tablePetFood.getSelectedRow();
             int productID = (int) model.getValueAt(selectedRowIndex, 0);
-            int newPrice = Integer.parseInt(txtProductFoodNewPrice.getText());
+            int newPrice = Integer.parseInt(txtFoodNewPrice.getText());
             
             databaseConnection.executePetFoodUpdate("UPDATE petfood SET food_price = ? WHERE id = ?", newPrice, productID);
    
             JOptionPane.showMessageDialog(this, "Price Updated Successfully!");
-            txtProductFoodName.setText("");
-            txtProductFoodNewPrice.setText("");
+            txtFoodName.setText("");
+            txtFoodNewPrice.setText("");
             populateTable();
         } catch (Exception ex) {
             Logger.getLogger(petFoodAdminUpdatePrice.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-    }//GEN-LAST:event_btnUpdatePriceActionPerformed
+    }//GEN-LAST:event_btnUpdateFoodPriceActionPerformed
 
     private void tablePetFoodMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablePetFoodMouseClicked
         // TODO add your handling code here:
         DefaultTableModel model = (DefaultTableModel) tablePetFood.getModel();
         int selectedRowIndex = tablePetFood.getSelectedRow();
         String productName = (String) model.getValueAt(selectedRowIndex, 1);
-        txtProductFoodName.setText(productName);
+        txtFoodName.setText(productName);
     }//GEN-LAST:event_tablePetFoodMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnUpdatePrice;
+    private javax.swing.JButton btnUpdateFoodPrice;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JLabel lblName;
-    private javax.swing.JLabel lblProductFoodNewPrice;
+    private javax.swing.JLabel lblFoodName;
+    private javax.swing.JLabel lblFoodNewPrice;
     private javax.swing.JLabel lblUpdateFoodPrice;
     private javax.swing.JTable tablePetFood;
-    private javax.swing.JTextField txtProductFoodName;
-    private javax.swing.JTextField txtProductFoodNewPrice;
+    private javax.swing.JTextField txtFoodName;
+    private javax.swing.JTextField txtFoodNewPrice;
     // End of variables declaration//GEN-END:variables
 }

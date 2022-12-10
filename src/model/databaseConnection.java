@@ -13,7 +13,7 @@ import java.sql.ResultSet;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
+import java.sql.Date;
 /**
  *
  * @author shrey
@@ -39,10 +39,12 @@ public class databaseConnection {
             PreparedStatement create_petfood = con.prepareStatement("CREATE TABLE IF NOT EXISTS petfood(id int NOT NULL AUTO_INCREMENT, food_name VARCHAR(255), food_price int, available_quantity int, PRIMARY KEY(id))");
             PreparedStatement create_orders = con.prepareStatement("CREATE TABLE IF NOT EXISTS orders(id int NOT NULL AUTO_INCREMENT, user_id INT, product VARCHAR(255), order_total INT, item_type VARCHAR(255), PRIMARY KEY(id))");
             PreparedStatement create_pet_accessories = con.prepareStatement("CREATE TABLE IF NOT EXISTS petaccessories(id int NOT NULL AUTO_INCREMENT, accessory_name VARCHAR(255), accessory_price int, available_quantity int, PRIMARY KEY(id))");
+            PreparedStatement create_grooming_appointments = con.prepareStatement("CREATE TABLE IF NOT EXISTS groomingappointments(id int NOT NULL AUTO_INCREMENT, user_id INT, service_name VARCHAR(255), service_cost VARCHAR(255), service_date VARCHAR(255), PRIMARY KEY(id))");
             create_usertable.executeUpdate();
             create_petfood.executeUpdate();
             create_orders.executeUpdate();
             create_pet_accessories.executeUpdate();
+            create_grooming_appointments.executeUpdate();
             return con;
         } catch(Exception e){System.out.println(e);}
         finally{System.out.println("Table Created!");
