@@ -13,7 +13,7 @@ import java.sql.ResultSet;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.sql.Date;
+
 /**
  *
  * @author shrey
@@ -40,11 +40,17 @@ public class databaseConnection {
             PreparedStatement create_orders = con.prepareStatement("CREATE TABLE IF NOT EXISTS orders(id int NOT NULL AUTO_INCREMENT, user_id INT, product VARCHAR(255), order_total INT, item_type VARCHAR(255), PRIMARY KEY(id))");
             PreparedStatement create_pet_accessories = con.prepareStatement("CREATE TABLE IF NOT EXISTS petaccessories(id int NOT NULL AUTO_INCREMENT, accessory_name VARCHAR(255), accessory_price int, available_quantity int, PRIMARY KEY(id))");
             PreparedStatement create_grooming_appointments = con.prepareStatement("CREATE TABLE IF NOT EXISTS groomingappointments(id int NOT NULL AUTO_INCREMENT, user_id INT, service_name VARCHAR(255), service_cost VARCHAR(255), service_date VARCHAR(255), PRIMARY KEY(id))");
+            PreparedStatement create_hospitals = con.prepareStatement("CREATE TABLE IF NOT EXISTS hospitals(id int NOT NULL AUTO_INCREMENT, city_name VARCHAR(255), community_name VARCHAR(255), hospital_name VARCHAR(255), hospital_zipcode VARCHAR(255), PRIMARY KEY(id))");
+            PreparedStatement create_doctors = con.prepareStatement("CREATE TABLE IF NOT EXISTS doctors(id int NOT NULL AUTO_INCREMENT, first_name VARCHAR(255), last_name VARCHAR(255), email_ID VARCHAR(255), contact_number VARCHAR(255), hospital_name VARCHAR(255), username VARCHAR(255), password VARCHAR(255), PRIMARY KEY(id))");
+                    
             create_usertable.executeUpdate();
             create_petfood.executeUpdate();
             create_orders.executeUpdate();
             create_pet_accessories.executeUpdate();
             create_grooming_appointments.executeUpdate();
+            create_hospitals.executeUpdate();
+            create_doctors.executeUpdate();
+            
             return con;
         } catch(Exception e){System.out.println(e);}
         finally{System.out.println("Table Created!");
@@ -206,6 +212,29 @@ public class databaseConnection {
         select.setInt(1, userID);
         ResultSet result = select.executeQuery();
         return result;
+    }
+    
+    public void insertHospitals(String city_name, String community_name, String hospital_name, String hospital_zipcode) throws Exception
+    {
+        PreparedStatement insertOrder = con.prepareStatement("INSERT INTO hospitals (city_name, community_name, hospital_name, hospital_zipcode) VALUES (?, ?, ?, ?)");
+        insertOrder.setString(1, city_name);
+        insertOrder.setString(2, community_name);
+        insertOrder.setString(3, hospital_name);
+        insertOrder.setString(4, hospital_zipcode);
+        insertOrder.executeUpdate();
+    }
+    
+    public void insertDoctors(String first_name, String last_name, String email_ID, String contact_number, String hospital_name, String username, String password) throws Exception
+    {
+        PreparedStatement insertOrder = con.prepareStatement("INSERT INTO doctors(first_name, last_name, email_ID, contact_number, hospital_name, username, password) VALUES (?, ?, ?, ?, ?, ?, ?)");
+        insertOrder.setString(1, first_name);
+        insertOrder.setString(2, last_name);
+        insertOrder.setString(3, email_ID);
+        insertOrder.setString(4, contact_number);
+        insertOrder.setString(5, hospital_name);
+        insertOrder.setString(6, username);
+        insertOrder.setString(7, password);
+        insertOrder.executeUpdate();
     }
  
 }

@@ -26,6 +26,7 @@ public class StartPage extends javax.swing.JFrame {
     sendEmail emailNotification;
     sendSMS smsNotification;
     private final Admin foodStoreAdmin;
+    private final Admin hospitalAdmin;
     public databaseConnection databaseConnection;
     
     public StartPage() {
@@ -33,6 +34,7 @@ public class StartPage extends javax.swing.JFrame {
         this.emailNotification = new sendEmail();
         this.smsNotification = new sendSMS();
         this.foodStoreAdmin = new Admin("Food Store Admin", "Food Store Admin", "Food Store Admin");
+        this.hospitalAdmin = new Admin("Hospital Admin", "Hospital Admin", "Hospital Admin");
         this.databaseConnection = new databaseConnection();
     }
 
@@ -214,7 +216,7 @@ public class StartPage extends javax.swing.JFrame {
         loginAs.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         loginAs.setText("Role : ");
 
-        selectRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "User", "Food Store Admin" }));
+        selectRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "User", "Food Store Admin", "Hospital Admin" }));
         selectRole.setMinimumSize(new java.awt.Dimension(72, 30));
         selectRole.setPreferredSize(new java.awt.Dimension(72, 30));
 
@@ -339,7 +341,7 @@ public class StartPage extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(splitPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1115, Short.MAX_VALUE)
+            .addComponent(splitPane)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -377,6 +379,38 @@ public class StartPage extends javax.swing.JFrame {
                 petFoodAdmin petFoodAdminJPanel = new petFoodAdmin(databaseConnection);
                 splitPane.setRightComponent(petFoodAdminJPanel);
                 buttonLogOut.setVisible(true);
+            } catch(Exception e){System.out.println(e);}
+        }
+        else if(hospitalAdmin.getAdminRole().equals(selectRole.getSelectedItem().toString()) && hospitalAdmin.getAdminUserName().equals(txtloginUserName.getText()) && hospitalAdmin.getAdminPassWord().equals(txtloginPassword.getText()))
+        {
+            try{
+                JOptionPane.showMessageDialog(this, "Logged In As Hospital Admin");
+                hospitalAdmin hospitalAdminJPanel = new hospitalAdmin(databaseConnection);
+                splitPane.setRightComponent(hospitalAdminJPanel);
+                buttonLogOut.setVisible(true);
+            } catch(Exception e){System.out.println(e);}
+        }
+        else if(selectRole.getSelectedItem().toString().equals("Doctor")) 
+        {
+            try{
+                ResultSet result =  databaseConnection.executeSelect("SELECT * FROM doctors");
+                boolean flag = false;
+                
+                while(result.next())
+                {
+                    if(result.getString("username").equals(txtloginUserName.getText()) && result.getString("password").equals(txtloginPassword.getText()))
+                    {
+                        flag = true;
+                        
+                    }
+                }
+                if(flag == true)
+                {
+                    hospitalAdmin hospitalAdminJPanel = new hospitalAdmin(databaseConnection);
+                    splitPane.setRightComponent(hospitalAdminJPanel);
+                    buttonLogOut.setVisible(true);
+                }
+
             } catch(Exception e){System.out.println(e);}
         }
     }//GEN-LAST:event_btnLogInActionPerformed

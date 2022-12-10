@@ -36,6 +36,7 @@ public class petFoodAdmin extends javax.swing.JPanel {
         btnUpdatePrice = new javax.swing.JButton();
         btnOrderProduct = new javax.swing.JButton();
         petFoodAdminWorkArea = new javax.swing.JPanel();
+        lblFoodStoreAdmin = new javax.swing.JLabel();
 
         petFoodAdminSplitPane.setDividerLocation(120);
 
@@ -92,15 +93,25 @@ public class petFoodAdmin extends javax.swing.JPanel {
 
         petFoodAdminWorkArea.setBackground(new java.awt.Color(0, 255, 255));
 
+        lblFoodStoreAdmin.setBackground(new java.awt.Color(255, 255, 255));
+        lblFoodStoreAdmin.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblFoodStoreAdmin.setForeground(new java.awt.Color(255, 0, 0));
+        lblFoodStoreAdmin.setText("                                                                           Food Store Admin");
+
         javax.swing.GroupLayout petFoodAdminWorkAreaLayout = new javax.swing.GroupLayout(petFoodAdminWorkArea);
         petFoodAdminWorkArea.setLayout(petFoodAdminWorkAreaLayout);
         petFoodAdminWorkAreaLayout.setHorizontalGroup(
             petFoodAdminWorkAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 851, Short.MAX_VALUE)
+            .addGroup(petFoodAdminWorkAreaLayout.createSequentialGroup()
+                .addComponent(lblFoodStoreAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, 849, Short.MAX_VALUE)
+                .addContainerGap())
         );
         petFoodAdminWorkAreaLayout.setVerticalGroup(
             petFoodAdminWorkAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 624, Short.MAX_VALUE)
+            .addGroup(petFoodAdminWorkAreaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblFoodStoreAdmin)
+                .addContainerGap(593, Short.MAX_VALUE))
         );
 
         petFoodAdminSplitPane.setRightComponent(petFoodAdminWorkArea);
@@ -109,7 +120,7 @@ public class petFoodAdmin extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(petFoodAdminSplitPane, javax.swing.GroupLayout.DEFAULT_SIZE, 980, Short.MAX_VALUE)
+            .addComponent(petFoodAdminSplitPane)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -131,6 +142,7 @@ public class petFoodAdmin extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnOrderProduct;
     private javax.swing.JButton btnUpdatePrice;
+    private javax.swing.JLabel lblFoodStoreAdmin;
     private javax.swing.JPanel petFoodAdminControlArea;
     private javax.swing.JSplitPane petFoodAdminSplitPane;
     private javax.swing.JPanel petFoodAdminWorkArea;
