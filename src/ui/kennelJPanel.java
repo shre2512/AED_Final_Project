@@ -90,7 +90,6 @@ public class kennelJPanel extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         txtKennelName = new javax.swing.JTextField();
         txtKennelAddress = new javax.swing.JTextField();
-        frmKennelFromDate = new javax.swing.JInternalFrame();
 
         btnKennelsOnMap.setText("View kennels");
         btnKennelsOnMap.addActionListener(new java.awt.event.ActionListener() {
@@ -134,19 +133,6 @@ public class kennelJPanel extends javax.swing.JPanel {
             }
         });
 
-        frmKennelFromDate.setVisible(true);
-
-        javax.swing.GroupLayout frmKennelFromDateLayout = new javax.swing.GroupLayout(frmKennelFromDate.getContentPane());
-        frmKennelFromDate.getContentPane().setLayout(frmKennelFromDateLayout);
-        frmKennelFromDateLayout.setHorizontalGroup(
-            frmKennelFromDateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 215, Short.MAX_VALUE)
-        );
-        frmKennelFromDateLayout.setVerticalGroup(
-            frmKennelFromDateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 85, Short.MAX_VALUE)
-        );
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -156,14 +142,11 @@ public class kennelJPanel extends javax.swing.JPanel {
                 .addGap(100, 100, 100)
                 .addComponent(jLabel2)
                 .addGap(45, 45, 45)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(frmKennelFromDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(txtKennelName, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(89, 89, 89)
-                        .addComponent(jLabel1)
-                        .addGap(37, 37, 37)
-                        .addComponent(txtKennelAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addComponent(txtKennelName, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(89, 89, 89)
+                .addComponent(jLabel1)
+                .addGap(37, 37, 37)
+                .addComponent(txtKennelAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(103, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -176,9 +159,7 @@ public class kennelJPanel extends javax.swing.JPanel {
                     .addComponent(txtKennelName, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1)
                     .addComponent(txtKennelAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(frmKennelFromDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(58, Short.MAX_VALUE))
+                .addContainerGap(197, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -200,7 +181,6 @@ public class kennelJPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnKennelsOnMap;
-    private javax.swing.JInternalFrame frmKennelFromDate;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private org.jxmapviewer.JXMapViewer jXMapViewer1;
