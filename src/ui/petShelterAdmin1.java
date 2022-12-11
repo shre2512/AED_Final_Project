@@ -3,20 +3,23 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package ui;
-import model.petAdoptionRecords;
+import model.databaseConnection;
+
 /**
  *
  * @author babsybabu
  */
-public class petShelterAdmin extends javax.swing.JPanel {
+public class petShelterAdmin1 extends javax.swing.JPanel {
 
     /**
      * Creates new form petShelterAdmin
      */
-    petAdoptionRecords records;
-    public petShelterAdmin(petAdoptionRecords records) {
+        databaseConnection databaseConnection;
+
+    public petShelterAdmin1(databaseConnection databaseConnection) {
         initComponents();
-        this.records=records;
+                this.databaseConnection = databaseConnection;
+
     }
 
     /**
@@ -87,7 +90,7 @@ public class petShelterAdmin extends javax.swing.JPanel {
 
     private void btnAddPetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddPetActionPerformed
         // TODO add your handling code here:
-       petShelterAdminAddPets addPets = new petShelterAdminAddPets(records);
+       petShelterAdminAddPets1 addPets = new petShelterAdminAddPets1(databaseConnection);
         shelterAdminSplitPane.setRightComponent(addPets);
     }//GEN-LAST:event_btnAddPetActionPerformed
 

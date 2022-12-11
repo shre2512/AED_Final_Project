@@ -42,12 +42,14 @@ public class databaseConnection {
             PreparedStatement create_pet_accessories = con.prepareStatement("CREATE TABLE IF NOT EXISTS petaccessories(id int NOT NULL AUTO_INCREMENT, accessory_name VARCHAR(255), accessory_price int, available_quantity int, PRIMARY KEY(id))");
             PreparedStatement create_kennelbooking = con.prepareStatement("CREATE TABLE IF NOT EXISTS kennelbooking(id int NOT NULL AUTO_INCREMENT,user_id INT, kennel_name VARCHAR(255), kennel_address VARCHAR(255), kennel_to VARCHAR(255),kennel_from VARCHAR(255),kennel_price_per_day INT,kennel_number_of_days INT, kennel_rent INT, kennel_pickup VARCHAR(255), PRIMARY KEY(id))");
             PreparedStatement create_kennel = con.prepareStatement("CREATE TABLE IF NOT EXISTS kennel(id int NOT NULL AUTO_INCREMENT, kennel_name VARCHAR(255), kennel_address VARCHAR(255), price_per_day int, PRIMARY KEY(id))");
+            PreparedStatement create_shelterPets = con.prepareStatement("CREATE TABLE IF NOT EXISTS shelterPets(id int NOT NULL AUTO_INCREMENT,pet_id VARCHAR(255), pet_name VARCHAR(255), pet_date_of_birth VARCHAR(255), pet_age INT, pet_gender VARCHAR(255),pet_type VARCHAR(255),pet_height INT, pet_weight INT, pet_vaccination_status VARCHAR(255), pet_image LONGBLOB, PRIMARY KEY(id))");
             create_usertable.executeUpdate();
             create_petfood.executeUpdate();
             create_orders.executeUpdate();
             create_pet_accessories.executeUpdate();
             create_kennelbooking.executeUpdate();
             create_kennel.executeUpdate();
+            create_shelterPets.executeUpdate();
             return con;
         } catch(Exception e){System.out.println(e);}
         finally{System.out.println("Table Created!");
@@ -128,6 +130,22 @@ public class databaseConnection {
             insertOrder.setInt(7, numberOfDays);
             insertOrder.setInt(8, rent);
             insertOrder.setString(9, pickup);
+            insertOrder.executeUpdate();
+     }
+    
+        public void insertPetsIntoShelter(String petId, String name, String dob, int Age, String gender, String type, int height,int weight,String vaccine, byte[] image) throws Exception
+    {
+            PreparedStatement insertOrder = con.prepareStatement("INSERT INTO shelterPets (pet_id, pet_name, pet_date_of_birth, pet_age, pet_gender,pet_type,pet_height, pet_weight, pet_vaccination_status, pet_image) VALUES (?, ?, ?, ?,?,?,?,?,?,?)");
+            insertOrder.setString(1, petId);
+            insertOrder.setString(2, name);
+            insertOrder.setString(3, dob);
+            insertOrder.setInt(4, Age);
+            insertOrder.setString(5, gender);
+            insertOrder.setString(6, type);
+            insertOrder.setInt(7, height);
+            insertOrder.setInt(8, weight);
+            insertOrder.setString(9, vaccine);
+            insertOrder.setBytes(10, image);
             insertOrder.executeUpdate();
         }
     

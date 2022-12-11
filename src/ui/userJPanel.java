@@ -57,7 +57,7 @@ public class userJPanel extends javax.swing.JPanel {
         
          try {
             // TODO add your handling code here:
-           petShelterJPanel shelterPanel = new petShelterJPanel(records);
+           petShelterJPanel1 shelterPanel = new petShelterJPanel1(databaseConnection);
            shelterSplitPane.setRightComponent(shelterPanel);
         } catch (Exception ex) {
             Logger.getLogger(userJPanel.class.getName()).log(Level.SEVERE, null, ex);

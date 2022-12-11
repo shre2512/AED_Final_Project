@@ -6,6 +6,10 @@ package ui;
 
 import javax.swing.table.DefaultTableModel;
 import java.awt.Image;
+import static java.lang.String.format;
+import java.sql.ResultSet;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.RowFilter;
@@ -13,47 +17,55 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
+import model.databaseConnection;
 import model.petProfileForAdoption;
-import model.petAdoptionRecords;
 /**
  *
  * @author babsybabu
  */
-public class petShelterJPanel extends javax.swing.JPanel {
+public class petShelterJPanel1 extends javax.swing.JPanel {
 
     /**
      * Creates new form petShelterJPanel
      */
-    petAdoptionRecords records;
-    public petShelterJPanel(petAdoptionRecords records) {
-        initComponents();
-        this.records=records;
-        System.out.println(records.getRecords());
+    databaseConnection databaseConnection;
+       private ImageIcon format=null;
+   String fname=null;
+   int s=0;
+   byte[] pimage=null;
 
+    public petShelterJPanel1(databaseConnection databaseConnection) {
+        initComponents();
+        this.databaseConnection=databaseConnection;
         populateTable();
     }
     
         private void populateTable() {
-        DefaultTableModel model=(DefaultTableModel) tblPetAdoptionRecords.getModel();
-        model.setRowCount(0);
-        
-        for(petProfileForAdoption pet:records.getRecords()){
-            System.out.println(pet);
+         try {
+            ResultSet result = databaseConnection.executeSelect("SELECT * FROM shelterPets");
+            DefaultTableModel model = (DefaultTableModel) tblPetAdoptionRecords.getModel();
+            model.setRowCount(0);
+            while(result.next())
+            {
+                
             Object[]row=new Object[10];
-            row[0]=pet;
-            row[1]=pet.getName();
-            row[2]=pet.getPetId();
-            row[3]=pet.getBreed();
-            row[4]=pet.getGender();
-            row[5]=pet.getDob();
-            row[6]=pet.getAge();
-            row[7]=pet.getHeight();
-            row[8]=pet.getWeight();
-            row[9]=pet.getVaccinationStatus();
+                row[0] = result.getInt("id");
+                row[1] = result.getString("pet_id");
+                row[2] = result.getString("pet_name");
+                row[3] = result.getString("pet_date_of_birth");
+                row[4] = result.getInt("pet_age");
+                row[5] = result.getString("pet_gender");
+                row[6] = result.getString("pet_type");
+                row[7] = result.getInt("pet_height");
+                row[8] = result.getInt("pet_weight");
+                row[9] = result.getString("pet_vaccination_status");
             
             model.addRow(row);
                     
             
+        }
+        } catch (Exception ex) {
+            Logger.getLogger(kennelAdminUpdatePrice.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -74,17 +86,17 @@ public class petShelterJPanel extends javax.swing.JPanel {
 
         tblPetAdoptionRecords.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Name", "ID", "Breed", "Gender", "Date of Birth", "Age", "Height", "Weight", "Vaccination Status"
+                "ID", "Pet ID", "Name", "Date of Birth", "Age", "Gender", "Type", "Height", "Weight", "Vaccination Status"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, true, false, false, false
+                false, false, false, false, true, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -121,9 +133,9 @@ public class petShelterJPanel extends javax.swing.JPanel {
                 .addComponent(btnAdopt)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnViewImage)
-                .addGap(432, 432, 432)
-                .addComponent(lblImg, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblImg, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(55, 55, 55))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -132,36 +144,47 @@ public class petShelterJPanel extends javax.swing.JPanel {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblImg, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(36, 36, 36)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnAdopt)
-                            .addComponent(btnViewImage))))
-                .addContainerGap(18, Short.MAX_VALUE))
+                            .addComponent(btnViewImage)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lblImg, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnViewImageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewImageActionPerformed
         // TODO add your handling code here:
         int selectedRowIndex=tblPetAdoptionRecords.getSelectedRow();
-        System.out.println(selectedRowIndex);
+        String selectedCellValue = (String) tblPetAdoptionRecords.getValueAt(tblPetAdoptionRecords.getSelectedRow() , tblPetAdoptionRecords.getSelectedColumn());
+        System.out.println(selectedCellValue);
         if(selectedRowIndex<0){
             JOptionPane.showMessageDialog(this,"Please select a row to view");
             return;
         }
         
-        DefaultTableModel model=(DefaultTableModel) tblPetAdoptionRecords.getModel();
-        petProfileForAdoption emp=(petProfileForAdoption)model.getValueAt(selectedRowIndex, 0);
-        
-        if(emp.getImgPath()==null){
-            lblImg.setIcon(new ImageIcon("/Users/babsybabu/Downloads/no-photo-uploaded.gif"));
-        }
-        else{
-            Image finalImage=emp.getImage().getScaledInstance(300,300,Image.SCALE_DEFAULT);
-            lblImg.setIcon(new ImageIcon(finalImage));
-        }
+        try {
+            String sql="SELECT `pet_image` FROM `shelterPets` WHERE pet_id='"+selectedCellValue+"'";          
+           ResultSet rs=databaseConnection.executeSelect(sql);
+           System.out.println(rs);
+           if(rs.next())
+           {          
+               byte[] imagedata=rs.getBytes("pet_image");
+               format=new ImageIcon(imagedata);
+               Image mm=format.getImage();
+               Image img2=mm.getScaledInstance(lblImg.getWidth(),lblImg.getHeight(), Image.SCALE_SMOOTH);
+               ImageIcon image=new ImageIcon(img2);
+               lblImg.setIcon(image);
+            } 
+           else
+           {
+          
+           }
+        } catch (Exception e) {
+           
+        }       
     }//GEN-LAST:event_btnViewImageActionPerformed
 
     private void btnAdoptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdoptActionPerformed

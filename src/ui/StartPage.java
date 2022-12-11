@@ -411,7 +411,7 @@ public class StartPage extends javax.swing.JFrame {
         {
             try{
                 JOptionPane.showMessageDialog(this, "Logged In As Shelter Admin");
-                petShelterAdmin shelterAdminJPanel = new petShelterAdmin(records);
+                petShelterAdmin1 shelterAdminJPanel = new petShelterAdmin1(databaseConnection);
                 splitPane.setRightComponent(shelterAdminJPanel);
                 buttonLogOut.setVisible(true);
             } catch(Exception e){System.out.println(e);}
