@@ -83,6 +83,7 @@ public class userJPanel extends javax.swing.JPanel {
         vetenarySplitPane = new javax.swing.JSplitPane();
         vetenaryControlArea = new javax.swing.JPanel();
         btnCreateEncounter = new javax.swing.JButton();
+        btnPastEncounters = new javax.swing.JButton();
         vetenaryWorkArea = new javax.swing.JPanel();
 
         setBackground(new java.awt.Color(255, 255, 102));
@@ -301,21 +302,35 @@ public class userJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnPastEncounters.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        btnPastEncounters.setForeground(new java.awt.Color(255, 0, 0));
+        btnPastEncounters.setText("Past Encounters");
+        btnPastEncounters.setPreferredSize(new java.awt.Dimension(76, 35));
+        btnPastEncounters.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPastEncountersActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout vetenaryControlAreaLayout = new javax.swing.GroupLayout(vetenaryControlArea);
         vetenaryControlArea.setLayout(vetenaryControlAreaLayout);
         vetenaryControlAreaLayout.setHorizontalGroup(
             vetenaryControlAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(vetenaryControlAreaLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btnCreateEncounter, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)
+                .addGroup(vetenaryControlAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnPastEncounters, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)
+                    .addComponent(btnCreateEncounter, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         vetenaryControlAreaLayout.setVerticalGroup(
             vetenaryControlAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(vetenaryControlAreaLayout.createSequentialGroup()
-                .addGap(189, 189, 189)
+                .addGap(203, 203, 203)
                 .addComponent(btnCreateEncounter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(345, Short.MAX_VALUE))
+                .addGap(55, 55, 55)
+                .addComponent(btnPastEncounters, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(241, Short.MAX_VALUE))
         );
 
         vetenarySplitPane.setLeftComponent(vetenaryControlArea);
@@ -449,11 +464,18 @@ public class userJPanel extends javax.swing.JPanel {
         vetenarySplitPane.setRightComponent(createEncounterJPanel);
     }//GEN-LAST:event_btnCreateEncounterActionPerformed
 
+    private void btnPastEncountersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPastEncountersActionPerformed
+        // TODO add your handling code here:
+        viewPastEncounters viewEncounters = new viewPastEncounters(databaseConnection, userID);
+        vetenarySplitPane.setRightComponent(viewEncounters);
+    }//GEN-LAST:event_btnPastEncountersActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAccessoryPurchase;
     private javax.swing.JButton btnCreateEncounter;
     private javax.swing.JButton btnFoodPurchase;
+    private javax.swing.JButton btnPastEncounters;
     private javax.swing.JButton btnPetAccessories;
     private javax.swing.JButton btnPetFood;
     private javax.swing.JButton btnPetGrooming;

@@ -438,4 +438,12 @@ public class databaseConnection {
         vitalSigns.setInt(7, heartRate);
         vitalSigns.executeUpdate();
     }
+    
+    public ResultSet getPastVitalSigns(int userID) throws Exception
+    {
+        PreparedStatement getPastVitals = con.prepareStatement("SELECT * FROM vitalsigns WHERE user_id = ?");
+        getPastVitals.setInt(1, userID);
+        ResultSet result = getPastVitals.executeQuery();
+        return result;
+    }
 }
