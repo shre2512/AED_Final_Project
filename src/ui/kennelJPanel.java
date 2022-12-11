@@ -219,16 +219,16 @@ public class kennelJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(100, 100, 100)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel4))
-                                .addGap(45, 45, 45))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)))
+                                .addGap(18, 18, 18))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(100, 100, 100)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel2))
+                                .addGap(45, 45, 45)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(dateChooserToDateKennel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(txtKennelName, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE)
@@ -236,8 +236,8 @@ public class kennelJPanel extends javax.swing.JPanel {
                         .addGap(89, 89, 89)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel1)
-                            .addComponent(jLabel3)
-                            .addComponent(lblPickup))
+                            .addComponent(lblPickup)
+                            .addComponent(jLabel4))
                         .addGap(37, 37, 37)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtKennelAddress, javax.swing.GroupLayout.DEFAULT_SIZE, 264, Short.MAX_VALUE)
@@ -259,11 +259,12 @@ public class kennelJPanel extends javax.swing.JPanel {
                     .addComponent(jLabel1)
                     .addComponent(txtKennelAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel3)
-                    .addComponent(dateChooserFromDateKennel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel4)
-                    .addComponent(dateChooserToDateKennel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(dateChooserFromDateKennel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(dateChooserToDateKennel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addComponent(jLabel3))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtPricePerDay, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -281,6 +282,8 @@ public class kennelJPanel extends javax.swing.JPanel {
         waypoints.add(new MyWaypoint("The Mindful Mutt","16 Harvard Ave, Allston, MA 02134",event,new GeoPosition(42.36114667727058, -71.13242913502957)));
         waypoints.add(new MyWaypoint("The Urban Hound Hotel & Daycare","129 W Malden St, Boston, MA 02118",event,new GeoPosition(42.3441904832612, -71.06726660373947)));
         waypoints.add(new MyWaypoint("The Dog Port","236 Sumner St, East Boston, MA 02128",event,new GeoPosition(42.376150664565635, -71.03823688912777)));
+        waypoints.add(new MyWaypoint("Tails","385 Centre St, Jamaica Plain, MA 02130",event,new GeoPosition(42.36757788354394, -71.05820710298593)));
+
         initWaypoint();
     }//GEN-LAST:event_btnKennelsOnMapActionPerformed
 
