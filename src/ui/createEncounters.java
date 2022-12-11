@@ -189,11 +189,12 @@ public class createEncounters extends javax.swing.JPanel {
     
     private void populateDoctorComboBox(String hospital_name)
     {
+        doctorComboBox.removeAllItems();
         try { 
             ResultSet result = databaseConnection.executeSelectDoctors(hospital_name);
             while(result.next())
             {
-                hospitalComboBox.addItem(result.getString("first_name") + " " + result.getString("last_name"));
+                doctorComboBox.addItem(result.getString("first_name") + " " + result.getString("last_name"));
             }
         } catch (Exception ex) {
             Logger.getLogger(createEncounters.class.getName()).log(Level.SEVERE, null, ex);
@@ -220,7 +221,7 @@ public class createEncounters extends javax.swing.JPanel {
             String doctor_name = doctorComboBox.getSelectedItem().toString();
             String symptoms = txtSymptoms.getText();
             Date date = dateChooserFromCreateEncounter.getDate();
-            DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
+            DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
             String strDate = dateFormat.format(date);
             databaseConnection.executeInsertEncounter(userID, hospital_name, doctor_name, symptoms, strDate);
             JOptionPane.showMessageDialog(this, "Encounter Created successfully!");

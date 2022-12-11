@@ -230,7 +230,7 @@ public class petGroomingJPanel extends javax.swing.JPanel {
             String serviceName = txtGroomingServiceName.getText();
             int serviceCost = Integer.parseInt(txtGroomingServicePrice.getText());
             Date date = groomingServiceDateChooser.getDate();
-            DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");  
+            DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");  
             String strDate = dateFormat.format(date);
             String emailID = getEmailID(userID);
             String phoneNumber = getPhoneNumber(userID);

@@ -446,6 +446,7 @@ public class userJPanel extends javax.swing.JPanel {
     private void btnCreateEncounterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateEncounterActionPerformed
         // TODO add your handling code here:
         createEncounters createEncounterJPanel = new createEncounters(databaseConnection, userID, emailNotification, smsNotification);
+        vetenarySplitPane.setRightComponent(createEncounterJPanel);
     }//GEN-LAST:event_btnCreateEncounterActionPerformed
 
 

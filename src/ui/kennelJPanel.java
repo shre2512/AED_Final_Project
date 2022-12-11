@@ -317,15 +317,18 @@ public class kennelJPanel extends javax.swing.JPanel {
         name=txtKennelName.getText();
         address=txtKennelAddress.getText();
         toDate=dateChooserToDateKennel.getDate();
-        System.out.println(toDate);
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");  
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");  
         String toDateString = dateFormat.format(toDate);
-        fromDate=dateChooserFromDateKennel.getDate();
+        fromDate = dateChooserFromDateKennel.getDate();
         String fromDateString = dateFormat.format(fromDate);
         numberOfDays=(int)( (fromDate.getTime() - toDate.getTime()) / (1000 * 60 * 60 * 24));
         pricePerDay=Integer.parseInt(txtPricePerDay.getText());
         rent = numberOfDays * pricePerDay;
         pickup = cmbPickup.getSelectedItem().toString();
+        JOptionPane.showMessageDialog(this, "Kennel booked successfully!");
+        txtKennelName.setText("");
+        txtKennelAddress.setText("");
+        txtPricePerDay.setText("");
         
         try {
             databaseConnection.insertKennelBooking(userID,name,address,toDateString,fromDateString,pricePerDay,numberOfDays,rent,pickup);
