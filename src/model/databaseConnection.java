@@ -412,4 +412,30 @@ public class databaseConnection {
         ResultSet result = select.executeQuery();
         return result;
     }
+    
+    public int getUserID(int encounterID) throws Exception
+    {
+        PreparedStatement select = con.prepareStatement("SELECT user_id FROM encounters WHERE id = ?");
+        select.setInt(1, encounterID);
+        ResultSet result = select.executeQuery();
+        int userID = -1;
+        while(result.next())
+        {
+            userID = result.getInt("user_id");
+        }
+        return userID;
+    }
+    
+    public void insertVitalSigns(int encounterID, String encounterDate, String symptoms, int userID, int bodyTemp, int respirationRate, int heartRate) throws Exception
+    {
+        PreparedStatement vitalSigns = con.prepareStatement("INSERT INTO vitalsigns(encounter_id, encounter_date, symptoms, user_id, body_temp, respiration_rate, heart_rate) VALUES (?, ?, ?, ?, ?, ?, ?)");
+        vitalSigns.setInt(1, encounterID);
+        vitalSigns.setString(2, encounterDate);
+        vitalSigns.setString(3, symptoms);
+        vitalSigns.setInt(4, userID);
+        vitalSigns.setInt(5, bodyTemp);
+        vitalSigns.setInt(6, respirationRate);
+        vitalSigns.setInt(7, heartRate);
+        vitalSigns.executeUpdate();
+    }
 }

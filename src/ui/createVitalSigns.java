@@ -234,14 +234,27 @@ public class createVitalSigns extends javax.swing.JPanel {
         }
         else
         {
-            int selectedRowIndex = tblEncounters.getSelectedRow();
-            if(selectedRowIndex < 0)
-            {
-                JOptionPane.showMessageDialog(this, "Please Select an encounter to create Vital Signs");
+            try {
+                int selectedRowIndex = tblEncounters.getSelectedRow();
+                if(selectedRowIndex < 0)
+                {
+                    JOptionPane.showMessageDialog(this, "Please Select an encounter to create Vital Signs");
+                }
+                
+                DefaultTableModel model = (DefaultTableModel) tblEncounters.getModel();
+                int encounterID = (int) model.getValueAt(selectedRowIndex, 0);
+                String encounterDate = model.getValueAt(selectedRowIndex, 1).toString();
+                String symptoms = model.getValueAt(selectedRowIndex, 3).toString();
+                int userID = databaseConnection.getUserID(encounterID);
+                int bodyTemp = Integer.parseInt(txtBodyTemperature.getText());
+                int respirationRate = Integer.parseInt(txtRespirationRate.getText());
+                int heartRate = Integer.parseInt(txtHeartRate.getText());
+                databaseConnection.insertVitalSigns(encounterID, encounterDate, symptoms, userID, bodyTemp, respirationRate, heartRate);
+                JOptionPane.showMessageDialog(this, "Vital Signs Added!");
+                clearFormText();
+            } catch (Exception ex) {
+                Logger.getLogger(createVitalSigns.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
-            JOptionPane.showMessageDialog(this, "Vital Signs Added!");
-            clearFormText();
         }
     }//GEN-LAST:event_btnCreateActionPerformed
     

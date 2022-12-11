@@ -413,9 +413,11 @@ public class StartPage extends javax.swing.JFrame {
                         buttonLogOut.setVisible(true);
                     }
                 }
-                if(flag == true)
+                if(flag == false)
                 {
-                    
+                    JOptionPane.showMessageDialog(this, "Invalid Credentials!");
+                    txtloginUserName.setText("");
+                    txtloginPassword.setText("");
                 }
 
             } catch(Exception e){System.out.println(e);}
