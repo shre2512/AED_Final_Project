@@ -27,6 +27,7 @@ public class StartPage extends javax.swing.JFrame {
     sendSMS smsNotification;
     private final Admin foodStoreAdmin;
     private final Admin kennelAdmin;
+    private final Admin shelterAdmin;
     public databaseConnection databaseConnection;
     
     public StartPage() {
@@ -35,6 +36,7 @@ public class StartPage extends javax.swing.JFrame {
         this.smsNotification = new sendSMS();
         this.foodStoreAdmin = new Admin("Food Store Admin", "Food Store Admin", "Food Store Admin");
         this.kennelAdmin = new Admin("Kennel Admin", "Kennel Admin", "Kennel Admin");
+        this.shelterAdmin = new Admin("Shelter Admin", "Shelter Admin", "Shelter Admin");
         this.databaseConnection = new databaseConnection();
     }
 
@@ -216,7 +218,7 @@ public class StartPage extends javax.swing.JFrame {
         loginAs.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         loginAs.setText("Role : ");
 
-        selectRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "User", "Food Store Admin", "Kennel Admin" }));
+        selectRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "User", "Food Store Admin", "Kennel Admin", "Shelter Admin" }));
         selectRole.setMinimumSize(new java.awt.Dimension(72, 30));
         selectRole.setPreferredSize(new java.awt.Dimension(72, 30));
 
@@ -387,6 +389,15 @@ public class StartPage extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Logged In As Kennel Admin");
                 kennelAdmin kennelAdminJPanel = new kennelAdmin(databaseConnection);
                 splitPane.setRightComponent(kennelAdminJPanel);
+                buttonLogOut.setVisible(true);
+            } catch(Exception e){System.out.println(e);}
+        }
+        else if(shelterAdmin.getAdminRole().equals(selectRole.getSelectedItem().toString()) && shelterAdmin.getAdminUserName().equals(txtloginUserName.getText()) && shelterAdmin.getAdminPassWord().equals(txtloginPassword.getText()))
+        {
+            try{
+                JOptionPane.showMessageDialog(this, "Logged In As Shelter Admin");
+                petShelterAdmin shelterAdminJPanel = new petShelterAdmin();
+                splitPane.setRightComponent(shelterAdminJPanel);
                 buttonLogOut.setVisible(true);
             } catch(Exception e){System.out.println(e);}
         }

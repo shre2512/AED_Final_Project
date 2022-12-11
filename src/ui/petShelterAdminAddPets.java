@@ -50,14 +50,15 @@ public class petShelterAdminAddPets extends javax.swing.JPanel {
         lblHeight = new javax.swing.JLabel();
         lblWeight = new javax.swing.JLabel();
         txtAge = new javax.swing.JTextField();
-        txtHeight1 = new javax.swing.JTextField();
+        txtHeight = new javax.swing.JTextField();
         jDateChooserDOB = new com.toedter.calendar.JDateChooser();
         lblDOB1 = new javax.swing.JLabel();
-        txtWeight1 = new javax.swing.JTextField();
+        txtWeight = new javax.swing.JTextField();
         lblpetID1 = new javax.swing.JLabel();
         lblVaccination = new javax.swing.JLabel();
         txtVaccine = new javax.swing.JTextField();
         btnAdd = new javax.swing.JButton();
+        lblWeight1 = new javax.swing.JLabel();
 
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -84,6 +85,13 @@ public class petShelterAdminAddPets extends javax.swing.JPanel {
         lblVaccination.setText("Vaccination Status");
 
         btnAdd.setText("Add");
+        btnAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddActionPerformed(evt);
+            }
+        });
+
+        lblWeight1.setText("kgs");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -108,7 +116,7 @@ public class petShelterAdminAddPets extends javax.swing.JPanel {
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(lblHeight, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(txtHeight1, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(txtHeight, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(lblDOB1, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -135,11 +143,14 @@ public class petShelterAdminAddPets extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtAge, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtWeight1, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(txtWeight, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(lblWeight1))))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(359, 359, 359)
                         .addComponent(btnAdd)))
-                .addContainerGap(285, Short.MAX_VALUE))
+                .addContainerGap(258, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -161,8 +172,9 @@ public class petShelterAdminAddPets extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblHeight, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblWeight, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtHeight1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtWeight1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtHeight, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtWeight, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblWeight1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -180,6 +192,77 @@ public class petShelterAdminAddPets extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
+        // TODO add your handling code here:
+        int input = JOptionPane.showConfirmDialog(null, "Do you want to upload an image?");
+       
+        if(input==1){
+        petProfileForAdoption pet=records.addNewPet();
+        pet.setName(txtName.getText());
+        pet.setAge(Integer.parseInt(txtAge.getText()));
+        pet.setPetId(txtID.getText());
+        pet.setDob(jDateChooserDOB.getDate().toString());
+        pet.setBreed(txtBreed.getText());
+        pet.setGender(cmbGender.getSelectedItem().toString());
+        pet.setVaccinationStatus(txtVaccine.getText());
+        pet.setWeight(Integer.parseInt(txtWeight.getText()));
+        pet.setHeight(txtHeight.getText());
+
+        JOptionPane.showMessageDialog(this,"New pet added! ");
+        txtName.setText("");
+        txtAge.setText("");
+        txtID.setText("");
+        txtVaccine.setText("");
+        txtBreed.setText("");
+        txtHeight.setText("");
+        txtWeight.setText("");
+        }
+        else if(input==0){
+                    petProfileForAdoption pet=records.addNewPet();
+            JFileChooser jfc = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
+        int returnValue = jfc.showOpenDialog(null);
+        // int returnValue = jfc.showSaveDialog(null);
+
+        if (returnValue == JFileChooser.APPROVE_OPTION) {
+            File selectedFile = jfc.getSelectedFile();
+            pet.setImgPath(selectedFile.getAbsolutePath());
+            System.out.println(selectedFile.getAbsolutePath());
+
+            BufferedImage image = null;
+            try
+            {
+                image = ImageIO.read(new File(selectedFile.getAbsolutePath()));
+                System.out.println(image);
+            }
+            catch (Exception e)
+            {
+                e.printStackTrace();
+                System.exit(1);
+            }
+                    pet.setImage(image);
+        }
+        pet.setName(txtName.getText());
+        pet.setAge(Integer.parseInt(txtAge.getText()));
+        pet.setPetId(txtID.getText());
+        pet.setDob(jDateChooserDOB.getDate().toString());
+        pet.setBreed(txtBreed.getText());
+        pet.setGender(cmbGender.getSelectedItem().toString());
+        pet.setVaccinationStatus(txtVaccine.getText());
+        pet.setWeight(Integer.parseInt(txtWeight.getText()));
+        pet.setHeight(txtHeight.getText());
+
+
+        JOptionPane.showMessageDialog(this,"New pet added! ");
+        txtName.setText("");
+        txtAge.setText("");
+        txtID.setText("");
+        txtVaccine.setText("");
+        txtBreed.setText("");
+        txtHeight.setText("");
+        txtWeight.setText("");
+        }
+    }//GEN-LAST:event_btnAddActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd;
@@ -193,14 +276,15 @@ public class petShelterAdminAddPets extends javax.swing.JPanel {
     private javax.swing.JLabel lblName1;
     private javax.swing.JLabel lblVaccination;
     private javax.swing.JLabel lblWeight;
+    private javax.swing.JLabel lblWeight1;
     private javax.swing.JLabel lblpetID;
     private javax.swing.JLabel lblpetID1;
     private javax.swing.JTextField txtAge;
     private javax.swing.JTextField txtBreed;
-    private javax.swing.JTextField txtHeight1;
+    private javax.swing.JTextField txtHeight;
     private javax.swing.JTextField txtID;
     private javax.swing.JTextField txtName;
     private javax.swing.JTextField txtVaccine;
-    private javax.swing.JTextField txtWeight1;
+    private javax.swing.JTextField txtWeight;
     // End of variables declaration//GEN-END:variables
 }

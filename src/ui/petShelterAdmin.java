@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package ui;
-
+import model.petAdoptionRecords;
 /**
  *
  * @author babsybabu
@@ -13,8 +13,10 @@ public class petShelterAdmin extends javax.swing.JPanel {
     /**
      * Creates new form petShelterAdmin
      */
+    petAdoptionRecords records;
     public petShelterAdmin() {
         initComponents();
+        records=new petAdoptionRecords();
     }
 
     /**
@@ -28,17 +30,30 @@ public class petShelterAdmin extends javax.swing.JPanel {
 
         shelterAdminSplitPane = new javax.swing.JSplitPane();
         shelterAdminControlArea = new javax.swing.JPanel();
+        btnAddPet = new javax.swing.JButton();
         shelterAdminWorkArea = new javax.swing.JPanel();
+
+        btnAddPet.setText("Add pet");
+        btnAddPet.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddPetActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout shelterAdminControlAreaLayout = new javax.swing.GroupLayout(shelterAdminControlArea);
         shelterAdminControlArea.setLayout(shelterAdminControlAreaLayout);
         shelterAdminControlAreaLayout.setHorizontalGroup(
             shelterAdminControlAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+            .addGroup(shelterAdminControlAreaLayout.createSequentialGroup()
+                .addComponent(btnAddPet)
+                .addGap(0, 23, Short.MAX_VALUE))
         );
         shelterAdminControlAreaLayout.setVerticalGroup(
             shelterAdminControlAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 419, Short.MAX_VALUE)
+            .addGroup(shelterAdminControlAreaLayout.createSequentialGroup()
+                .addGap(86, 86, 86)
+                .addComponent(btnAddPet)
+                .addContainerGap(310, Short.MAX_VALUE))
         );
 
         shelterAdminSplitPane.setLeftComponent(shelterAdminControlArea);
@@ -70,8 +85,15 @@ public class petShelterAdmin extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnAddPetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddPetActionPerformed
+        // TODO add your handling code here:
+       petShelterAdminAddPets addPets = new petShelterAdminAddPets(records);
+        shelterAdminSplitPane.setRightComponent(addPets);
+    }//GEN-LAST:event_btnAddPetActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAddPet;
     private javax.swing.JPanel shelterAdminControlArea;
     private javax.swing.JSplitPane shelterAdminSplitPane;
     private javax.swing.JPanel shelterAdminWorkArea;

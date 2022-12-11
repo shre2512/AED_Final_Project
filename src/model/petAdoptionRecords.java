@@ -23,18 +23,18 @@ public class petAdoptionRecords {
         this.records = records;
     }
     
-    public petProfileForAdoption addNewEmployee(){
-        petProfileForAdoption newEmp=new petProfileForAdoption();
-        records.add(newEmp);
-        return newEmp;
+    public petProfileForAdoption addNewPet(){
+        petProfileForAdoption newPet=new petProfileForAdoption();
+        records.add(newPet);
+        return newPet;
     }
 
-    public void deleteEmployee(petProfileForAdoption emp) {
-        records.remove(emp);
+    public void deleteEmployee(petProfileForAdoption pet) {
+        records.remove(pet);
     }
     
-    public petProfileForAdoption updateEmployee(int index,petProfileForAdoption emp){
-    records.set(index,emp);
-    return emp;
+    public petProfileForAdoption updateEmployee(int index,petProfileForAdoption pet){
+    records.set(index,pet);
+    return pet;
     }
 }
