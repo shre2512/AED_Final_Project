@@ -337,4 +337,24 @@ public class databaseConnection {
         insertClosedOrder.setInt(1, orderID);
         insertClosedOrder.executeUpdate();
     }
+    
+    public void updatePetFood(String productName, int orderedQuantity) throws Exception
+    {
+        PreparedStatement select = con.prepareStatement("SELECT id FROM petfood WHERE food_name = ?");
+        select.setString(1, productName);
+        ResultSet result = select.executeQuery();
+        int orderID = -1;
+        
+        while(result.next())
+        {
+            orderID = result.getInt("id");
+        }
+        if(orderID != -1)
+        {
+            PreparedStatement update = con.prepareStatement("UPDATE petfood SET available_quantity = available_quantity + ? WHERE id = ?");
+            update.setInt(1, orderedQuantity);
+            update.setInt(2, orderID);
+            update.executeUpdate();
+        }
+    }
 }

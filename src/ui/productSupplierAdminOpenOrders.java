@@ -217,6 +217,7 @@ public class productSupplierAdminOpenOrders extends javax.swing.JPanel {
             int orderedQuantity = (int)tableFoodItem.getValueAt(tableFoodItem.getSelectedRow(), 2);
             databaseConnection.insertClosedOrdersFood(productName, orderedQuantity);
             databaseConnection.deleteOpenOrdersFood(orderID);
+            databaseConnection.updatePetFood(productName, orderedQuantity);
             JOptionPane.showMessageDialog(this, "Product Supplied!");
             populateOpenFoodOrders();
         } catch (Exception ex) {
