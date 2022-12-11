@@ -12,6 +12,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import model.databaseConnection;
+import model.sendEmail;
+import model.sendSMS;
 
 /**
  *
@@ -24,11 +26,15 @@ public class createEncounters extends javax.swing.JPanel {
      */
     databaseConnection databaseConnection;
     int userID;
+    sendEmail emailNotification;
+    sendSMS smsNotification;
     
-    public createEncounters(databaseConnection databaseConnection, int userID) {
+    public createEncounters(databaseConnection databaseConnection, int userID, sendEmail emailNotification, sendSMS smsNotification ) {
         initComponents();
         this.databaseConnection = databaseConnection;
         this.userID = userID;
+        this.emailNotification = emailNotification;
+        this.smsNotification = smsNotification;
         populateHospitalComboBox();
     }
 
@@ -218,12 +224,67 @@ public class createEncounters extends javax.swing.JPanel {
             String strDate = dateFormat.format(date);
             databaseConnection.executeInsertEncounter(userID, hospital_name, doctor_name, symptoms, strDate);
             JOptionPane.showMessageDialog(this, "Encounter Created successfully!");
-        } catch (Exception ex) {
-            Logger.getLogger(createEncounters.class.getName()).log(Level.SEVERE, null, ex);
-        }
+            txtSymptoms.setText("");
+            
+            String emailID = getEmailID(userID);
+            if(emailID != null)
+            {
+                try {
+                    emailNotification.sendEmail("Appointment Booked!", "You have booked an appointment under Dr. " + doctor_name + " on " + strDate, emailID);
+                } catch (Exception ex) {
+                    Logger.getLogger(petFoodJPanel.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+
+            String phoneNumber = getPhoneNumber(userID);
+            if(phoneNumber != null)
+            {
+                try {
+                    smsNotification.sendSMS("+1" + phoneNumber, "You have booked an appointment under Dr. " + doctor_name + " on " + strDate);
+                } catch (Exception ex) {
+                    Logger.getLogger(petFoodJPanel.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+
+            } catch (Exception ex) {
+                Logger.getLogger(createEncounters.class.getName()).log(Level.SEVERE, null, ex);
+            }
     }//GEN-LAST:event_btnCreateEncounterActionPerformed
     
-
+    private String getEmailID(int userID)
+    {
+        try {
+            ResultSet result = databaseConnection.executeSelect("SELECT * FROM usertable");
+            
+            while(result.next()){
+                
+                if(result.getInt("id") == userID)
+                {
+                    return result.getString("email_id");
+                }
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(petFoodJPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+    
+    private String getPhoneNumber(int userID)
+    {
+        try {
+            ResultSet result = databaseConnection.executeSelect("SELECT * FROM usertable");
+            while(result.next()){
+                
+                if(result.getInt("id") == userID)
+                {
+                    return result.getString("phone_number");
+                }
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(petFoodJPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCreateEncounter;
