@@ -49,6 +49,7 @@ public class databaseConnection {
             PreparedStatement create_open_orders_accessory = con.prepareStatement("CREATE TABLE IF NOT EXISTS openordersaccessory(id int NOT NULL AUTO_INCREMENT, product_id INT, order_quantity INT, PRIMARY KEY(id))");
             PreparedStatement create_closed_orders_food = con.prepareStatement("CREATE TABLE IF NOT EXISTS closedordersfood(id int NOT NULL AUTO_INCREMENT, product_name VARCHAR(255), ordered_quantity INT, PRIMARY KEY(id))");
             PreparedStatement create_closed_orders_accessory = con.prepareStatement("CREATE TABLE IF NOT EXISTS closedordersaccessory(id int NOT NULL AUTO_INCREMENT, product_name VARCHAR(255), ordered_quantity INT, PRIMARY KEY(id))");
+            PreparedStatement create_vital_signs = con.prepareStatement("CREATE TABLE IF NOT EXISTS vitalsigns(id int NOT NULL AUTO_INCREMENT, encounter_id INT, encounter_date VARCHAR(255), symptoms VARCHAR(255), user_id INT, body_temp INT, respiration_rate INT, heart_rate INT, PRIMARY KEY(id))");
             
             create_kennelbooking.executeUpdate();
             create_kennel.executeUpdate();
@@ -64,6 +65,7 @@ public class databaseConnection {
             create_open_orders_accessory.executeUpdate();
             create_closed_orders_food.executeUpdate();
             create_closed_orders_accessory.executeUpdate();
+            create_vital_signs.executeUpdate();
             
             return con;
         } catch(Exception e){System.out.println(e);}
@@ -401,5 +403,13 @@ public class databaseConnection {
             update.setInt(2, orderID);
             update.executeUpdate();
         }
+    }
+    
+    public ResultSet getDoctorEncounters(String fullName) throws Exception
+    {
+        PreparedStatement select = con.prepareStatement("SELECT * FROM encounters WHERE doctor_name = ?");
+        select.setString(1, fullName);
+        ResultSet result = select.executeQuery();
+        return result;
     }
 }

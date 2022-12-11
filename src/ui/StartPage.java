@@ -407,7 +407,10 @@ public class StartPage extends javax.swing.JFrame {
                     if(result.getString("username").equals(txtloginUserName.getText()) && result.getString("password").equals(txtloginPassword.getText()))
                     {
                         flag = true;
-                        
+                        String fullName = result.getString("first_name") + " " + result.getString("last_name");
+                        doctorJPanel doctor = new doctorJPanel(databaseConnection, fullName);
+                        splitPane.setRightComponent(doctor);
+                        buttonLogOut.setVisible(true);
                     }
                 }
                 if(flag == true)
