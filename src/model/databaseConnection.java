@@ -42,7 +42,11 @@ public class databaseConnection {
             PreparedStatement create_grooming_appointments = con.prepareStatement("CREATE TABLE IF NOT EXISTS groomingappointments(id int NOT NULL AUTO_INCREMENT, user_id INT, service_name VARCHAR(255), service_cost VARCHAR(255), service_date VARCHAR(255), PRIMARY KEY(id))");
             PreparedStatement create_hospitals = con.prepareStatement("CREATE TABLE IF NOT EXISTS hospitals(id int NOT NULL AUTO_INCREMENT, city_name VARCHAR(255), community_name VARCHAR(255), hospital_name VARCHAR(255), hospital_zipcode VARCHAR(255), PRIMARY KEY(id))");
             PreparedStatement create_doctors = con.prepareStatement("CREATE TABLE IF NOT EXISTS doctors(id int NOT NULL AUTO_INCREMENT, first_name VARCHAR(255), last_name VARCHAR(255), email_ID VARCHAR(255), contact_number VARCHAR(255), hospital_name VARCHAR(255), username VARCHAR(255), password VARCHAR(255), PRIMARY KEY(id))");
-                    
+            PreparedStatement create_kennelbooking = con.prepareStatement("CREATE TABLE IF NOT EXISTS kennelbooking(id int NOT NULL AUTO_INCREMENT,user_id INT, kennel_name VARCHAR(255), kennel_address VARCHAR(255), kennel_to VARCHAR(255),kennel_from VARCHAR(255),kennel_price_per_day INT,kennel_number_of_days INT, kennel_rent INT, kennel_pickup VARCHAR(255), PRIMARY KEY(id))");
+            PreparedStatement create_kennel = con.prepareStatement("CREATE TABLE IF NOT EXISTS kennel(id int NOT NULL AUTO_INCREMENT, kennel_name VARCHAR(255), kennel_address VARCHAR(255), price_per_day int, PRIMARY KEY(id))");
+            
+            create_kennelbooking.executeUpdate();
+            create_kennel.executeUpdate();
             create_usertable.executeUpdate();
             create_petfood.executeUpdate();
             create_orders.executeUpdate();
@@ -236,5 +240,35 @@ public class databaseConnection {
         insertOrder.setString(7, password);
         insertOrder.executeUpdate();
     }
- 
+    
+    public void insertKennelBooking(int userId, String name, String address, String toDate, String fromDate, int pricePerDay, int numberOfDays, int rent,String pickup) throws Exception
+    {
+            PreparedStatement insertOrder = con.prepareStatement("INSERT INTO kennelbooking (user_id, kennel_name, kennel_address, kennel_to, kennel_from,kennel_price_per_day, kennel_number_of_days, kennel_rent, kennel_pickup) VALUES (?, ?, ?, ?,?,?,?,?,?)");
+            insertOrder.setInt(1, userId);
+            insertOrder.setString(2, name);
+            insertOrder.setString(3, address);
+            insertOrder.setString(4, toDate);
+            insertOrder.setString(5, fromDate);
+            insertOrder.setInt(6, pricePerDay);
+            insertOrder.setInt(7, numberOfDays);
+            insertOrder.setInt(8, rent);
+            insertOrder.setString(9, pickup);
+            insertOrder.executeUpdate();
+        }
+    
+    public void executeKennelPriceUpdate(String query, int price_per_day, int id) throws Exception
+    {
+        PreparedStatement updateQty = con.prepareStatement(query);
+        updateQty.setInt(1,price_per_day);
+        updateQty.setInt(2,id);
+        updateQty.executeUpdate();   
+    }
+    
+    public ResultSet executeSelectKennel(String kennel_name) throws Exception
+    {
+        PreparedStatement select = con.prepareStatement("SELECT price_per_day FROM kennel WHERE kennel_name = ?");
+        select.setString(1, kennel_name);
+        ResultSet result = select.executeQuery();
+        return result;
+    }
 }

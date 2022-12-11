@@ -28,6 +28,7 @@ public class StartPage extends javax.swing.JFrame {
     private final Admin foodStoreAdmin;
     private final Admin hospitalAdmin;
     public databaseConnection databaseConnection;
+    private final Admin kennelAdmin;
     
     public StartPage() {
         initComponents();
@@ -35,6 +36,7 @@ public class StartPage extends javax.swing.JFrame {
         this.smsNotification = new sendSMS();
         this.foodStoreAdmin = new Admin("Food Store Admin", "Food Store Admin", "Food Store Admin");
         this.hospitalAdmin = new Admin("Hospital Admin", "Hospital Admin", "Hospital Admin");
+        this.kennelAdmin = new Admin("Kennel Admin", "Kennel Admin", "Kennel Admin");
         this.databaseConnection = new databaseConnection();
     }
 
@@ -216,7 +218,7 @@ public class StartPage extends javax.swing.JFrame {
         loginAs.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         loginAs.setText("Role : ");
 
-        selectRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "User", "Food Store Admin", "Hospital Admin" }));
+        selectRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "User", "Food Store Admin", "Hospital Admin", "Kennel Admin" }));
         selectRole.setMinimumSize(new java.awt.Dimension(72, 30));
         selectRole.setPreferredSize(new java.awt.Dimension(72, 30));
 
@@ -406,13 +408,21 @@ public class StartPage extends javax.swing.JFrame {
                 }
                 if(flag == true)
                 {
-                    hospitalAdmin hospitalAdminJPanel = new hospitalAdmin(databaseConnection);
-                    splitPane.setRightComponent(hospitalAdminJPanel);
-                    buttonLogOut.setVisible(true);
+                    
                 }
 
             } catch(Exception e){System.out.println(e);}
         }
+        else if(kennelAdmin.getAdminRole().equals(selectRole.getSelectedItem().toString()) && kennelAdmin.getAdminUserName().equals(txtloginUserName.getText()) && kennelAdmin.getAdminPassWord().equals(txtloginPassword.getText()))
+        {
+            try{
+                JOptionPane.showMessageDialog(this, "Logged In As Kennel Admin");
+                kennelAdmin kennelAdminJPanel = new kennelAdmin(databaseConnection);
+                splitPane.setRightComponent(kennelAdminJPanel);
+                buttonLogOut.setVisible(true);
+            } catch(Exception e){System.out.println(e);}
+        }
+        
     }//GEN-LAST:event_btnLogInActionPerformed
     
     private int checkCredentials(String userName, String password) throws Exception

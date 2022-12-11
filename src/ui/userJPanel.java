@@ -40,6 +40,17 @@ public class userJPanel extends javax.swing.JPanel {
         this.emailNotification = emailNotification;
         this.smsNotification = smsNotification;
         this.databaseConnection = databaseConnection;
+        init();
+    }
+    
+    public void init(){
+        try {
+            // TODO add your handling code here:
+           kennelJPanel kennelPanel = new kennelJPanel(databaseConnection,  userID, emailNotification, smsNotification);
+           kennelSplitPane.setRightComponent(kennelPanel);
+        } catch (Exception ex) {
+            Logger.getLogger(userJPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -65,6 +76,9 @@ public class userJPanel extends javax.swing.JPanel {
         btnAccessoryPurchase = new javax.swing.JButton();
         btnFoodPurchase = new javax.swing.JButton();
         userPastActivityWorkArea = new javax.swing.JPanel();
+        kennelJPanel = new javax.swing.JPanel();
+        kennelSplitPane = new javax.swing.JSplitPane();
+        kennelWorkArea = new javax.swing.JPanel();
 
         setBackground(new java.awt.Color(255, 255, 102));
 
@@ -239,6 +253,35 @@ public class userJPanel extends javax.swing.JPanel {
 
         tabbedPane.addTab("Past Activity", userPastActivity);
 
+        kennelSplitPane.setDividerLocation(0);
+        kennelSplitPane.setDividerSize(0);
+
+        javax.swing.GroupLayout kennelWorkAreaLayout = new javax.swing.GroupLayout(kennelWorkArea);
+        kennelWorkArea.setLayout(kennelWorkAreaLayout);
+        kennelWorkAreaLayout.setHorizontalGroup(
+            kennelWorkAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1112, Short.MAX_VALUE)
+        );
+        kennelWorkAreaLayout.setVerticalGroup(
+            kennelWorkAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 569, Short.MAX_VALUE)
+        );
+
+        kennelSplitPane.setRightComponent(kennelWorkArea);
+
+        javax.swing.GroupLayout kennelJPanelLayout = new javax.swing.GroupLayout(kennelJPanel);
+        kennelJPanel.setLayout(kennelJPanelLayout);
+        kennelJPanelLayout.setHorizontalGroup(
+            kennelJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(kennelSplitPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1112, Short.MAX_VALUE)
+        );
+        kennelJPanelLayout.setVerticalGroup(
+            kennelJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(kennelSplitPane)
+        );
+
+        tabbedPane.addTab("Kennel", kennelJPanel);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -345,6 +388,9 @@ public class userJPanel extends javax.swing.JPanel {
     private javax.swing.JPanel foodAccsJPanel;
     private javax.swing.JSplitPane foodAccsSplitPane;
     private javax.swing.JPanel foodAccsWorkArea;
+    private javax.swing.JPanel kennelJPanel;
+    private javax.swing.JSplitPane kennelSplitPane;
+    private javax.swing.JPanel kennelWorkArea;
     private javax.swing.JTabbedPane tabbedPane;
     private javax.swing.JPanel userPastActivity;
     private javax.swing.JPanel userPastActivityControlArea;
