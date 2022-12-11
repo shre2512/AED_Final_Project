@@ -35,7 +35,7 @@ public class petShelterJPanel extends javax.swing.JPanel {
     
         private void populateTable() {
         DefaultTableModel model=(DefaultTableModel) tblPetAdoptionRecords.getModel();
-        model.setRowCount(1);
+        model.setRowCount(0);
         
         for(petProfileForAdoption pet:records.getRecords()){
             System.out.println(pet);

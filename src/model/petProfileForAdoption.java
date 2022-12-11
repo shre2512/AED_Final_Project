@@ -110,6 +110,10 @@ public class petProfileForAdoption {
     public void setImgPath(String imgPath) {
         this.imgPath = imgPath;
     }
+        @Override
+    public String toString(){
+        return name;
+    }
     
     
 }
