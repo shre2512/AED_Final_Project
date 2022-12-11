@@ -2,6 +2,13 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/Users/babsybabu/mergechanges/babsychange/AED_Final_Project/src/ui/petFoodJPanel.java</file>
+            <file>file:/Users/babsybabu/mergechanges/babsychange/AED_Final_Project/src/model/databaseConnection.java</file>
+            <file>file:/Users/babsybabu/mergechanges/babsychange/AED_Final_Project/src/ui/kennelAdmin.java</file>
+            <file>file:/Users/babsybabu/mergechanges/babsychange/AED_Final_Project/src/ui/StartPage.java</file>
+            <file>file:/Users/babsybabu/mergechanges/babsychange/AED_Final_Project/src/ui/kennelAdminUpdatePrice.java</file>
+            <file>file:/Users/babsybabu/mergechanges/babsychange/AED_Final_Project/src/ui/kennelJPanel.java</file>
+        </group>
     </open-files>
 </project-private>
