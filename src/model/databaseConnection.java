@@ -48,6 +48,7 @@ public class databaseConnection {
             PreparedStatement create_open_orders_food = con.prepareStatement("CREATE TABLE IF NOT EXISTS openordersfood(id int NOT NULL AUTO_INCREMENT, product_id INT, order_quantity INT, PRIMARY KEY(id))");
             PreparedStatement create_open_orders_accessory = con.prepareStatement("CREATE TABLE IF NOT EXISTS openordersaccessory(id int NOT NULL AUTO_INCREMENT, product_id INT, order_quantity INT, PRIMARY KEY(id))");
             PreparedStatement create_closed_orders_food = con.prepareStatement("CREATE TABLE IF NOT EXISTS closedordersfood(id int NOT NULL AUTO_INCREMENT, product_name VARCHAR(255), ordered_quantity INT, PRIMARY KEY(id))");
+            PreparedStatement create_closed_orders_accessory = con.prepareStatement("CREATE TABLE IF NOT EXISTS closedordersaccessory(id int NOT NULL AUTO_INCREMENT, product_name VARCHAR(255), ordered_quantity INT, PRIMARY KEY(id))");
             
             create_kennelbooking.executeUpdate();
             create_kennel.executeUpdate();
@@ -62,6 +63,7 @@ public class databaseConnection {
             create_open_orders_food.executeUpdate();
             create_open_orders_accessory.executeUpdate();
             create_closed_orders_food.executeUpdate();
+            create_closed_orders_accessory.executeUpdate();
             
             return con;
         } catch(Exception e){System.out.println(e);}
@@ -352,6 +354,49 @@ public class databaseConnection {
         if(orderID != -1)
         {
             PreparedStatement update = con.prepareStatement("UPDATE petfood SET available_quantity = available_quantity + ? WHERE id = ?");
+            update.setInt(1, orderedQuantity);
+            update.setInt(2, orderID);
+            update.executeUpdate();
+        }
+    }
+    
+    public ResultSet executeAccessoryNameSelect(int accesoryID) throws Exception
+    {
+        PreparedStatement selectAccessoryName = con.prepareStatement("SELECT accessory_name FROM petaccessories WHERE id = ?");
+        selectAccessoryName.setInt(1, accesoryID);
+        ResultSet result = selectAccessoryName.executeQuery();
+        return result;
+    }
+    
+    public void insertClosedOrdersAccessory(String productName, int orderedQuantity) throws Exception
+    {
+        PreparedStatement insertClosedOrder = con.prepareStatement("INSERT INTO closedordersaccessory(product_name, ordered_quantity) VALUES (?, ?)");
+        insertClosedOrder.setString(1, productName);
+        insertClosedOrder.setInt(2, orderedQuantity);
+        insertClosedOrder.executeUpdate();
+    }
+    
+    public void deleteOpenOrdersAccessory(int orderID) throws Exception
+    {
+        PreparedStatement insertClosedOrder = con.prepareStatement("DELETE FROM openordersaccessory WHERE id = ?");
+        insertClosedOrder.setInt(1, orderID);
+        insertClosedOrder.executeUpdate();
+    }
+    
+    public void updatePetAccessories(String productName, int orderedQuantity) throws Exception
+    {
+        PreparedStatement select = con.prepareStatement("SELECT id FROM petaccessories WHERE accessory_name = ?");
+        select.setString(1, productName);
+        ResultSet result = select.executeQuery();
+        int orderID = -1;
+        
+        while(result.next())
+        {
+            orderID = result.getInt("id");
+        }
+        if(orderID != -1)
+        {
+            PreparedStatement update = con.prepareStatement("UPDATE petaccessories SET available_quantity = available_quantity + ? WHERE id = ?");
             update.setInt(1, orderedQuantity);
             update.setInt(2, orderID);
             update.executeUpdate();

@@ -26,6 +26,7 @@ public class productSupplierAdminOpenOrders extends javax.swing.JPanel {
         initComponents();
         this.databaseConnection = databaseConnection;
         populateOpenFoodOrders();
+        populateOpenAccessoryOrders();
     }
     
     private void populateOpenFoodOrders()
@@ -39,6 +40,25 @@ public class productSupplierAdminOpenOrders extends javax.swing.JPanel {
                 Object[] row = new Object[3];
                 row[0] = result.getInt("id");
                 row[1] = getFoodProductName(result.getInt("product_id"));
+                row[2] = result.getInt("order_quantity");
+                model.addRow(row);
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(petAccessoryAdminOrderProductQuantity.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    private void populateOpenAccessoryOrders()
+    {
+        try {
+            ResultSet result = databaseConnection.executeSelect("SELECT * FROM openordersaccessory");
+            DefaultTableModel model = (DefaultTableModel) tableAccessoryItem.getModel();
+            model.setRowCount(0);
+            while(result.next())
+            {
+                Object[] row = new Object[3];
+                row[0] = result.getInt("id");
+                row[1] = getAccessoryProductName(result.getInt("product_id"));
                 row[2] = result.getInt("order_quantity");
                 model.addRow(row);
             }
@@ -62,6 +82,23 @@ public class productSupplierAdminOpenOrders extends javax.swing.JPanel {
         }
         return "";
     }
+    
+    private String getAccessoryProductName(int accesoryID)
+    {
+        try {
+            ResultSet result = databaseConnection.executeAccessoryNameSelect(accesoryID);
+            String accessoryName = "";
+            while(result.next())
+            {
+                accessoryName = result.getString("accessory_name");
+            }
+            return accessoryName;
+        } catch (Exception ex) {
+            Logger.getLogger(productSupplierAdminOpenOrders.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return "";
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -223,11 +260,31 @@ public class productSupplierAdminOpenOrders extends javax.swing.JPanel {
         } catch (Exception ex) {
             Logger.getLogger(productSupplierAdminOpenOrders.class.getName()).log(Level.SEVERE, null, ex);
         }
-
     }//GEN-LAST:event_btnSupplyFoodItemActionPerformed
 
     private void btnSupplyAccessoryItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSupplyAccessoryItemActionPerformed
         // TODO add your handling code here:
+        try {
+            // TODO add your handling code here:
+            int selectedRowIndex = tableAccessoryItem.getSelectedRow();
+            
+            if(selectedRowIndex < 0)
+            {
+                JOptionPane.showMessageDialog(this, "Please Select a row!");
+                return;
+            }
+            int orderID = (int)tableAccessoryItem.getValueAt(tableAccessoryItem.getSelectedRow(), 0);
+            String productName = tableAccessoryItem.getValueAt(tableAccessoryItem.getSelectedRow(), 1).toString();
+            int orderedQuantity = (int)tableAccessoryItem.getValueAt(tableAccessoryItem.getSelectedRow(), 2);
+            databaseConnection.insertClosedOrdersAccessory(productName, orderedQuantity);
+            databaseConnection.deleteOpenOrdersAccessory(orderID);
+            databaseConnection.updatePetAccessories(productName, orderedQuantity);
+            JOptionPane.showMessageDialog(this, "Product Supplied!");
+            populateOpenAccessoryOrders();
+        } catch (Exception ex) {
+            Logger.getLogger(productSupplierAdminOpenOrders.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }//GEN-LAST:event_btnSupplyAccessoryItemActionPerformed
 
 
