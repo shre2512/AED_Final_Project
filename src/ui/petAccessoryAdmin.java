@@ -31,15 +31,15 @@ public class petAccessoryAdmin extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        petFoodAdminSplitPane = new javax.swing.JSplitPane();
-        petFoodAdminControlArea = new javax.swing.JPanel();
+        petAccessoryAdminSplitPane = new javax.swing.JSplitPane();
+        petAccessoryAdminControlArea = new javax.swing.JPanel();
         btnUpdatePrice = new javax.swing.JButton();
         btnOrderProduct = new javax.swing.JButton();
-        petFoodAdminWorkArea = new javax.swing.JPanel();
+        petAccessoryAdminWorkArea = new javax.swing.JPanel();
 
-        petFoodAdminSplitPane.setDividerLocation(120);
+        petAccessoryAdminSplitPane.setDividerLocation(120);
 
-        petFoodAdminControlArea.setBackground(new java.awt.Color(102, 255, 102));
+        petAccessoryAdminControlArea.setBackground(new java.awt.Color(102, 255, 102));
 
         btnUpdatePrice.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         btnUpdatePrice.setForeground(new java.awt.Color(255, 0, 0));
@@ -61,66 +61,66 @@ public class petAccessoryAdmin extends javax.swing.JPanel {
             }
         });
 
-        javax.swing.GroupLayout petFoodAdminControlAreaLayout = new javax.swing.GroupLayout(petFoodAdminControlArea);
-        petFoodAdminControlArea.setLayout(petFoodAdminControlAreaLayout);
-        petFoodAdminControlAreaLayout.setHorizontalGroup(
-            petFoodAdminControlAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(petFoodAdminControlAreaLayout.createSequentialGroup()
+        javax.swing.GroupLayout petAccessoryAdminControlAreaLayout = new javax.swing.GroupLayout(petAccessoryAdminControlArea);
+        petAccessoryAdminControlArea.setLayout(petAccessoryAdminControlAreaLayout);
+        petAccessoryAdminControlAreaLayout.setHorizontalGroup(
+            petAccessoryAdminControlAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(petAccessoryAdminControlAreaLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(btnUpdatePrice, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE)
                 .addContainerGap())
-            .addGroup(petFoodAdminControlAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(petFoodAdminControlAreaLayout.createSequentialGroup()
+            .addGroup(petAccessoryAdminControlAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(petAccessoryAdminControlAreaLayout.createSequentialGroup()
                     .addContainerGap()
                     .addComponent(btnOrderProduct, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE)
                     .addContainerGap()))
         );
-        petFoodAdminControlAreaLayout.setVerticalGroup(
-            petFoodAdminControlAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(petFoodAdminControlAreaLayout.createSequentialGroup()
+        petAccessoryAdminControlAreaLayout.setVerticalGroup(
+            petAccessoryAdminControlAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(petAccessoryAdminControlAreaLayout.createSequentialGroup()
                 .addGap(203, 203, 203)
                 .addComponent(btnUpdatePrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(391, Short.MAX_VALUE))
-            .addGroup(petFoodAdminControlAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, petFoodAdminControlAreaLayout.createSequentialGroup()
+            .addGroup(petAccessoryAdminControlAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, petAccessoryAdminControlAreaLayout.createSequentialGroup()
                     .addContainerGap(305, Short.MAX_VALUE)
                     .addComponent(btnOrderProduct, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(289, 289, 289)))
         );
 
-        petFoodAdminSplitPane.setLeftComponent(petFoodAdminControlArea);
+        petAccessoryAdminSplitPane.setLeftComponent(petAccessoryAdminControlArea);
 
-        petFoodAdminWorkArea.setBackground(new java.awt.Color(0, 255, 255));
+        petAccessoryAdminWorkArea.setBackground(new java.awt.Color(0, 255, 255));
 
-        javax.swing.GroupLayout petFoodAdminWorkAreaLayout = new javax.swing.GroupLayout(petFoodAdminWorkArea);
-        petFoodAdminWorkArea.setLayout(petFoodAdminWorkAreaLayout);
-        petFoodAdminWorkAreaLayout.setHorizontalGroup(
-            petFoodAdminWorkAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout petAccessoryAdminWorkAreaLayout = new javax.swing.GroupLayout(petAccessoryAdminWorkArea);
+        petAccessoryAdminWorkArea.setLayout(petAccessoryAdminWorkAreaLayout);
+        petAccessoryAdminWorkAreaLayout.setHorizontalGroup(
+            petAccessoryAdminWorkAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 851, Short.MAX_VALUE)
         );
-        petFoodAdminWorkAreaLayout.setVerticalGroup(
-            petFoodAdminWorkAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        petAccessoryAdminWorkAreaLayout.setVerticalGroup(
+            petAccessoryAdminWorkAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 624, Short.MAX_VALUE)
         );
 
-        petFoodAdminSplitPane.setRightComponent(petFoodAdminWorkArea);
+        petAccessoryAdminSplitPane.setRightComponent(petAccessoryAdminWorkArea);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(petFoodAdminSplitPane)
+            .addComponent(petAccessoryAdminSplitPane)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(petFoodAdminSplitPane)
+            .addComponent(petAccessoryAdminSplitPane)
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnUpdatePriceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdatePriceActionPerformed
         // TODO add your handling code here:
-        petFoodAdminUpdatePrice petFoodUpdatePrice = new petFoodAdminUpdatePrice(databaseConnection);
-        petFoodAdminSplitPane.setRightComponent(petFoodUpdatePrice);
+        petAccessoryAdminUpdatePrice petAccessoryUpdatePrice = new petAccessoryAdminUpdatePrice(databaseConnection);
+        petAccessoryAdminSplitPane.setRightComponent(petAccessoryUpdatePrice);
     }//GEN-LAST:event_btnUpdatePriceActionPerformed
 
     private void btnOrderProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrderProductActionPerformed
@@ -131,8 +131,8 @@ public class petAccessoryAdmin extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnOrderProduct;
     private javax.swing.JButton btnUpdatePrice;
-    private javax.swing.JPanel petFoodAdminControlArea;
-    private javax.swing.JSplitPane petFoodAdminSplitPane;
-    private javax.swing.JPanel petFoodAdminWorkArea;
+    private javax.swing.JPanel petAccessoryAdminControlArea;
+    private javax.swing.JSplitPane petAccessoryAdminSplitPane;
+    private javax.swing.JPanel petAccessoryAdminWorkArea;
     // End of variables declaration//GEN-END:variables
 }

@@ -29,7 +29,8 @@ public class StartPage extends javax.swing.JFrame {
     private final Admin hospitalAdmin;
     public databaseConnection databaseConnection;
     private final Admin kennelAdmin;
-    
+    private final Admin accessoryAdmin;
+        
     public StartPage() {
         initComponents();
         this.emailNotification = new sendEmail();
@@ -37,6 +38,7 @@ public class StartPage extends javax.swing.JFrame {
         this.foodStoreAdmin = new Admin("Food Store Admin", "Food Store Admin", "Food Store Admin");
         this.hospitalAdmin = new Admin("Hospital Admin", "Hospital Admin", "Hospital Admin");
         this.kennelAdmin = new Admin("Kennel Admin", "Kennel Admin", "Kennel Admin");
+        this.accessoryAdmin = new Admin("Accessory Admin", "Accessory Admin", "Accessory Admin");
         this.databaseConnection = new databaseConnection();
     }
 
@@ -218,7 +220,7 @@ public class StartPage extends javax.swing.JFrame {
         loginAs.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         loginAs.setText("Role : ");
 
-        selectRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "User", "Food Store Admin", "Hospital Admin", "Kennel Admin" }));
+        selectRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "User", "Food Store Admin", "Hospital Admin", "Kennel Admin", "Accessory Admin" }));
         selectRole.setMinimumSize(new java.awt.Dimension(72, 30));
         selectRole.setPreferredSize(new java.awt.Dimension(72, 30));
 
@@ -423,6 +425,15 @@ public class StartPage extends javax.swing.JFrame {
             } catch(Exception e){System.out.println(e);}
         }
         
+        else if(accessoryAdmin.getAdminRole().equals(selectRole.getSelectedItem().toString()) && accessoryAdmin.getAdminUserName().equals(txtloginUserName.getText()) && accessoryAdmin.getAdminPassWord().equals(txtloginPassword.getText()))
+        {
+            try{
+                JOptionPane.showMessageDialog(this, "Logged In As Accessory Admin");
+                petAccessoryAdmin petAccessoryJPanel = new petAccessoryAdmin(databaseConnection);
+                splitPane.setRightComponent(petAccessoryJPanel);
+                buttonLogOut.setVisible(true);
+            } catch(Exception e){System.out.println(e);}
+        }
     }//GEN-LAST:event_btnLogInActionPerformed
     
     private int checkCredentials(String userName, String password) throws Exception
