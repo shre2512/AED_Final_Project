@@ -8,6 +8,7 @@ import java.sql.ResultSet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.databaseConnection;
+import model.petAdoptionRecords;
 import model.sendEmail;
 import model.sendSMS;
 import org.jfree.data.category.DefaultCategoryDataset;
@@ -33,13 +34,15 @@ public class userJPanel extends javax.swing.JPanel {
     sendEmail emailNotification;
     sendSMS smsNotification;
     databaseConnection databaseConnection;
+    petAdoptionRecords records;
     
-    public userJPanel(databaseConnection databaseConnection, int userID, sendEmail emailNotification, sendSMS smsNotification) {
+    public userJPanel(databaseConnection databaseConnection, int userID, sendEmail emailNotification, sendSMS smsNotification,petAdoptionRecords records) {
         initComponents();
         this.userID = userID;
         this.emailNotification = emailNotification;
         this.smsNotification = smsNotification;
         this.databaseConnection = databaseConnection;
+        this.records=records;
         init();
     }
 
@@ -48,6 +51,14 @@ public class userJPanel extends javax.swing.JPanel {
             // TODO add your handling code here:
            kennelJPanel kennelPanel = new kennelJPanel(databaseConnection,  userID, emailNotification, smsNotification);
            kennelSplitPane.setRightComponent(kennelPanel);
+        } catch (Exception ex) {
+            Logger.getLogger(userJPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+         try {
+            // TODO add your handling code here:
+           petShelterJPanel shelterPanel = new petShelterJPanel(records);
+           shelterSplitPane.setRightComponent(shelterPanel);
         } catch (Exception ex) {
             Logger.getLogger(userJPanel.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -78,6 +89,9 @@ public class userJPanel extends javax.swing.JPanel {
         kennelJPanel = new javax.swing.JPanel();
         kennelSplitPane = new javax.swing.JSplitPane();
         kennelWorkArea = new javax.swing.JPanel();
+        shelterJPanel = new javax.swing.JPanel();
+        shelterSplitPane = new javax.swing.JSplitPane();
+        shelterWorkArea = new javax.swing.JPanel();
 
         setBackground(new java.awt.Color(255, 255, 102));
 
@@ -281,6 +295,35 @@ public class userJPanel extends javax.swing.JPanel {
 
         tabbedPane.addTab("Kennel", kennelJPanel);
 
+        shelterSplitPane.setDividerLocation(0);
+        shelterSplitPane.setDividerSize(0);
+
+        javax.swing.GroupLayout shelterWorkAreaLayout = new javax.swing.GroupLayout(shelterWorkArea);
+        shelterWorkArea.setLayout(shelterWorkAreaLayout);
+        shelterWorkAreaLayout.setHorizontalGroup(
+            shelterWorkAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1112, Short.MAX_VALUE)
+        );
+        shelterWorkAreaLayout.setVerticalGroup(
+            shelterWorkAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 569, Short.MAX_VALUE)
+        );
+
+        shelterSplitPane.setRightComponent(shelterWorkArea);
+
+        javax.swing.GroupLayout shelterJPanelLayout = new javax.swing.GroupLayout(shelterJPanel);
+        shelterJPanel.setLayout(shelterJPanelLayout);
+        shelterJPanelLayout.setHorizontalGroup(
+            shelterJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(shelterSplitPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1112, Short.MAX_VALUE)
+        );
+        shelterJPanelLayout.setVerticalGroup(
+            shelterJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(shelterSplitPane)
+        );
+
+        tabbedPane.addTab("Shelter", shelterJPanel);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -383,6 +426,9 @@ public class userJPanel extends javax.swing.JPanel {
     private javax.swing.JPanel kennelJPanel;
     private javax.swing.JSplitPane kennelSplitPane;
     private javax.swing.JPanel kennelWorkArea;
+    private javax.swing.JPanel shelterJPanel;
+    private javax.swing.JSplitPane shelterSplitPane;
+    private javax.swing.JPanel shelterWorkArea;
     private javax.swing.JTabbedPane tabbedPane;
     private javax.swing.JPanel userPastActivity;
     private javax.swing.JPanel userPastActivityControlArea;

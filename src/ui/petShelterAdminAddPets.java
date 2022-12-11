@@ -198,6 +198,7 @@ public class petShelterAdminAddPets extends javax.swing.JPanel {
        
         if(input==1){
         petProfileForAdoption pet=records.addNewPet();
+        System.out.println(records.getRecords());
         pet.setName(txtName.getText());
         pet.setAge(Integer.parseInt(txtAge.getText()));
         pet.setPetId(txtID.getText());

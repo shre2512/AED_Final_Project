@@ -14,9 +14,9 @@ public class petShelterAdmin extends javax.swing.JPanel {
      * Creates new form petShelterAdmin
      */
     petAdoptionRecords records;
-    public petShelterAdmin() {
+    public petShelterAdmin(petAdoptionRecords records) {
         initComponents();
-        records=new petAdoptionRecords();
+        this.records=records;
     }
 
     /**
