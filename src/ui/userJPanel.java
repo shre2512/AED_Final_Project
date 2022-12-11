@@ -75,6 +75,7 @@ public class userJPanel extends javax.swing.JPanel {
         userPastActivityControlArea = new javax.swing.JPanel();
         btnAccessoryPurchase = new javax.swing.JButton();
         btnFoodPurchase = new javax.swing.JButton();
+        btnGroomingServices = new javax.swing.JButton();
         userPastActivityWorkArea = new javax.swing.JPanel();
         kennelJPanel = new javax.swing.JPanel();
         kennelSplitPane = new javax.swing.JSplitPane();
@@ -208,6 +209,16 @@ public class userJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnGroomingServices.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        btnGroomingServices.setForeground(new java.awt.Color(255, 0, 0));
+        btnGroomingServices.setText("Grooming Services");
+        btnGroomingServices.setPreferredSize(new java.awt.Dimension(76, 35));
+        btnGroomingServices.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGroomingServicesActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout userPastActivityControlAreaLayout = new javax.swing.GroupLayout(userPastActivityControlArea);
         userPastActivityControlArea.setLayout(userPastActivityControlAreaLayout);
         userPastActivityControlAreaLayout.setHorizontalGroup(
@@ -215,9 +226,11 @@ public class userJPanel extends javax.swing.JPanel {
             .addGroup(userPastActivityControlAreaLayout.createSequentialGroup()
                 .addGap(185, 185, 185)
                 .addComponent(btnFoodPurchase, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(76, 76, 76)
+                .addGap(79, 79, 79)
                 .addComponent(btnAccessoryPurchase, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(551, Short.MAX_VALUE))
+                .addGap(78, 78, 78)
+                .addComponent(btnGroomingServices, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(320, Short.MAX_VALUE))
         );
         userPastActivityControlAreaLayout.setVerticalGroup(
             userPastActivityControlAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -225,7 +238,8 @@ public class userJPanel extends javax.swing.JPanel {
                 .addGap(12, 12, 12)
                 .addGroup(userPastActivityControlAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAccessoryPurchase, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnFoodPurchase, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnFoodPurchase, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnGroomingServices, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(13, Short.MAX_VALUE))
         );
 
@@ -470,11 +484,34 @@ public class userJPanel extends javax.swing.JPanel {
         vetenarySplitPane.setRightComponent(viewEncounters);
     }//GEN-LAST:event_btnPastEncountersActionPerformed
 
+    private void btnGroomingServicesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGroomingServicesActionPerformed
+        // TODO add your handling code here:
+        try {
+            // TODO add your handling code here:
+            DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+            ResultSet result = databaseConnection.getPastGroomingServices(userID);
+            while(result.next())
+            {
+                dataset.setValue(result.getInt("total_grooming_spend"), "Price", result.getString("service_name"));
+            }
+
+            JFreeChart barChart = ChartFactory.createBarChart3D("Spending By Grooming Service", "Service Name", "Total Spent", dataset, PlotOrientation.HORIZONTAL, false, true, false);
+            CategoryPlot barChrt = barChart.getCategoryPlot();
+            barChrt.setRangeGridlinePaint(Color.BLUE);
+            ChartFrame frame = new ChartFrame("Spending By Grooming Service", barChart);
+            frame.setVisible(true);
+            frame.setSize(800, 550);
+        } catch (Exception ex) {
+            Logger.getLogger(userJPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnGroomingServicesActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAccessoryPurchase;
     private javax.swing.JButton btnCreateEncounter;
     private javax.swing.JButton btnFoodPurchase;
+    private javax.swing.JButton btnGroomingServices;
     private javax.swing.JButton btnPastEncounters;
     private javax.swing.JButton btnPetAccessories;
     private javax.swing.JButton btnPetFood;

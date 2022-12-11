@@ -446,4 +446,12 @@ public class databaseConnection {
         ResultSet result = getPastVitals.executeQuery();
         return result;
     }
+    
+    public ResultSet getPastGroomingServices(int userID) throws Exception
+    {
+        PreparedStatement select = con.prepareStatement("SELECT service_name, SUM(service_cost) as total_grooming_spend FROM groomingappointments WHERE user_id = ? GROUP BY service_name");
+        select.setInt(1, userID);
+        ResultSet result = select.executeQuery();
+        return result;
+    }
 }
