@@ -79,6 +79,11 @@ public class userJPanel extends javax.swing.JPanel {
         kennelJPanel = new javax.swing.JPanel();
         kennelSplitPane = new javax.swing.JSplitPane();
         kennelWorkArea = new javax.swing.JPanel();
+        petVetenaryJPanel = new javax.swing.JPanel();
+        vetenarySplitPane = new javax.swing.JSplitPane();
+        vetenaryControlArea = new javax.swing.JPanel();
+        btnCreateEncounter = new javax.swing.JButton();
+        vetenaryWorkArea = new javax.swing.JPanel();
 
         setBackground(new java.awt.Color(255, 255, 102));
 
@@ -282,6 +287,67 @@ public class userJPanel extends javax.swing.JPanel {
 
         tabbedPane.addTab("Kennel", kennelJPanel);
 
+        vetenarySplitPane.setDividerLocation(150);
+
+        vetenaryControlArea.setBackground(new java.awt.Color(102, 255, 102));
+
+        btnCreateEncounter.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        btnCreateEncounter.setForeground(new java.awt.Color(255, 0, 0));
+        btnCreateEncounter.setText("Create Encounter");
+        btnCreateEncounter.setPreferredSize(new java.awt.Dimension(76, 35));
+        btnCreateEncounter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCreateEncounterActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout vetenaryControlAreaLayout = new javax.swing.GroupLayout(vetenaryControlArea);
+        vetenaryControlArea.setLayout(vetenaryControlAreaLayout);
+        vetenaryControlAreaLayout.setHorizontalGroup(
+            vetenaryControlAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(vetenaryControlAreaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnCreateEncounter, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        vetenaryControlAreaLayout.setVerticalGroup(
+            vetenaryControlAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(vetenaryControlAreaLayout.createSequentialGroup()
+                .addGap(189, 189, 189)
+                .addComponent(btnCreateEncounter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(345, Short.MAX_VALUE))
+        );
+
+        vetenarySplitPane.setLeftComponent(vetenaryControlArea);
+
+        vetenaryWorkArea.setBackground(new java.awt.Color(0, 255, 255));
+
+        javax.swing.GroupLayout vetenaryWorkAreaLayout = new javax.swing.GroupLayout(vetenaryWorkArea);
+        vetenaryWorkArea.setLayout(vetenaryWorkAreaLayout);
+        vetenaryWorkAreaLayout.setHorizontalGroup(
+            vetenaryWorkAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 957, Short.MAX_VALUE)
+        );
+        vetenaryWorkAreaLayout.setVerticalGroup(
+            vetenaryWorkAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 569, Short.MAX_VALUE)
+        );
+
+        vetenarySplitPane.setRightComponent(vetenaryWorkArea);
+
+        javax.swing.GroupLayout petVetenaryJPanelLayout = new javax.swing.GroupLayout(petVetenaryJPanel);
+        petVetenaryJPanel.setLayout(petVetenaryJPanelLayout);
+        petVetenaryJPanelLayout.setHorizontalGroup(
+            petVetenaryJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(vetenarySplitPane)
+        );
+        petVetenaryJPanelLayout.setVerticalGroup(
+            petVetenaryJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(vetenarySplitPane)
+        );
+
+        tabbedPane.addTab("Vetenary", petVetenaryJPanel);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -377,9 +443,15 @@ public class userJPanel extends javax.swing.JPanel {
         
     }//GEN-LAST:event_btnFoodPurchaseActionPerformed
 
+    private void btnCreateEncounterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateEncounterActionPerformed
+        // TODO add your handling code here:
+        createEncounters createEncounterJPanel = new createEncounters(databaseConnection, userID);
+    }//GEN-LAST:event_btnCreateEncounterActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAccessoryPurchase;
+    private javax.swing.JButton btnCreateEncounter;
     private javax.swing.JButton btnFoodPurchase;
     private javax.swing.JButton btnPetAccessories;
     private javax.swing.JButton btnPetFood;
@@ -391,10 +463,14 @@ public class userJPanel extends javax.swing.JPanel {
     private javax.swing.JPanel kennelJPanel;
     private javax.swing.JSplitPane kennelSplitPane;
     private javax.swing.JPanel kennelWorkArea;
+    private javax.swing.JPanel petVetenaryJPanel;
     private javax.swing.JTabbedPane tabbedPane;
     private javax.swing.JPanel userPastActivity;
     private javax.swing.JPanel userPastActivityControlArea;
     private javax.swing.JSplitPane userPastActivitySplitPane;
     private javax.swing.JPanel userPastActivityWorkArea;
+    private javax.swing.JPanel vetenaryControlArea;
+    private javax.swing.JSplitPane vetenarySplitPane;
+    private javax.swing.JPanel vetenaryWorkArea;
     // End of variables declaration//GEN-END:variables
 }

@@ -60,6 +60,8 @@ public class kennelJPanel extends javax.swing.JPanel {
        init();
        this.userID=userID;
        this.databaseConnection=databaseConnection;
+       this.emailNotification = emailNotification;
+       this.smsNotification = smsNotification;
     }
     private void init(){
         TileFactoryInfo info =new OSMTileFactoryInfo();
@@ -140,9 +142,13 @@ public class kennelJPanel extends javax.swing.JPanel {
         jXMapViewer1 = new org.jxmapviewer.JXMapViewer();
         btnKennelsOnMap = new javax.swing.JButton();
 
-        jLabel1.setText("Address");
+        setBackground(new java.awt.Color(0, 255, 255));
 
-        jLabel2.setText("Name");
+        jLabel1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel1.setText("Address :");
+
+        jLabel2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel2.setText("Name :");
 
         txtKennelName.setPreferredSize(new java.awt.Dimension(71, 30));
         txtKennelName.addActionListener(new java.awt.event.ActionListener() {
@@ -158,11 +164,20 @@ public class kennelJPanel extends javax.swing.JPanel {
             }
         });
 
-        jLabel3.setText("From");
+        dateChooserToDateKennel.setPreferredSize(new java.awt.Dimension(88, 30));
 
-        jLabel4.setText("To");
+        jLabel3.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel3.setText("From :");
 
-        btnSave.setText("Save");
+        dateChooserFromDateKennel.setPreferredSize(new java.awt.Dimension(88, 30));
+
+        jLabel4.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel4.setText("To :");
+
+        btnSave.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        btnSave.setForeground(new java.awt.Color(255, 0, 0));
+        btnSave.setText("Book");
+        btnSave.setPreferredSize(new java.awt.Dimension(72, 30));
         btnSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSaveActionPerformed(evt);
@@ -176,13 +191,18 @@ public class kennelJPanel extends javax.swing.JPanel {
             }
         });
 
-        jLabel5.setText("Price per day");
+        jLabel5.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel5.setText("   Price Per Day :");
 
+        lblPickup.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         lblPickup.setText("Pickup required?");
 
         cmbPickup.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Yes", "No" }));
+        cmbPickup.setPreferredSize(new java.awt.Dimension(72, 30));
 
+        btnKennelsOnMap.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnKennelsOnMap.setText("View Kennels");
+        btnKennelsOnMap.setPreferredSize(new java.awt.Dimension(76, 30));
         btnKennelsOnMap.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnKennelsOnMapActionPerformed(evt);
@@ -195,14 +215,14 @@ public class kennelJPanel extends javax.swing.JPanel {
             jXMapViewer1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jXMapViewer1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btnKennelsOnMap)
+                .addComponent(btnKennelsOnMap, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jXMapViewer1Layout.setVerticalGroup(
             jXMapViewer1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jXMapViewer1Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addComponent(btnKennelsOnMap)
+                .addComponent(btnKennelsOnMap, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(208, Short.MAX_VALUE))
         );
 
@@ -210,66 +230,73 @@ public class kennelJPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jXMapViewer1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(100, 100, 100)
+                                .addGap(88, 88, 88)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(45, 45, 45))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel2))
-                                .addGap(45, 45, 45)))
+                                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(39, 39, 39)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(dateChooserToDateKennel, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE)
+                                .addComponent(txtKennelName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(txtPricePerDay, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(159, 159, 159)
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(4, 4, 4)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(114, 114, 114)
+                                .addComponent(lblPickup, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(28, 28, 28)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(dateChooserToDateKennel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtKennelName, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE)
-                            .addComponent(txtPricePerDay, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE))
-                        .addGap(89, 89, 89)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel1)
-                            .addComponent(lblPickup)
-                            .addComponent(jLabel4))
-                        .addGap(37, 37, 37)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtKennelAddress, javax.swing.GroupLayout.DEFAULT_SIZE, 264, Short.MAX_VALUE)
-                            .addComponent(dateChooserFromDateKennel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(cmbPickup, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(cmbPickup, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtKennelAddress, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(dateChooserFromDateKennel, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(423, 423, 423)
-                        .addComponent(btnSave)))
-                .addContainerGap(66, Short.MAX_VALUE))
-            .addComponent(jXMapViewer1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(425, 425, 425)
+                        .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(68, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jXMapViewer1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(36, 36, 36)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(txtKennelName, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1)
-                    .addComponent(txtKennelAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(dateChooserFromDateKennel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(dateChooserToDateKennel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING))
-                    .addComponent(jLabel3))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtKennelName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtKennelAddress, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtPricePerDay, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5)
-                    .addComponent(lblPickup)
-                    .addComponent(cmbPickup, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
-                .addComponent(btnSave)
-                .addGap(27, 27, 27))
+                    .addComponent(cmbPickup, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblPickup, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(17, 17, 17)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(dateChooserFromDateKennel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(dateChooserToDateKennel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(36, 36, 36))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -293,23 +320,74 @@ public class kennelJPanel extends javax.swing.JPanel {
         System.out.println(toDate);
         DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");  
         String toDateString = dateFormat.format(toDate);
-        System.out.println(toDateString);
         fromDate=dateChooserFromDateKennel.getDate();
         String fromDateString = dateFormat.format(fromDate);
         numberOfDays=(int)( (fromDate.getTime() - toDate.getTime()) / (1000 * 60 * 60 * 24));
         pricePerDay=Integer.parseInt(txtPricePerDay.getText());
-        rent=numberOfDays*pricePerDay;
-        System.out.println(numberOfDays);
-        System.out.println(rent);
-        pickup=cmbPickup.getSelectedItem().toString();
+        rent = numberOfDays * pricePerDay;
+        pickup = cmbPickup.getSelectedItem().toString();
         
         try {
             databaseConnection.insertKennelBooking(userID,name,address,toDateString,fromDateString,pricePerDay,numberOfDays,rent,pickup);
+            String emailID = getEmailID(userID);
+            if(emailID != null)
+            {
+                try {
+                    emailNotification.sendEmail("Kennel Booked!", "You have booked a kennel from " + toDateString + " to " + fromDateString + ". Your rent amount is: $" + rent + ". The pickup service confirmation will be sent soon!", emailID);
+                } catch (Exception ex) {
+                    Logger.getLogger(petFoodJPanel.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        
+            String phoneNumber = getPhoneNumber(userID);
+            if(phoneNumber != null)
+            {
+                try {
+                    smsNotification.sendSMS("+1" + phoneNumber, "Kennel Booked! You have booked a kennel from " + toDateString + " to " + fromDateString + ". Your rent amount is: $" + rent + ". The pickup service confirmation will be sent soon!");
+                } catch (Exception ex) {
+                    Logger.getLogger(petFoodJPanel.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
         } catch (Exception ex) {
             Logger.getLogger(petFoodJPanel.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnSaveActionPerformed
-
+    
+    private String getEmailID(int userID)
+    {
+        try {
+            ResultSet result = databaseConnection.executeSelect("SELECT * FROM usertable");
+            
+            while(result.next()){
+                
+                if(result.getInt("id") == userID)
+                {
+                    return result.getString("email_id");
+                }
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(petFoodJPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+    
+    private String getPhoneNumber(int userID)
+    {
+        try {
+            ResultSet result = databaseConnection.executeSelect("SELECT * FROM usertable");
+            while(result.next()){
+                
+                if(result.getInt("id") == userID)
+                {
+                    return result.getString("phone_number");
+                }
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(petFoodJPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+    
     private void btnKennelsOnMapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKennelsOnMapActionPerformed
         // TODO add your handling code here:
         waypoints.add(new MyWaypoint("The Mindful Mutt","16 Harvard Ave, Allston, MA 02134",event,new GeoPosition(42.36114667727058, -71.13242913502957)));

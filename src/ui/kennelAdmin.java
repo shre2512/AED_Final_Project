@@ -15,7 +15,7 @@ public class kennelAdmin extends javax.swing.JPanel {
     /**
      * Creates new form kennelAdmin
      */
-        databaseConnection databaseConnection;
+    databaseConnection databaseConnection;
 
     public kennelAdmin(databaseConnection databaseConnection) {
         initComponents();
@@ -37,7 +37,10 @@ public class kennelAdmin extends javax.swing.JPanel {
         btnUpdatePricePerDay = new javax.swing.JButton();
         kennelAdminWorkArea = new javax.swing.JPanel();
 
-        btnUpdatePricePerDay.setText("Update Price Per Day");
+        btnUpdatePricePerDay.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        btnUpdatePricePerDay.setForeground(new java.awt.Color(255, 0, 0));
+        btnUpdatePricePerDay.setText("Update Price");
+        btnUpdatePricePerDay.setPreferredSize(new java.awt.Dimension(140, 30));
         btnUpdatePricePerDay.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnUpdatePricePerDayActionPerformed(evt);
@@ -49,15 +52,15 @@ public class kennelAdmin extends javax.swing.JPanel {
         kennelAdminControlAreaLayout.setHorizontalGroup(
             kennelAdminControlAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(kennelAdminControlAreaLayout.createSequentialGroup()
-                .addComponent(btnUpdatePricePerDay)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addComponent(btnUpdatePricePerDay, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 32, Short.MAX_VALUE))
         );
         kennelAdminControlAreaLayout.setVerticalGroup(
             kennelAdminControlAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(kennelAdminControlAreaLayout.createSequentialGroup()
                 .addGap(124, 124, 124)
-                .addComponent(btnUpdatePricePerDay)
-                .addContainerGap(339, Short.MAX_VALUE))
+                .addComponent(btnUpdatePricePerDay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(332, Short.MAX_VALUE))
         );
 
         kennelAdminSplitPane.setLeftComponent(kennelAdminControlArea);

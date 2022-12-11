@@ -44,6 +44,7 @@ public class databaseConnection {
             PreparedStatement create_doctors = con.prepareStatement("CREATE TABLE IF NOT EXISTS doctors(id int NOT NULL AUTO_INCREMENT, first_name VARCHAR(255), last_name VARCHAR(255), email_ID VARCHAR(255), contact_number VARCHAR(255), hospital_name VARCHAR(255), username VARCHAR(255), password VARCHAR(255), PRIMARY KEY(id))");
             PreparedStatement create_kennelbooking = con.prepareStatement("CREATE TABLE IF NOT EXISTS kennelbooking(id int NOT NULL AUTO_INCREMENT,user_id INT, kennel_name VARCHAR(255), kennel_address VARCHAR(255), kennel_to VARCHAR(255),kennel_from VARCHAR(255),kennel_price_per_day INT,kennel_number_of_days INT, kennel_rent INT, kennel_pickup VARCHAR(255), PRIMARY KEY(id))");
             PreparedStatement create_kennel = con.prepareStatement("CREATE TABLE IF NOT EXISTS kennel(id int NOT NULL AUTO_INCREMENT, kennel_name VARCHAR(255), kennel_address VARCHAR(255), price_per_day int, PRIMARY KEY(id))");
+            PreparedStatement create_encounter = con.prepareStatement("CREATE TABLE IF NOT EXISTS encounters(id int NOT NULL AUTO_INCREMENT, user_id INT, hospital_name VARCHAR(255), doctor_name VARCHAR(255), symptoms VARCHAR(255), String encounter_date VARCHAR(255), PRIMARY KEY(id))");
             
             create_kennelbooking.executeUpdate();
             create_kennel.executeUpdate();
@@ -54,6 +55,7 @@ public class databaseConnection {
             create_grooming_appointments.executeUpdate();
             create_hospitals.executeUpdate();
             create_doctors.executeUpdate();
+            create_encounter.executeUpdate();
             
             return con;
         } catch(Exception e){System.out.println(e);}
@@ -243,7 +245,7 @@ public class databaseConnection {
     
     public void insertKennelBooking(int userId, String name, String address, String toDate, String fromDate, int pricePerDay, int numberOfDays, int rent,String pickup) throws Exception
     {
-            PreparedStatement insertOrder = con.prepareStatement("INSERT INTO kennelbooking (user_id, kennel_name, kennel_address, kennel_to, kennel_from,kennel_price_per_day, kennel_number_of_days, kennel_rent, kennel_pickup) VALUES (?, ?, ?, ?,?,?,?,?,?)");
+            PreparedStatement insertOrder = con.prepareStatement("INSERT INTO kennelbooking (user_id, kennel_name, kennel_address, kennel_to, kennel_from,kennel_price_per_day, kennel_number_of_days, kennel_rent, kennel_pickup) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
             insertOrder.setInt(1, userId);
             insertOrder.setString(2, name);
             insertOrder.setString(3, address);
@@ -270,5 +272,24 @@ public class databaseConnection {
         select.setString(1, kennel_name);
         ResultSet result = select.executeQuery();
         return result;
+    }
+    
+    public ResultSet executeSelectDoctors(String hospital_name) throws Exception
+    {
+        PreparedStatement select = con.prepareStatement("SELECT * FROM doctors WHERE hospital_name = ?");
+        select.setString(1, hospital_name);
+        ResultSet result = select.executeQuery();
+        return result;
+    }
+    
+    public void executeInsertEncounter(int userID, String hospital_name, String doctor_name, String symptoms, String encounter_date) throws Exception
+    {
+        PreparedStatement insertEncounter = con.prepareStatement("INSERT INTO encounters(user_id, hospital_name, doctor_name, symptoms, encounter_date) VALUES (?, ?, ?, ?,?)");
+        insertEncounter.setInt(1, userID);
+        insertEncounter.setString(2, hospital_name);
+        insertEncounter.setString(3, doctor_name);
+        insertEncounter.setString(4, symptoms);
+        insertEncounter.setString(5, encounter_date);
+        insertEncounter.executeUpdate();
     }
 }
