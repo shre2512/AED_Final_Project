@@ -47,6 +47,7 @@ public class databaseConnection {
             PreparedStatement create_encounter = con.prepareStatement("CREATE TABLE IF NOT EXISTS encounters(id int NOT NULL AUTO_INCREMENT, user_id INT, hospital_name VARCHAR(255), doctor_name VARCHAR(255), symptoms VARCHAR(255), encounter_date VARCHAR(255), PRIMARY KEY(id))");
             PreparedStatement create_open_orders_food = con.prepareStatement("CREATE TABLE IF NOT EXISTS openordersfood(id int NOT NULL AUTO_INCREMENT, product_id INT, order_quantity INT, PRIMARY KEY(id))");
             PreparedStatement create_open_orders_accessory = con.prepareStatement("CREATE TABLE IF NOT EXISTS openordersaccessory(id int NOT NULL AUTO_INCREMENT, product_id INT, order_quantity INT, PRIMARY KEY(id))");
+            PreparedStatement create_closed_orders_food = con.prepareStatement("CREATE TABLE IF NOT EXISTS closedordersfood(id int NOT NULL AUTO_INCREMENT, product_name VARCHAR(255), ordered_quantity INT, PRIMARY KEY(id))");
             
             create_kennelbooking.executeUpdate();
             create_kennel.executeUpdate();
@@ -60,6 +61,7 @@ public class databaseConnection {
             create_encounter.executeUpdate();
             create_open_orders_food.executeUpdate();
             create_open_orders_accessory.executeUpdate();
+            create_closed_orders_food.executeUpdate();
             
             return con;
         } catch(Exception e){System.out.println(e);}
@@ -311,5 +313,28 @@ public class databaseConnection {
         insertOrder.setInt(1, product_id);
         insertOrder.setInt(2, order_quantity);
         insertOrder.executeUpdate();
+    }
+    
+    public ResultSet executeFoodNameSelect(int foodId) throws Exception
+    {
+        PreparedStatement selectFoodName = con.prepareStatement("SELECT food_name FROM petfood WHERE id = ?");
+        selectFoodName.setInt(1, foodId);
+        ResultSet result = selectFoodName.executeQuery();
+        return result;
+    }
+    
+    public void insertClosedOrdersFood(String productName, int orderedQuantity) throws Exception
+    {
+        PreparedStatement insertClosedOrder = con.prepareStatement("INSERT INTO closedordersfood(product_name, ordered_quantity) VALUES (?, ?)");
+        insertClosedOrder.setString(1, productName);
+        insertClosedOrder.setInt(2, orderedQuantity);
+        insertClosedOrder.executeUpdate();
+    }
+    
+    public void deleteOpenOrdersFood(int orderID) throws Exception
+    {
+        PreparedStatement insertClosedOrder = con.prepareStatement("DELETE FROM openordersfood WHERE id = ?");
+        insertClosedOrder.setInt(1, orderID);
+        insertClosedOrder.executeUpdate();
     }
 }

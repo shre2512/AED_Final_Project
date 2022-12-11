@@ -4,6 +4,11 @@
  */
 package ui;
 
+import java.sql.ResultSet;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import model.databaseConnection;
 
 /**
@@ -20,8 +25,43 @@ public class productSupplierAdminOpenOrders extends javax.swing.JPanel {
     public productSupplierAdminOpenOrders(databaseConnection databaseConnection) {
         initComponents();
         this.databaseConnection = databaseConnection;
+        populateOpenFoodOrders();
     }
-
+    
+    private void populateOpenFoodOrders()
+    {
+        try {
+            ResultSet result = databaseConnection.executeSelect("SELECT * FROM openordersfood");
+            DefaultTableModel model = (DefaultTableModel) tableFoodItem.getModel();
+            model.setRowCount(0);
+            while(result.next())
+            {
+                Object[] row = new Object[3];
+                row[0] = result.getInt("id");
+                row[1] = getFoodProductName(result.getInt("product_id"));
+                row[2] = result.getInt("order_quantity");
+                model.addRow(row);
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(petAccessoryAdminOrderProductQuantity.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    private String getFoodProductName(int foodId)
+    {
+        try {
+            ResultSet result = databaseConnection.executeFoodNameSelect(foodId);
+            String foodName = "";
+            while(result.next())
+            {
+                foodName = result.getString("food_name");
+            }
+            return foodName;
+        } catch (Exception ex) {
+            Logger.getLogger(productSupplierAdminOpenOrders.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return "";
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -152,18 +192,37 @@ public class productSupplierAdminOpenOrders extends javax.swing.JPanel {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnSupplyFoodItem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(53, 53, 53)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 108, Short.MAX_VALUE)
                 .addComponent(lblAccessoryItemSupply, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnSupplyAccessoryItem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(110, Short.MAX_VALUE))
+                .addGap(55, 55, 55))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSupplyFoodItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSupplyFoodItemActionPerformed
-        // TODO add your handling code here:
+        try {
+            // TODO add your handling code here:
+            int selectedRowIndex = tableFoodItem.getSelectedRow();
+            
+            if(selectedRowIndex < 0)
+            {
+                JOptionPane.showMessageDialog(this, "Please Select a row!");
+                return;
+            }
+            int orderID = (int)tableFoodItem.getValueAt(tableFoodItem.getSelectedRow(), 0);
+            String productName = tableFoodItem.getValueAt(tableFoodItem.getSelectedRow(), 1).toString();
+            int orderedQuantity = (int)tableFoodItem.getValueAt(tableFoodItem.getSelectedRow(), 2);
+            databaseConnection.insertClosedOrdersFood(productName, orderedQuantity);
+            databaseConnection.deleteOpenOrdersFood(orderID);
+            JOptionPane.showMessageDialog(this, "Product Supplied!");
+            populateOpenFoodOrders();
+        } catch (Exception ex) {
+            Logger.getLogger(productSupplierAdminOpenOrders.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }//GEN-LAST:event_btnSupplyFoodItemActionPerformed
 
     private void btnSupplyAccessoryItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSupplyAccessoryItemActionPerformed
