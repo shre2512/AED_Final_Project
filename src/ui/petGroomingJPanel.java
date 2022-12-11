@@ -236,7 +236,7 @@ public class petGroomingJPanel extends javax.swing.JPanel {
             String phoneNumber = getPhoneNumber(userID);
          
             databaseConnection.executeInsert("INSERT INTO groomingappointments (user_id, service_name, service_cost, service_date) VALUES ('"+userID+"', '"+serviceName+"', '"+serviceCost+"', '"+strDate+"')");
-   
+            
             JOptionPane.showMessageDialog(this, "Grooming Service Booked!");
             txtGroomingServiceName.setText("");
             txtGroomingServicePrice.setText("");
