@@ -125,7 +125,8 @@ public class productSupplier extends javax.swing.JPanel {
 
     private void btnClosedOrdersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClosedOrdersActionPerformed
         // TODO add your handling code here:
-
+        productSupplierClosedOrders supplierClosedOrders = new productSupplierClosedOrders(databaseConnection);
+        productSupplierAdminSplitPane.setRightComponent(supplierClosedOrders);
     }//GEN-LAST:event_btnClosedOrdersActionPerformed
 
 
