@@ -125,6 +125,8 @@ public class petAccessoryAdmin extends javax.swing.JPanel {
 
     private void btnOrderProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrderProductActionPerformed
         // TODO add your handling code here:
+        petAccessoryAdminOrderProductQuantity petAccessoryAdminOrderProduct = new petAccessoryAdminOrderProductQuantity(databaseConnection);
+        petAccessoryAdminSplitPane.setRightComponent(petAccessoryAdminOrderProduct);
     }//GEN-LAST:event_btnOrderProductActionPerformed
 
 

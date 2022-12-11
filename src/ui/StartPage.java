@@ -30,6 +30,7 @@ public class StartPage extends javax.swing.JFrame {
     public databaseConnection databaseConnection;
     private final Admin kennelAdmin;
     private final Admin accessoryAdmin;
+    private final Admin productSupplier;
         
     public StartPage() {
         initComponents();
@@ -39,6 +40,7 @@ public class StartPage extends javax.swing.JFrame {
         this.hospitalAdmin = new Admin("Hospital Admin", "Hospital Admin", "Hospital Admin");
         this.kennelAdmin = new Admin("Kennel Admin", "Kennel Admin", "Kennel Admin");
         this.accessoryAdmin = new Admin("Accessory Admin", "Accessory Admin", "Accessory Admin");
+        this.productSupplier = new Admin("Product Supplier", "Product Supplier", "Product Supplier");
         this.databaseConnection = new databaseConnection();
     }
 
@@ -220,7 +222,7 @@ public class StartPage extends javax.swing.JFrame {
         loginAs.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         loginAs.setText("Role : ");
 
-        selectRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "User", "Food Store Admin", "Hospital Admin", "Kennel Admin", "Accessory Admin" }));
+        selectRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "User", "Food Store Admin", "Hospital Admin", "Kennel Admin", "Accessory Admin", "Product Supplier", "Doctor" }));
         selectRole.setMinimumSize(new java.awt.Dimension(72, 30));
         selectRole.setPreferredSize(new java.awt.Dimension(72, 30));
 
@@ -431,6 +433,16 @@ public class StartPage extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Logged In As Accessory Admin");
                 petAccessoryAdmin petAccessoryJPanel = new petAccessoryAdmin(databaseConnection);
                 splitPane.setRightComponent(petAccessoryJPanel);
+                buttonLogOut.setVisible(true);
+            } catch(Exception e){System.out.println(e);}
+        }
+        
+        else if(productSupplier.getAdminRole().equals(selectRole.getSelectedItem().toString()) && productSupplier.getAdminUserName().equals(txtloginUserName.getText()) && productSupplier.getAdminPassWord().equals(txtloginPassword.getText()))
+        {
+            try{
+                JOptionPane.showMessageDialog(this, "Logged In As Product Supplier");
+                productSupplier productSupply = new productSupplier(databaseConnection);
+                splitPane.setRightComponent(productSupply);
                 buttonLogOut.setVisible(true);
             } catch(Exception e){System.out.println(e);}
         }

@@ -14,37 +14,37 @@ import model.databaseConnection;
  *
  * @author shrey
  */
-public class petFoodAdminOrderProductQuantity extends javax.swing.JPanel {
+public class petAccessoryAdminOrderProductQuantity extends javax.swing.JPanel {
 
     /**
      * Creates new form petFoodAdminUpdatePrice
      */
     databaseConnection databaseConnection;
     
-    public petFoodAdminOrderProductQuantity(databaseConnection databaseConnection) {
+    public petAccessoryAdminOrderProductQuantity(databaseConnection databaseConnection) {
         initComponents();
         this.databaseConnection = databaseConnection;
-        txtFoodName.setEditable(false);
+        txtAccessoryName.setEditable(false);
         populateTable();
     }
     
     private void populateTable()
     {
         try {
-            ResultSet result = databaseConnection.executeSelect("SELECT * FROM petfood");
-            DefaultTableModel model = (DefaultTableModel) tablePetFood.getModel();
+            ResultSet result = databaseConnection.executeSelect("SELECT * FROM petaccessories");
+            DefaultTableModel model = (DefaultTableModel) tablePetAccessory.getModel();
             model.setRowCount(0);
             while(result.next())
             {
                 Object[] row = new Object[4];
                 row[0] = result.getInt("id");
-                row[1] = result.getString("food_name");
-                row[2] = result.getInt("food_price");
+                row[1] = result.getString("accessory_name");
+                row[2] = result.getInt("accessory_price");
                 row[3] = result.getInt("available_quantity");
                 model.addRow(row);
             }
         } catch (Exception ex) {
-            Logger.getLogger(petFoodAdminOrderProductQuantity.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(petAccessoryAdminOrderProductQuantity.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     /**
@@ -57,17 +57,17 @@ public class petFoodAdminOrderProductQuantity extends javax.swing.JPanel {
     private void initComponents() {
 
         jScrollPane2 = new javax.swing.JScrollPane();
-        tablePetFood = new javax.swing.JTable();
-        lblFoodOrder = new javax.swing.JLabel();
-        lblFoodName = new javax.swing.JLabel();
-        txtFoodName = new javax.swing.JTextField();
-        lblFoodOrderQuantity = new javax.swing.JLabel();
-        txtFoodOrderQuantity = new javax.swing.JTextField();
+        tablePetAccessory = new javax.swing.JTable();
+        lblAccessoryOrder = new javax.swing.JLabel();
+        lblAccessoryName = new javax.swing.JLabel();
+        txtAccessoryName = new javax.swing.JTextField();
+        lblAccessoryOrderQuantity = new javax.swing.JLabel();
+        txtAccessoryOrderQuantity = new javax.swing.JTextField();
         btnPlaceOrder = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(0, 255, 255));
 
-        tablePetFood.setModel(new javax.swing.table.DefaultTableModel(
+        tablePetAccessory.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -86,36 +86,36 @@ public class petFoodAdminOrderProductQuantity extends javax.swing.JPanel {
                 return types [columnIndex];
             }
         });
-        tablePetFood.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        tablePetFood.addMouseListener(new java.awt.event.MouseAdapter() {
+        tablePetAccessory.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        tablePetAccessory.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tablePetFoodMouseClicked(evt);
+                tablePetAccessoryMouseClicked(evt);
             }
         });
-        jScrollPane2.setViewportView(tablePetFood);
+        jScrollPane2.setViewportView(tablePetAccessory);
 
-        lblFoodOrder.setBackground(new java.awt.Color(255, 255, 255));
-        lblFoodOrder.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        lblFoodOrder.setForeground(new java.awt.Color(255, 0, 0));
-        lblFoodOrder.setText("                                                                Select a Product to Place Order");
+        lblAccessoryOrder.setBackground(new java.awt.Color(255, 255, 255));
+        lblAccessoryOrder.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        lblAccessoryOrder.setForeground(new java.awt.Color(255, 0, 0));
+        lblAccessoryOrder.setText("                                                                 Select a Product to Place Order");
 
-        lblFoodName.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        lblFoodName.setText("Product Name :");
+        lblAccessoryName.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        lblAccessoryName.setText("Product Name :");
 
-        txtFoodName.setPreferredSize(new java.awt.Dimension(71, 30));
-        txtFoodName.addActionListener(new java.awt.event.ActionListener() {
+        txtAccessoryName.setPreferredSize(new java.awt.Dimension(71, 30));
+        txtAccessoryName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtFoodNameActionPerformed(evt);
+                txtAccessoryNameActionPerformed(evt);
             }
         });
 
-        lblFoodOrderQuantity.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        lblFoodOrderQuantity.setText("Order Quantity :");
+        lblAccessoryOrderQuantity.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        lblAccessoryOrderQuantity.setText("Order Quantity :");
 
-        txtFoodOrderQuantity.setPreferredSize(new java.awt.Dimension(71, 30));
-        txtFoodOrderQuantity.addActionListener(new java.awt.event.ActionListener() {
+        txtAccessoryOrderQuantity.setPreferredSize(new java.awt.Dimension(71, 30));
+        txtAccessoryOrderQuantity.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtFoodOrderQuantityActionPerformed(evt);
+                txtAccessoryOrderQuantityActionPerformed(evt);
             }
         });
 
@@ -133,7 +133,7 @@ public class petFoodAdminOrderProductQuantity extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblFoodOrder, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 860, Short.MAX_VALUE)
+            .addComponent(lblAccessoryOrder, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 860, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -144,13 +144,13 @@ public class petFoodAdminOrderProductQuantity extends javax.swing.JPanel {
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblFoodOrderQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lblAccessoryOrderQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(29, 29, 29)
-                                .addComponent(txtFoodOrderQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtAccessoryOrderQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblFoodName, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lblAccessoryName, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(29, 29, 29)
-                                .addComponent(txtFoodName, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(txtAccessoryName, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(246, 246, 246))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -161,68 +161,68 @@ public class petFoodAdminOrderProductQuantity extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(9, 9, 9)
-                .addComponent(lblFoodOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblAccessoryOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(96, 96, 96)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtFoodName, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblFoodName, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtAccessoryName, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblAccessoryName, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtFoodOrderQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblFoodOrderQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtAccessoryOrderQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblAccessoryOrderQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(74, 74, 74)
                 .addComponent(btnPlaceOrder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(97, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtFoodNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFoodNameActionPerformed
+    private void txtAccessoryNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAccessoryNameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtFoodNameActionPerformed
+    }//GEN-LAST:event_txtAccessoryNameActionPerformed
 
-    private void txtFoodOrderQuantityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFoodOrderQuantityActionPerformed
+    private void txtAccessoryOrderQuantityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAccessoryOrderQuantityActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtFoodOrderQuantityActionPerformed
+    }//GEN-LAST:event_txtAccessoryOrderQuantityActionPerformed
 
     private void btnPlaceOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlaceOrderActionPerformed
         try {
             // TODO add your handling code here:
-            DefaultTableModel model = (DefaultTableModel) tablePetFood.getModel();
-            int selectedRowIndex = tablePetFood.getSelectedRow();
+            DefaultTableModel model = (DefaultTableModel) tablePetAccessory.getModel();
+            int selectedRowIndex = tablePetAccessory.getSelectedRow();
             int product_id = (int) model.getValueAt(selectedRowIndex, 0);
-            int order_quantity = Integer.parseInt(txtFoodOrderQuantity.getText());
+            int order_quantity = Integer.parseInt(txtAccessoryOrderQuantity.getText());
             
-            databaseConnection.insertOpenOrdersFood(product_id, order_quantity);
+            databaseConnection.insertOpenOrdersAccessory(product_id, order_quantity);
    
             JOptionPane.showMessageDialog(this, "Product Ordered Successfully!");
-            txtFoodName.setText("");
-            txtFoodOrderQuantity.setText("");
+            txtAccessoryName.setText("");
+            txtAccessoryOrderQuantity.setText("");
             populateTable();
         } catch (Exception ex) {
-            Logger.getLogger(petFoodAdminOrderProductQuantity.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(petAccessoryAdminOrderProductQuantity.class.getName()).log(Level.SEVERE, null, ex);
         }
         
     }//GEN-LAST:event_btnPlaceOrderActionPerformed
 
-    private void tablePetFoodMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablePetFoodMouseClicked
+    private void tablePetAccessoryMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablePetAccessoryMouseClicked
         // TODO add your handling code here:
-        DefaultTableModel model = (DefaultTableModel) tablePetFood.getModel();
-        int selectedRowIndex = tablePetFood.getSelectedRow();
+        DefaultTableModel model = (DefaultTableModel) tablePetAccessory.getModel();
+        int selectedRowIndex = tablePetAccessory.getSelectedRow();
         String productName = (String) model.getValueAt(selectedRowIndex, 1);
-        txtFoodName.setText(productName);
-    }//GEN-LAST:event_tablePetFoodMouseClicked
+        txtAccessoryName.setText(productName);
+    }//GEN-LAST:event_tablePetAccessoryMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnPlaceOrder;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JLabel lblFoodName;
-    private javax.swing.JLabel lblFoodOrder;
-    private javax.swing.JLabel lblFoodOrderQuantity;
-    private javax.swing.JTable tablePetFood;
-    private javax.swing.JTextField txtFoodName;
-    private javax.swing.JTextField txtFoodOrderQuantity;
+    private javax.swing.JLabel lblAccessoryName;
+    private javax.swing.JLabel lblAccessoryOrder;
+    private javax.swing.JLabel lblAccessoryOrderQuantity;
+    private javax.swing.JTable tablePetAccessory;
+    private javax.swing.JTextField txtAccessoryName;
+    private javax.swing.JTextField txtAccessoryOrderQuantity;
     // End of variables declaration//GEN-END:variables
 }

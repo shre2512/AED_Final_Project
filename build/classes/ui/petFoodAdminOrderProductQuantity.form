@@ -21,7 +21,7 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="lblUpdateFoodPrice" alignment="1" pref="860" max="32767" attributes="0"/>
+          <Component id="lblFoodOrder" alignment="1" pref="860" max="32767" attributes="0"/>
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
@@ -58,7 +58,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
-              <Component id="lblUpdateFoodPrice" min="-2" pref="35" max="-2" attributes="0"/>
+              <Component id="lblFoodOrder" min="-2" pref="35" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jScrollPane2" min="-2" pref="170" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="96" max="-2" attributes="0"/>
@@ -133,7 +133,7 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JLabel" name="lblUpdateFoodPrice">
+    <Component class="javax.swing.JLabel" name="lblFoodOrder">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -144,7 +144,7 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="0" green="0" red="ff" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="                                                                  Select a Product to Update Price"/>
+        <Property name="text" type="java.lang.String" value="                                                                Select a Product to Place Order"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblFoodName">

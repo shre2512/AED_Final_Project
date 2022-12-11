@@ -45,7 +45,8 @@ public class databaseConnection {
             PreparedStatement create_kennelbooking = con.prepareStatement("CREATE TABLE IF NOT EXISTS kennelbooking(id int NOT NULL AUTO_INCREMENT,user_id INT, kennel_name VARCHAR(255), kennel_address VARCHAR(255), kennel_to VARCHAR(255),kennel_from VARCHAR(255),kennel_price_per_day INT,kennel_number_of_days INT, kennel_rent INT, kennel_pickup VARCHAR(255), PRIMARY KEY(id))");
             PreparedStatement create_kennel = con.prepareStatement("CREATE TABLE IF NOT EXISTS kennel(id int NOT NULL AUTO_INCREMENT, kennel_name VARCHAR(255), kennel_address VARCHAR(255), price_per_day int, PRIMARY KEY(id))");
             PreparedStatement create_encounter = con.prepareStatement("CREATE TABLE IF NOT EXISTS encounters(id int NOT NULL AUTO_INCREMENT, user_id INT, hospital_name VARCHAR(255), doctor_name VARCHAR(255), symptoms VARCHAR(255), encounter_date VARCHAR(255), PRIMARY KEY(id))");
-            PreparedStatement create_open_orders = con.prepareStatement("CREATE TABLE IF NOT EXISTS openorders(id int NOT NULL AUTO_INCREMENT, product_id INT, order_quantity INT, PRIMARY KEY(id))");
+            PreparedStatement create_open_orders_food = con.prepareStatement("CREATE TABLE IF NOT EXISTS openordersfood(id int NOT NULL AUTO_INCREMENT, product_id INT, order_quantity INT, PRIMARY KEY(id))");
+            PreparedStatement create_open_orders_accessory = con.prepareStatement("CREATE TABLE IF NOT EXISTS openordersaccessory(id int NOT NULL AUTO_INCREMENT, product_id INT, order_quantity INT, PRIMARY KEY(id))");
             
             create_kennelbooking.executeUpdate();
             create_kennel.executeUpdate();
@@ -57,7 +58,8 @@ public class databaseConnection {
             create_hospitals.executeUpdate();
             create_doctors.executeUpdate();
             create_encounter.executeUpdate();
-            create_open_orders.executeUpdate();
+            create_open_orders_food.executeUpdate();
+            create_open_orders_accessory.executeUpdate();
             
             return con;
         } catch(Exception e){System.out.println(e);}
@@ -295,9 +297,17 @@ public class databaseConnection {
         insertEncounter.executeUpdate();
     }
     
-    public void insertOpenOrders(int product_id, int order_quantity) throws Exception
+    public void insertOpenOrdersFood(int product_id, int order_quantity) throws Exception
     {
-        PreparedStatement insertOrder = con.prepareStatement("INSERT INTO openorders(product_id, order_quantity) VALUES (?, ?)");
+        PreparedStatement insertOrder = con.prepareStatement("INSERT INTO openordersfood(product_id, order_quantity) VALUES (?, ?)");
+        insertOrder.setInt(1, product_id);
+        insertOrder.setInt(2, order_quantity);
+        insertOrder.executeUpdate();
+    }
+    
+    public void insertOpenOrdersAccessory(int product_id, int order_quantity) throws Exception
+    {
+        PreparedStatement insertOrder = con.prepareStatement("INSERT INTO openordersaccessory(product_id, order_quantity) VALUES (?, ?)");
         insertOrder.setInt(1, product_id);
         insertOrder.setInt(2, order_quantity);
         insertOrder.executeUpdate();
