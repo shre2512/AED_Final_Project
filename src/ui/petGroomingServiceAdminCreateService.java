@@ -39,9 +39,11 @@ public class petGroomingServiceAdminCreateService extends javax.swing.JPanel {
         lblUpdateFoodPrice = new javax.swing.JLabel();
         lblServiceName = new javax.swing.JLabel();
         txtServiceName = new javax.swing.JTextField();
-        lblServiceNewPrice = new javax.swing.JLabel();
-        txtServiceNewPrice = new javax.swing.JTextField();
-        btnUpdateServicePrice = new javax.swing.JButton();
+        lblServiceTime = new javax.swing.JLabel();
+        txtServiceTime = new javax.swing.JTextField();
+        btnCreateService = new javax.swing.JButton();
+        lblServiceCost = new javax.swing.JLabel();
+        txtServiceCost = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(0, 255, 255));
 
@@ -60,23 +62,33 @@ public class petGroomingServiceAdminCreateService extends javax.swing.JPanel {
             }
         });
 
-        lblServiceNewPrice.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        lblServiceNewPrice.setText("New Price :");
+        lblServiceTime.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        lblServiceTime.setText("Service Time :");
 
-        txtServiceNewPrice.setPreferredSize(new java.awt.Dimension(71, 30));
-        txtServiceNewPrice.addActionListener(new java.awt.event.ActionListener() {
+        txtServiceTime.setPreferredSize(new java.awt.Dimension(71, 30));
+        txtServiceTime.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtServiceNewPriceActionPerformed(evt);
+                txtServiceTimeActionPerformed(evt);
             }
         });
 
-        btnUpdateServicePrice.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        btnUpdateServicePrice.setForeground(new java.awt.Color(255, 0, 0));
-        btnUpdateServicePrice.setText("Update Price");
-        btnUpdateServicePrice.setPreferredSize(new java.awt.Dimension(76, 30));
-        btnUpdateServicePrice.addActionListener(new java.awt.event.ActionListener() {
+        btnCreateService.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        btnCreateService.setForeground(new java.awt.Color(255, 0, 0));
+        btnCreateService.setText("Create Service");
+        btnCreateService.setPreferredSize(new java.awt.Dimension(76, 30));
+        btnCreateService.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUpdateServicePriceActionPerformed(evt);
+                btnCreateServiceActionPerformed(evt);
+            }
+        });
+
+        lblServiceCost.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        lblServiceCost.setText("Service Cost :");
+
+        txtServiceCost.setPreferredSize(new java.awt.Dimension(71, 30));
+        txtServiceCost.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtServiceCostActionPerformed(evt);
             }
         });
 
@@ -84,40 +96,50 @@ public class petGroomingServiceAdminCreateService extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblUpdateFoodPrice, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 860, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(266, Short.MAX_VALUE)
+            .addComponent(lblUpdateFoodPrice, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(244, 244, 244)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblServiceNewPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(29, 29, 29)
-                        .addComponent(txtServiceNewPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblServiceCost, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblServiceTime, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtServiceCost, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtServiceTime, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblServiceName, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(29, 29, 29)
+                        .addComponent(lblServiceName)
+                        .addGap(66, 66, 66)
                         .addComponent(txtServiceName, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(246, 246, 246))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnUpdateServicePrice, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(309, 309, 309))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(373, 373, 373)
+                .addComponent(btnCreateService, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(9, 9, 9)
                 .addComponent(lblUpdateFoodPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(284, 284, 284)
+                .addGap(109, 109, 109)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtServiceName, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblServiceName, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtServiceNewPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblServiceNewPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(74, 74, 74)
-                .addComponent(btnUpdateServicePrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(97, Short.MAX_VALUE))
+                    .addComponent(txtServiceTime, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblServiceTime, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(34, 34, 34)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtServiceCost, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblServiceCost, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(82, 82, 82)
+                .addComponent(btnCreateService, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(199, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -125,22 +147,35 @@ public class petGroomingServiceAdminCreateService extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtServiceNameActionPerformed
 
-    private void txtServiceNewPriceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtServiceNewPriceActionPerformed
+    private void txtServiceTimeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtServiceTimeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtServiceNewPriceActionPerformed
+    }//GEN-LAST:event_txtServiceTimeActionPerformed
 
-    private void btnUpdateServicePriceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateServicePriceActionPerformed
+    private void btnCreateServiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateServiceActionPerformed
 
-        
-    }//GEN-LAST:event_btnUpdateServicePriceActionPerformed
+        String serviceName = txtServiceName.getText();
+        String serviceTime = txtServiceTime.getText();
+        int serviceCost = Integer.parseInt(txtServiceCost.getText());
+        // databaseConnection.insertGroomingService(serviceName, serviceTime, serviceCost);
+        JOptionPane.showMessageDialog(this, "Grooming Service Created Successfully!");
+        txtServiceName.setText("");
+        txtServiceTime.setText("");
+        txtServiceCost.setText("");
+    }//GEN-LAST:event_btnCreateServiceActionPerformed
+
+    private void txtServiceCostActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtServiceCostActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtServiceCostActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnUpdateServicePrice;
+    private javax.swing.JButton btnCreateService;
+    private javax.swing.JLabel lblServiceCost;
     private javax.swing.JLabel lblServiceName;
-    private javax.swing.JLabel lblServiceNewPrice;
+    private javax.swing.JLabel lblServiceTime;
     private javax.swing.JLabel lblUpdateFoodPrice;
+    private javax.swing.JTextField txtServiceCost;
     private javax.swing.JTextField txtServiceName;
-    private javax.swing.JTextField txtServiceNewPrice;
+    private javax.swing.JTextField txtServiceTime;
     // End of variables declaration//GEN-END:variables
 }
