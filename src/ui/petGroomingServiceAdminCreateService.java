@@ -109,12 +109,13 @@ public class petGroomingServiceAdminCreateService extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtServiceCost, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtServiceTime, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txtServiceTime, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(246, 246, 246))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lblServiceName)
-                        .addGap(66, 66, 66)
-                        .addComponent(txtServiceName, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(246, 246, 246))
+                        .addGap(87, 87, 87)
+                        .addComponent(txtServiceName, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(373, 373, 373)
                 .addComponent(btnCreateService, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -153,14 +154,18 @@ public class petGroomingServiceAdminCreateService extends javax.swing.JPanel {
 
     private void btnCreateServiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateServiceActionPerformed
 
-        String serviceName = txtServiceName.getText();
-        String serviceTime = txtServiceTime.getText();
-        int serviceCost = Integer.parseInt(txtServiceCost.getText());
-        // databaseConnection.insertGroomingService(serviceName, serviceTime, serviceCost);
-        JOptionPane.showMessageDialog(this, "Grooming Service Created Successfully!");
-        txtServiceName.setText("");
-        txtServiceTime.setText("");
-        txtServiceCost.setText("");
+        try {
+            String serviceName = txtServiceName.getText();
+            String serviceTime = txtServiceTime.getText();
+            int serviceCost = Integer.parseInt(txtServiceCost.getText());
+            databaseConnection.insertGroomingService(serviceName, serviceTime, serviceCost);
+            JOptionPane.showMessageDialog(this, "Grooming Service Created Successfully!");
+            txtServiceName.setText("");
+            txtServiceTime.setText("");
+            txtServiceCost.setText("");
+        } catch (Exception ex) {
+            Logger.getLogger(petGroomingServiceAdminCreateService.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnCreateServiceActionPerformed
 
     private void txtServiceCostActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtServiceCostActionPerformed

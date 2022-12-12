@@ -466,7 +466,10 @@ public class databaseConnection {
     public void insertGroomingService(String serviceName, String serviceTime, int serviceCost) throws Exception
     {
         PreparedStatement insert = con.prepareStatement("INSERT INTO groomingservices(service_name, service_time, service_cost) VALUES(?, ?, ?)");
-        
+        insert.setString(1, serviceName);
+        insert.setString(2, serviceTime);
+        insert.setInt(3, serviceCost);
+        insert.executeUpdate();
     }
             
 }

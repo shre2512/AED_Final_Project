@@ -25,7 +25,7 @@
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace min="-2" pref="244" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="lblServiceCost" min="-2" pref="101" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
@@ -38,14 +38,15 @@
                           <Component id="txtServiceCost" min="-2" pref="218" max="-2" attributes="0"/>
                           <Component id="txtServiceTime" min="-2" pref="218" max="-2" attributes="0"/>
                       </Group>
+                      <EmptySpace min="-2" pref="246" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
                       <Component id="lblServiceName" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="87" max="-2" attributes="0"/>
                       <Component id="txtServiceName" min="-2" pref="218" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace min="-2" pref="246" max="-2" attributes="0"/>
           </Group>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="373" max="-2" attributes="0"/>

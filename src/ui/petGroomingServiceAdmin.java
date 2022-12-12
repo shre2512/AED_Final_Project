@@ -136,8 +136,8 @@ public class petGroomingServiceAdmin extends javax.swing.JPanel {
 
     private void btnCreateServiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateServiceActionPerformed
         // TODO add your handling code here:
-        petFoodAdminOrderProductQuantity petFoodAdminOrderProductQuantity = new petFoodAdminOrderProductQuantity(databaseConnection);
-        petGroomingServiceAdminSplitPane.setRightComponent(petFoodAdminOrderProductQuantity);
+        petGroomingServiceAdminCreateService petCreateGroomingService = new petGroomingServiceAdminCreateService(databaseConnection);
+        petGroomingServiceAdminSplitPane.setRightComponent(petCreateGroomingService);
     }//GEN-LAST:event_btnCreateServiceActionPerformed
 
 
