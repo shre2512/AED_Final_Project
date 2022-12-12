@@ -190,13 +190,13 @@ public class petShelterJPanel1 extends javax.swing.JPanel {
 
     private void btnAdoptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdoptActionPerformed
         // TODO add your handling code here:
-        String selectedId = (String) tblPetAdoptionRecords.getValueAt(tblPetAdoptionRecords.getSelectedRow() , 0);
+        String selectedId =  tblPetAdoptionRecords.getValueAt(tblPetAdoptionRecords.getSelectedRow() , 0).toString();
         String selectedPetID = (String) tblPetAdoptionRecords.getValueAt(tblPetAdoptionRecords.getSelectedRow() , 1);
-        String selectedUserId = (String) tblPetAdoptionRecords.getValueAt(tblPetAdoptionRecords.getSelectedRow() , 2);
-        String selectedName = (String) tblPetAdoptionRecords.getValueAt(tblPetAdoptionRecords.getSelectedRow() , 3);
+        String selectedName = (String) tblPetAdoptionRecords.getValueAt(tblPetAdoptionRecords.getSelectedRow() , 2);
 
         try {
         databaseConnection.adoptedPets(selectedPetID,userID, selectedName);
+        databaseConnection.deleteFromShelter(Integer.parseInt(selectedId));
         } catch (Exception ex) {
             Logger.getLogger(petShelterAdminAddPets1.class.getName()).log(Level.SEVERE, null, ex);
         }

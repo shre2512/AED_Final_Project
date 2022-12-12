@@ -271,5 +271,10 @@ public class databaseConnection {
         ResultSet result = select.executeQuery();
         return result;
     }
- 
+     public void deleteFromShelter(int ID) throws Exception
+    {
+        PreparedStatement insertClosedOrder = con.prepareStatement("DELETE FROM shelterPets WHERE id = ?");
+        insertClosedOrder.setInt(1, ID);
+        insertClosedOrder.executeUpdate();
+    }
 }
