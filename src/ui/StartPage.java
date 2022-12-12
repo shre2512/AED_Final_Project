@@ -4,20 +4,15 @@
  */
 package ui;
 
-import java.io.FileInputStream;
-import java.io.InputStream;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import model.Admin;
-import model.EmailNotification;
-import model.SMSNotification;
+import model.databaseConnection;
+import model.sendEmail;
+import model.sendSMS;
 
 /**
  *
@@ -28,22 +23,25 @@ public class StartPage extends javax.swing.JFrame {
     /**
      * Creates new form StartPage
      */
-    Connection con;
-    EmailNotification emailNotification;
-    SMSNotification smsNotification;
+    sendEmail emailNotification;
+    sendSMS smsNotification;
     private final Admin foodStoreAdmin;
-    
+    private final Admin hospitalAdmin;
+    public databaseConnection databaseConnection;
+    private final Admin kennelAdmin;
+    private final Admin accessoryAdmin;
+    private final Admin productSupplier;
+        
     public StartPage() {
         initComponents();
-       // this.emailNotification = new EmailNotification();
-        this.smsNotification = new SMSNotification();
+        this.emailNotification = new sendEmail();
+        this.smsNotification = new sendSMS();
         this.foodStoreAdmin = new Admin("Food Store Admin", "Food Store Admin", "Food Store Admin");
-        try {
-            con = createTables();
-        } catch (Exception ex) {
-            Logger.getLogger(StartPage.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        buttonLogOut.setVisible(false);
+        this.hospitalAdmin = new Admin("Hospital Admin", "Hospital Admin", "Hospital Admin");
+        this.kennelAdmin = new Admin("Kennel Admin", "Kennel Admin", "Kennel Admin");
+        this.accessoryAdmin = new Admin("Accessory Admin", "Accessory Admin", "Accessory Admin");
+        this.productSupplier = new Admin("Product Supplier", "Product Supplier", "Product Supplier");
+        this.databaseConnection = new databaseConnection();
     }
 
     /**
@@ -55,8 +53,6 @@ public class StartPage extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         splitPane = new javax.swing.JSplitPane();
         controlPanel = new javax.swing.JPanel();
         buttonLogOut = new javax.swing.JButton();
@@ -82,21 +78,15 @@ public class StartPage extends javax.swing.JFrame {
         txtloginPassword = new javax.swing.JPasswordField();
         loginAs = new javax.swing.JLabel();
         selectRole = new javax.swing.JComboBox<>();
-        jLabel1 = new javax.swing.JLabel();
-
-        jLabel2.setText("jLabel2");
-
-        jLabel3.setText("jLabel3");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         splitPane.setDividerLocation(120);
 
-        controlPanel.setBackground(new java.awt.Color(0, 51, 153));
+        controlPanel.setBackground(new java.awt.Color(102, 255, 102));
 
-        buttonLogOut.setBackground(new java.awt.Color(51, 204, 255));
         buttonLogOut.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        buttonLogOut.setForeground(new java.awt.Color(0, 51, 153));
+        buttonLogOut.setForeground(new java.awt.Color(255, 0, 0));
         buttonLogOut.setText("Log Out");
         buttonLogOut.setPreferredSize(new java.awt.Dimension(76, 30));
         buttonLogOut.addActionListener(new java.awt.event.ActionListener() {
@@ -111,7 +101,7 @@ public class StartPage extends javax.swing.JFrame {
             controlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(controlPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(buttonLogOut, javax.swing.GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE)
+                .addComponent(buttonLogOut, javax.swing.GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE)
                 .addContainerGap())
         );
         controlPanelLayout.setVerticalGroup(
@@ -124,16 +114,15 @@ public class StartPage extends javax.swing.JFrame {
 
         splitPane.setLeftComponent(controlPanel);
 
-        workArea.setBackground(new java.awt.Color(102, 204, 255));
+        workArea.setBackground(new java.awt.Color(0, 255, 255));
 
         lbl.setBackground(new java.awt.Color(255, 255, 255));
-        lbl.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
-        lbl.setForeground(new java.awt.Color(0, 51, 153));
-        lbl.setText("                                                  Pet Management System");
+        lbl.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        lbl.setForeground(new java.awt.Color(255, 0, 0));
+        lbl.setText("                                                                                  Pet Management System");
 
-        btnLogIn.setBackground(new java.awt.Color(0, 51, 103));
         btnLogIn.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        btnLogIn.setForeground(new java.awt.Color(51, 204, 255));
+        btnLogIn.setForeground(new java.awt.Color(255, 0, 0));
         btnLogIn.setText("Log In");
         btnLogIn.setPreferredSize(new java.awt.Dimension(76, 30));
         btnLogIn.addActionListener(new java.awt.event.ActionListener() {
@@ -142,12 +131,9 @@ public class StartPage extends javax.swing.JFrame {
             }
         });
 
-        btnSignUp.setBackground(new java.awt.Color(0, 51, 103));
         btnSignUp.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        btnSignUp.setForeground(new java.awt.Color(51, 204, 255));
+        btnSignUp.setForeground(new java.awt.Color(255, 0, 0));
         btnSignUp.setText("Sign Up");
-        btnSignUp.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 0, 153)));
-        btnSignUp.setBorderPainted(false);
         btnSignUp.setPreferredSize(new java.awt.Dimension(76, 30));
         btnSignUp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -156,7 +142,6 @@ public class StartPage extends javax.swing.JFrame {
         });
 
         lblEmailID.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        lblEmailID.setForeground(new java.awt.Color(0, 51, 103));
         lblEmailID.setText("Email ID :");
 
         txtEmailID.setPreferredSize(new java.awt.Dimension(71, 30));
@@ -167,7 +152,6 @@ public class StartPage extends javax.swing.JFrame {
         });
 
         lblPhoneNumber.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        lblPhoneNumber.setForeground(new java.awt.Color(0, 51, 103));
         lblPhoneNumber.setText("Phone Number :");
 
         txtPhoneNumber.setPreferredSize(new java.awt.Dimension(71, 30));
@@ -184,7 +168,6 @@ public class StartPage extends javax.swing.JFrame {
         });
 
         lblUserName.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        lblUserName.setForeground(new java.awt.Color(0, 51, 103));
         lblUserName.setText("User Name :");
 
         txtUserName.setPreferredSize(new java.awt.Dimension(71, 30));
@@ -195,11 +178,9 @@ public class StartPage extends javax.swing.JFrame {
         });
 
         lblFirstName.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        lblFirstName.setForeground(new java.awt.Color(0, 51, 103));
         lblFirstName.setText("First Name :");
 
         lblPassword.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        lblPassword.setForeground(new java.awt.Color(0, 51, 103));
         lblPassword.setText("Password :");
 
         txtFirstName.setPreferredSize(new java.awt.Dimension(71, 30));
@@ -210,7 +191,6 @@ public class StartPage extends javax.swing.JFrame {
         });
 
         lblLastName.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        lblLastName.setForeground(new java.awt.Color(0, 51, 103));
         lblLastName.setText("Last Name :");
 
         txtLastName.setPreferredSize(new java.awt.Dimension(71, 30));
@@ -221,7 +201,6 @@ public class StartPage extends javax.swing.JFrame {
         });
 
         loginlblUserName.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        loginlblUserName.setForeground(new java.awt.Color(0, 51, 103));
         loginlblUserName.setText("User Name :");
 
         txtloginUserName.setPreferredSize(new java.awt.Dimension(71, 30));
@@ -232,7 +211,6 @@ public class StartPage extends javax.swing.JFrame {
         });
 
         loginlblPassword.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        loginlblPassword.setForeground(new java.awt.Color(0, 51, 103));
         loginlblPassword.setText("Password :");
 
         txtloginPassword.addActionListener(new java.awt.event.ActionListener() {
@@ -242,23 +220,17 @@ public class StartPage extends javax.swing.JFrame {
         });
 
         loginAs.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        loginAs.setForeground(new java.awt.Color(0, 51, 103));
         loginAs.setText("Role : ");
 
-        selectRole.setForeground(new java.awt.Color(0, 51, 153));
-        selectRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "User", "Food Store Admin" }));
+        selectRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "User", "Food Store Admin", "Hospital Admin", "Kennel Admin", "Accessory Admin", "Product Supplier", "Doctor" }));
         selectRole.setMinimumSize(new java.awt.Dimension(72, 30));
         selectRole.setPreferredSize(new java.awt.Dimension(72, 30));
-        selectRole.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                selectRoleActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout workAreaLayout = new javax.swing.GroupLayout(workArea);
         workArea.setLayout(workAreaLayout);
         workAreaLayout.setHorizontalGroup(
             workAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lbl, javax.swing.GroupLayout.DEFAULT_SIZE, 990, Short.MAX_VALUE)
             .addGroup(workAreaLayout.createSequentialGroup()
                 .addGap(68, 68, 68)
                 .addGroup(workAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -311,10 +283,6 @@ public class StartPage extends javax.swing.JFrame {
                         .addComponent(btnLogIn, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(87, 87, 87))))
             .addGroup(workAreaLayout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 331, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(workAreaLayout.createSequentialGroup()
                 .addGap(214, 214, 214)
                 .addComponent(btnSignUp, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
@@ -322,9 +290,8 @@ public class StartPage extends javax.swing.JFrame {
         workAreaLayout.setVerticalGroup(
             workAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(workAreaLayout.createSequentialGroup()
-                .addGroup(workAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap()
+                .addComponent(lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(74, 74, 74)
                 .addGroup(workAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -371,7 +338,7 @@ public class StartPage extends javax.swing.JFrame {
                         .addComponent(btnLogIn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(46, 46, 46)
                 .addComponent(btnSignUp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(106, Short.MAX_VALUE))
+                .addContainerGap(103, Short.MAX_VALUE))
         );
 
         splitPane.setRightComponent(workArea);
@@ -389,50 +356,104 @@ public class StartPage extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    
-    public static Connection createTables() throws Exception{
-        try{
-            Connection con = getConnection();
-            PreparedStatement create_usertable = con.prepareStatement("CREATE TABLE IF NOT EXISTS usertable(id int NOT NULL AUTO_INCREMENT, first_name VARCHAR(255), last_name VARCHAR(255), email_id VARCHAR(255), phone_number VARCHAR(255), user_name VARCHAR(255), password VARCHAR(255), PRIMARY KEY(id))");
-            PreparedStatement create_petfood = con.prepareStatement("CREATE TABLE IF NOT EXISTS petfood(id int NOT NULL AUTO_INCREMENT, food_name VARCHAR(255), food_price int, available_quantity int, PRIMARY KEY(id))");
-            create_usertable.executeUpdate();
-            create_petfood.executeUpdate();
-            return con;
-        } catch(Exception e){System.out.println(e);}
-        finally{System.out.println("Table Created!");
-        };
-        return null;
-    }
-    
-    public static Connection getConnection() throws Exception{
-        try{
+      
+    private void btnLogInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogInActionPerformed
+        // TODO add your handling code here:
+        if (selectRole.getSelectedItem().toString().equals("User"))
+        {
+            try{
+                int userID = checkCredentials(txtloginUserName.getText(), txtloginPassword.getText());
+                if(userID == 0)
+                {
+                    JOptionPane.showMessageDialog(this, "Invalid Credentials!");
+                    txtloginUserName.setText("");
+                    txtloginPassword.setText("");
+                }
+                else
+                {
+                     userJPanel userPanel = new userJPanel(databaseConnection, userID, emailNotification, smsNotification);
+                     splitPane.setRightComponent(userPanel);
+                     buttonLogOut.setVisible(true);
+                }
 
-            Properties prop = new Properties();
-            InputStream input = null;
-            input = new FileInputStream("config.properties");
-            prop.load(input);
+            } catch(Exception e){System.out.println(e);}
+        }
+        else if(foodStoreAdmin.getAdminRole().equals(selectRole.getSelectedItem().toString()) && foodStoreAdmin.getAdminUserName().equals(txtloginUserName.getText()) && foodStoreAdmin.getAdminPassWord().equals(txtloginPassword.getText()))
+        {
+            try{
+                JOptionPane.showMessageDialog(this, "Logged In As Food Store Admin");
+                petFoodAdmin petFoodAdminJPanel = new petFoodAdmin(databaseConnection);
+                splitPane.setRightComponent(petFoodAdminJPanel);
+                buttonLogOut.setVisible(true);
+            } catch(Exception e){System.out.println(e);}
+        }
+        else if(hospitalAdmin.getAdminRole().equals(selectRole.getSelectedItem().toString()) && hospitalAdmin.getAdminUserName().equals(txtloginUserName.getText()) && hospitalAdmin.getAdminPassWord().equals(txtloginPassword.getText()))
+        {
+            try{
+                JOptionPane.showMessageDialog(this, "Logged In As Hospital Admin");
+                hospitalAdmin hospitalAdminJPanel = new hospitalAdmin(databaseConnection);
+                splitPane.setRightComponent(hospitalAdminJPanel);
+                buttonLogOut.setVisible(true);
+            } catch(Exception e){System.out.println(e);}
+        }
+        else if(selectRole.getSelectedItem().toString().equals("Doctor")) 
+        {
+            try{
+                ResultSet result =  databaseConnection.executeSelect("SELECT * FROM doctors");
+                boolean flag = false;
+                
+                while(result.next())
+                {
+                    if(result.getString("username").equals(txtloginUserName.getText()) && result.getString("password").equals(txtloginPassword.getText()))
+                    {
+                        flag = true;
+                        String fullName = result.getString("first_name") + " " + result.getString("last_name");
+                        doctorJPanel doctor = new doctorJPanel(databaseConnection, fullName);
+                        splitPane.setRightComponent(doctor);
+                        buttonLogOut.setVisible(true);
+                    }
+                }
+                if(flag == true)
+                {
+                    
+                }
 
-            String username = prop.getProperty("dbUserName");
-            String password = prop.getProperty("dbPassword");
-
-            String driver = "com.mysql.cj.jdbc.Driver";
-            String url = "jdbc:mysql://localhost:3306/aed_project";
-
-            Class.forName(driver);
-
-            Connection conn = DriverManager.getConnection(url,username, password);
-            System.out.println("Connected");
-            return conn;
-           } catch(Exception e){System.out.println(e);}
-
-        return null;
-    }  
+            } catch(Exception e){System.out.println(e);}
+        }
+        else if(kennelAdmin.getAdminRole().equals(selectRole.getSelectedItem().toString()) && kennelAdmin.getAdminUserName().equals(txtloginUserName.getText()) && kennelAdmin.getAdminPassWord().equals(txtloginPassword.getText()))
+        {
+            try{
+                JOptionPane.showMessageDialog(this, "Logged In As Kennel Admin");
+                kennelAdmin kennelAdminJPanel = new kennelAdmin(databaseConnection);
+                splitPane.setRightComponent(kennelAdminJPanel);
+                buttonLogOut.setVisible(true);
+            } catch(Exception e){System.out.println(e);}
+        }
         
+        else if(accessoryAdmin.getAdminRole().equals(selectRole.getSelectedItem().toString()) && accessoryAdmin.getAdminUserName().equals(txtloginUserName.getText()) && accessoryAdmin.getAdminPassWord().equals(txtloginPassword.getText()))
+        {
+            try{
+                JOptionPane.showMessageDialog(this, "Logged In As Accessory Admin");
+                petAccessoryAdmin petAccessoryJPanel = new petAccessoryAdmin(databaseConnection);
+                splitPane.setRightComponent(petAccessoryJPanel);
+                buttonLogOut.setVisible(true);
+            } catch(Exception e){System.out.println(e);}
+        }
+        
+        else if(productSupplier.getAdminRole().equals(selectRole.getSelectedItem().toString()) && productSupplier.getAdminUserName().equals(txtloginUserName.getText()) && productSupplier.getAdminPassWord().equals(txtloginPassword.getText()))
+        {
+            try{
+                JOptionPane.showMessageDialog(this, "Logged In As Product Supplier");
+                productSupplier productSupply = new productSupplier(databaseConnection);
+                splitPane.setRightComponent(productSupply);
+                buttonLogOut.setVisible(true);
+            } catch(Exception e){System.out.println(e);}
+        }
+    }//GEN-LAST:event_btnLogInActionPerformed
+    
     private int checkCredentials(String userName, String password) throws Exception
     {
-        PreparedStatement statement = con.prepareStatement("SELECT * FROM usertable");
-            
-        ResultSet result = statement.executeQuery();
+        ResultSet result = databaseConnection.executeSelect("SELECT * FROM usertable");
         int userID = 0;
         while(result.next()){
             
@@ -447,9 +468,7 @@ public class StartPage extends javax.swing.JFrame {
     
     private int checkUserNameExists(String userName) throws Exception
     {
-        PreparedStatement statement = con.prepareStatement("SELECT * FROM usertable");
-            
-        ResultSet result = statement.executeQuery();
+        ResultSet result = databaseConnection.executeSelect("SELECT * FROM usertable");
         int userID = 0;
         while(result.next()){
             
@@ -469,42 +488,6 @@ public class StartPage extends javax.swing.JFrame {
         txtloginPassword.setText("");
     }//GEN-LAST:event_buttonLogOutActionPerformed
 
-    private void selectRoleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectRoleActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_selectRoleActionPerformed
-
-    private void txtloginPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtloginPasswordActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtloginPasswordActionPerformed
-
-    private void txtloginUserNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtloginUserNameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtloginUserNameActionPerformed
-
-    private void txtLastNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLastNameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtLastNameActionPerformed
-
-    private void txtFirstNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFirstNameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtFirstNameActionPerformed
-
-    private void txtUserNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserNameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtUserNameActionPerformed
-
-    private void txtPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtPasswordActionPerformed
-
-    private void txtPhoneNumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPhoneNumberActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtPhoneNumberActionPerformed
-
-    private void txtEmailIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailIDActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtEmailIDActionPerformed
-
     private void btnSignUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignUpActionPerformed
         // TODO add your handling code here:
         String firstName = txtFirstName.getText();
@@ -514,7 +497,7 @@ public class StartPage extends javax.swing.JFrame {
         String extensionPhoneNumber = "+1" + phoneNumber;
         String userName = txtUserName.getText();
         String password = txtPassword.getText();
-
+        
         try {
             int userID = checkUserNameExists(userName);
             if(userID != 0)
@@ -526,10 +509,9 @@ public class StartPage extends javax.swing.JFrame {
         } catch (Exception ex) {
             Logger.getLogger(StartPage.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        
         try {
-            PreparedStatement insert = con.prepareStatement("INSERT INTO usertable (first_name, last_name, email_id, phone_number, user_name, password) VALUES ('"+firstName+"', '"+lastName+"', '"+emailID+"', '"+phoneNumber+"', '"+userName+"', '"+password+"')");
-            insert.executeUpdate();
+            databaseConnection.executeInsert("INSERT INTO usertable (first_name, last_name, email_id, phone_number, user_name, password) VALUES ('"+firstName+"', '"+lastName+"', '"+emailID+"', '"+phoneNumber+"', '"+userName+"', '"+password+"')");
             JOptionPane.showMessageDialog(this, "Sign Up successful!");
             clearText();
             emailNotification.sendEmail("Welcome " + firstName + " " + lastName, "Thanks for signing up! We look forward to serving you!", emailID);
@@ -539,40 +521,8 @@ public class StartPage extends javax.swing.JFrame {
         } catch (Exception ex) {
             Logger.getLogger(StartPage.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+       
     }//GEN-LAST:event_btnSignUpActionPerformed
-
-    private void btnLogInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogInActionPerformed
-        // TODO add your handling code here:
-        if (selectRole.getSelectedItem().toString().equals("User"))
-        {
-            try{
-                int userID = checkCredentials(txtloginUserName.getText(), txtloginPassword.getText());
-                if(userID == 0)
-                {
-                    JOptionPane.showMessageDialog(this, "Invalid Credentials!");
-                    txtloginUserName.setText("");
-                    txtloginPassword.setText("");
-                }
-                else
-                {
-                    userJPanel userPanel = new userJPanel(con, userID, emailNotification, smsNotification);
-                    splitPane.setRightComponent(userPanel);
-                    buttonLogOut.setVisible(true);
-                }
-
-            } catch(Exception e){System.out.println(e);}
-        }
-        else if(foodStoreAdmin.getAdminRole().equals(selectRole.getSelectedItem().toString()) && foodStoreAdmin.getAdminUserName().equals(txtloginUserName.getText()) && foodStoreAdmin.getAdminPassWord().equals(txtloginPassword.getText()))
-        {
-            try{
-                JOptionPane.showMessageDialog(this, "Logged In As Food Store Admin");
-                petFoodAdmin petFoodAdminJPanel = new petFoodAdmin(con);
-                splitPane.setRightComponent(petFoodAdminJPanel);
-                buttonLogOut.setVisible(true);
-            } catch(Exception e){System.out.println(e);}
-        }
-    }//GEN-LAST:event_btnLogInActionPerformed
     
     private void clearText()
     {
@@ -583,6 +533,38 @@ public class StartPage extends javax.swing.JFrame {
         txtUserName.setText("");
         txtPassword.setText("");
     }
+    private void txtEmailIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailIDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEmailIDActionPerformed
+
+    private void txtPhoneNumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPhoneNumberActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPhoneNumberActionPerformed
+
+    private void txtPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPasswordActionPerformed
+
+    private void txtUserNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtUserNameActionPerformed
+
+    private void txtFirstNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFirstNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtFirstNameActionPerformed
+
+    private void txtLastNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLastNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtLastNameActionPerformed
+
+    private void txtloginUserNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtloginUserNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtloginUserNameActionPerformed
+
+    private void txtloginPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtloginPasswordActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtloginPasswordActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -623,9 +605,6 @@ public class StartPage extends javax.swing.JFrame {
     private javax.swing.JButton btnSignUp;
     private javax.swing.JButton buttonLogOut;
     private javax.swing.JPanel controlPanel;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel lbl;
     private javax.swing.JLabel lblEmailID;
     private javax.swing.JLabel lblFirstName;

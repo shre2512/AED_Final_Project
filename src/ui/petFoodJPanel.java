@@ -6,17 +6,15 @@ package ui;
 
 import java.awt.Image;
 import java.awt.image.BufferedImage;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
-import model.EmailNotification;
-import model.SMSNotification;
+import model.databaseConnection;
+import model.sendEmail;
+import model.sendSMS;
 
 /**
  *
@@ -27,15 +25,15 @@ public class petFoodJPanel extends javax.swing.JPanel {
     /**
      * Creates new form petFoodJPanel
      */
-    Connection con;
     int userID;
-    EmailNotification emailNotification;
-    SMSNotification smsNotification;
+    sendEmail emailNotification;
+    sendSMS smsNotification;
+    databaseConnection databaseConnection;
     
-    public petFoodJPanel(Connection con, int userID, EmailNotification emailNotification, SMSNotification smsNotification) throws Exception {
+    public petFoodJPanel(databaseConnection databaseConnection, int userID, sendEmail emailNotification, sendSMS smsNotification) throws Exception {
         initComponents();
         
-        this.con = con;
+        this.databaseConnection = databaseConnection;
         this.userID = userID;
         this.emailNotification = emailNotification;
         this.smsNotification = smsNotification;
@@ -73,8 +71,7 @@ public class petFoodJPanel extends javax.swing.JPanel {
     private void populateFields()
     {
         try {
-            PreparedStatement statement = con.prepareStatement("SELECT food_price, available_quantity FROM petfood");
-            ResultSet result = statement.executeQuery();
+            ResultSet result = databaseConnection.executeSelect("SELECT food_price, available_quantity FROM petfood");
             int count = 0;
             
             while(result.next())
@@ -171,7 +168,7 @@ public class petFoodJPanel extends javax.swing.JPanel {
         qtyToBuyPedigree = new javax.swing.JComboBox<>();
         btnPurchase = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(102, 204, 255));
+        setBackground(new java.awt.Color(0, 255, 255));
 
         lblPriceTikiCat.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lblPriceTikiCat.setText("Price :                 ");
@@ -289,9 +286,8 @@ public class petFoodJPanel extends javax.swing.JPanel {
             }
         });
 
-        btnPurchase.setBackground(new java.awt.Color(0, 51, 153));
         btnPurchase.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        btnPurchase.setForeground(new java.awt.Color(102, 204, 255));
+        btnPurchase.setForeground(new java.awt.Color(255, 0, 0));
         btnPurchase.setText("Purchase");
         btnPurchase.setPreferredSize(new java.awt.Dimension(76, 35));
         btnPurchase.addActionListener(new java.awt.event.ActionListener() {
@@ -503,38 +499,25 @@ public class petFoodJPanel extends javax.swing.JPanel {
         int tikiCatPrice = Integer.parseInt(txtItemPriceTikiCat.getText());
         
         int orderTotal = (pedigreeQty*pedigreePrice) + (applawsQty * applawsPrice) + (naturalsQty * naturalsPrice) + (tikiCatQty * tikiCatPrice);
-        
-        PreparedStatement updatePedigreeQty;
-        PreparedStatement updateApplawsQty;
-        PreparedStatement updatenaturalsQty;
-        PreparedStatement updateTikiCatQty;
-        
+       
         try {
-            updatePedigreeQty = con.prepareStatement("UPDATE petfood SET available_quantity = ? WHERE food_name = ?");
-            updatePedigreeQty.setInt(1, Integer.parseInt(txtAvailableQtyPedigree.getText()) - pedigreeQty);
-            updatePedigreeQty.setString(2, "Pedigree");
-            updatePedigreeQty.executeUpdate();
+
+            databaseConnection.executePetFoodUpdate("UPDATE petfood SET available_quantity = ? WHERE food_name = ?", Integer.parseInt(txtAvailableQtyPedigree.getText()) - pedigreeQty, "Pedigree");
+            databaseConnection.executePetFoodUpdate("UPDATE petfood SET available_quantity = ? WHERE food_name = ?", Integer.parseInt(txtAvailableQtyApplaws.getText()) - applawsQty, "Applaws");
+            databaseConnection.executePetFoodUpdate("UPDATE petfood SET available_quantity = ? WHERE food_name = ?", Integer.parseInt(txtAvailableQtyNaturals.getText()) - naturalsQty, "Naturals");
+            databaseConnection.executePetFoodUpdate("UPDATE petfood SET available_quantity = ? WHERE food_name = ?", Integer.parseInt(txtAvailableQtyTikiCat.getText()) - tikiCatQty, "Tiki Cat");
             
-            updateApplawsQty = con.prepareStatement("UPDATE petfood SET available_quantity = ? WHERE food_name = ?");
-            updateApplawsQty.setInt(1, Integer.parseInt(txtAvailableQtyApplaws.getText()) - applawsQty);
-            updateApplawsQty.setString(2, "Applaws");
-            updateApplawsQty.executeUpdate();
-            
-            updatenaturalsQty = con.prepareStatement("UPDATE petfood SET available_quantity = ? WHERE food_name = ?");
-            updatenaturalsQty.setInt(1, Integer.parseInt(txtAvailableQtyNaturals.getText()) - naturalsQty);
-            updatenaturalsQty.setString(2, "Naturals");
-            updatenaturalsQty.executeUpdate();
-            
-            updateTikiCatQty = con.prepareStatement("UPDATE petfood SET available_quantity = ? WHERE food_name = ?");
-            updateTikiCatQty.setInt(1, Integer.parseInt(txtAvailableQtyTikiCat.getText()) - tikiCatQty);
-            updateTikiCatQty.setString(2, "Tiki Cat");
-            updateTikiCatQty.executeUpdate();
-            
-        } catch (SQLException ex) {
+        } catch (Exception ex) {
             Logger.getLogger(petFoodJPanel.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         populateFields();
+        
+        try {
+            databaseConnection.insertOrderItem(userID, applawsQty*applawsPrice, pedigreeQty*pedigreePrice, naturalsQty*naturalsPrice, tikiCatQty*tikiCatPrice);
+        } catch (Exception ex) {
+            Logger.getLogger(petFoodJPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
         String emailID = getEmailID(userID);
         if(emailID != null)
@@ -560,8 +543,8 @@ public class petFoodJPanel extends javax.swing.JPanel {
     private String getEmailID(int userID)
     {
         try {
-            PreparedStatement statement = con.prepareStatement("SELECT * FROM usertable");
-            ResultSet result = statement.executeQuery();
+            ResultSet result = databaseConnection.executeSelect("SELECT * FROM usertable");
+            
             while(result.next()){
                 
                 if(result.getInt("id") == userID)
@@ -569,7 +552,7 @@ public class petFoodJPanel extends javax.swing.JPanel {
                     return result.getString("email_id");
                 }
             }
-        } catch (SQLException ex) {
+        } catch (Exception ex) {
             Logger.getLogger(petFoodJPanel.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
@@ -578,8 +561,7 @@ public class petFoodJPanel extends javax.swing.JPanel {
     private String getPhoneNumber(int userID)
     {
         try {
-            PreparedStatement statement = con.prepareStatement("SELECT * FROM usertable");
-            ResultSet result = statement.executeQuery();
+            ResultSet result = databaseConnection.executeSelect("SELECT * FROM usertable");
             while(result.next()){
                 
                 if(result.getInt("id") == userID)
@@ -587,7 +569,7 @@ public class petFoodJPanel extends javax.swing.JPanel {
                     return result.getString("phone_number");
                 }
             }
-        } catch (SQLException ex) {
+        } catch (Exception ex) {
             Logger.getLogger(petFoodJPanel.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
