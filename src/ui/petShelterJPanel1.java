@@ -18,7 +18,6 @@ import javax.swing.event.DocumentListener;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 import model.databaseConnection;
-import model.petProfileForAdoption;
 /**
  *
  * @author babsybabu

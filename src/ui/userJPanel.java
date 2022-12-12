@@ -8,7 +8,6 @@ import java.sql.ResultSet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.databaseConnection;
-import model.petAdoptionRecords;
 import model.sendEmail;
 import model.sendSMS;
 import org.jfree.data.category.DefaultCategoryDataset;
@@ -34,15 +33,13 @@ public class userJPanel extends javax.swing.JPanel {
     sendEmail emailNotification;
     sendSMS smsNotification;
     databaseConnection databaseConnection;
-    petAdoptionRecords records;
     
-    public userJPanel(databaseConnection databaseConnection, int userID, sendEmail emailNotification, sendSMS smsNotification,petAdoptionRecords records) {
+    public userJPanel(databaseConnection databaseConnection, int userID, sendEmail emailNotification, sendSMS smsNotification) {
         initComponents();
         this.userID = userID;
         this.emailNotification = emailNotification;
         this.smsNotification = smsNotification;
         this.databaseConnection = databaseConnection;
-        this.records=records;
         init();
     }
 

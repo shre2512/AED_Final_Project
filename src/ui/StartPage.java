@@ -13,8 +13,7 @@ import model.Admin;
 import model.databaseConnection;
 import model.sendEmail;
 import model.sendSMS;
-import model.petAdoptionRecords;
-import model.petProfileForAdoption;
+
 
 
 /**
@@ -32,7 +31,6 @@ public class StartPage extends javax.swing.JFrame {
     private final Admin kennelAdmin;
     private final Admin shelterAdmin;
     public databaseConnection databaseConnection;
-    petAdoptionRecords records;
     
     public StartPage() {
         initComponents();
@@ -42,17 +40,7 @@ public class StartPage extends javax.swing.JFrame {
         this.kennelAdmin = new Admin("Kennel Admin", "Kennel Admin", "Kennel Admin");
         this.shelterAdmin = new Admin("Shelter Admin", "Shelter Admin", "Shelter Admin");
         this.databaseConnection = new databaseConnection();
-        records=new petAdoptionRecords();
-        petProfileForAdoption pet=records.addNewPet();
-        pet.setName("Bella");
-        pet.setAge(2);
-        pet.setPetId("1");
-        pet.setDob("12-01-2020");
-        pet.setBreed("Dog");
-        pet.setGender("Female");
-        pet.setVaccinationStatus("Fully vaccinated");
-        pet.setWeight(2);
-        pet.setHeight("12");
+
     }
 
     /**
@@ -382,7 +370,7 @@ public class StartPage extends javax.swing.JFrame {
                 }
                 else
                 {
-                     userJPanel userPanel = new userJPanel(databaseConnection, userID, emailNotification, smsNotification, records);
+                     userJPanel userPanel = new userJPanel(databaseConnection, userID, emailNotification, smsNotification);
                      splitPane.setRightComponent(userPanel);
                      buttonLogOut.setVisible(true);
                 }
