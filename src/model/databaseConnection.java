@@ -471,5 +471,36 @@ public class databaseConnection {
         insert.setInt(3, serviceCost);
         insert.executeUpdate();
     }
-            
+    
+    public void insertPetsIntoShelter(String petId, String name, String dob, int Age, String gender, String type, int height,int weight,String vaccine, byte[] image) throws Exception
+    {
+        PreparedStatement insertOrder = con.prepareStatement("INSERT INTO shelterPets (pet_id, pet_name, pet_date_of_birth, pet_age, pet_gender,pet_type,pet_height, pet_weight, pet_vaccination_status, pet_image) VALUES (?, ?, ?, ?,?,?,?,?,?,?)");
+        insertOrder.setString(1, petId);
+        insertOrder.setString(2, name);
+        insertOrder.setString(3, dob);
+        insertOrder.setInt(4, Age);
+        insertOrder.setString(5, gender);
+        insertOrder.setString(6, type);
+        insertOrder.setInt(7, height);
+        insertOrder.setInt(8, weight);
+        insertOrder.setString(9, vaccine);
+        insertOrder.setBytes(10, image);
+        insertOrder.executeUpdate();
+    }
+        
+    public void adoptedPets(String petId,int userId, String name) throws Exception
+    {
+        PreparedStatement insertOrder = con.prepareStatement("INSERT INTO adoptedPets (pet_id,user_id, pet_name) VALUES (?,?, ?)");
+        insertOrder.setString(1, petId);
+        insertOrder.setInt(2, userId);
+        insertOrder.setString(3, name);
+        insertOrder.executeUpdate();
+    }
+    
+    public void deleteFromShelter(int ID) throws Exception
+    {
+        PreparedStatement insertClosedOrder = con.prepareStatement("DELETE FROM shelterPets WHERE id = ?");
+        insertClosedOrder.setInt(1, ID);
+        insertClosedOrder.executeUpdate();
+    }
 }

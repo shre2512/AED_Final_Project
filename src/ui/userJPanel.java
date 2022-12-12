@@ -70,13 +70,6 @@ public class userJPanel extends javax.swing.JPanel {
         btnPetGrooming = new javax.swing.JButton();
         btnPetAccessories = new javax.swing.JButton();
         foodAccsWorkArea = new javax.swing.JPanel();
-        userPastActivity = new javax.swing.JPanel();
-        userPastActivitySplitPane = new javax.swing.JSplitPane();
-        userPastActivityControlArea = new javax.swing.JPanel();
-        btnAccessoryPurchase = new javax.swing.JButton();
-        btnFoodPurchase = new javax.swing.JButton();
-        btnGroomingServices = new javax.swing.JButton();
-        userPastActivityWorkArea = new javax.swing.JPanel();
         kennelJPanel = new javax.swing.JPanel();
         kennelSplitPane = new javax.swing.JSplitPane();
         kennelWorkArea = new javax.swing.JPanel();
@@ -86,6 +79,19 @@ public class userJPanel extends javax.swing.JPanel {
         btnCreateEncounter = new javax.swing.JButton();
         btnPastEncounters = new javax.swing.JButton();
         vetenaryWorkArea = new javax.swing.JPanel();
+        shelterJPanel = new javax.swing.JPanel();
+        petAdoptionSplitPane = new javax.swing.JSplitPane();
+        petAdoptionSplitPaneWorkArea = new javax.swing.JPanel();
+        btnAdoptPet = new javax.swing.JButton();
+        btnViewAdoptions = new javax.swing.JButton();
+        petAdoptionSplitPaneControlArea = new javax.swing.JPanel();
+        userPastActivity = new javax.swing.JPanel();
+        userPastActivitySplitPane = new javax.swing.JSplitPane();
+        userPastActivityControlArea = new javax.swing.JPanel();
+        btnAccessoryPurchase = new javax.swing.JButton();
+        btnFoodPurchase = new javax.swing.JButton();
+        btnGroomingServices = new javax.swing.JButton();
+        userPastActivityWorkArea = new javax.swing.JPanel();
 
         setBackground(new java.awt.Color(255, 255, 102));
 
@@ -180,98 +186,6 @@ public class userJPanel extends javax.swing.JPanel {
         );
 
         tabbedPane.addTab("Food & Accessories", foodAccsJPanel);
-
-        userPastActivity.setBackground(new java.awt.Color(0, 255, 255));
-
-        userPastActivitySplitPane.setDividerLocation(60);
-        userPastActivitySplitPane.setDividerSize(0);
-        userPastActivitySplitPane.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
-
-        userPastActivityControlArea.setBackground(new java.awt.Color(102, 255, 102));
-
-        btnAccessoryPurchase.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        btnAccessoryPurchase.setForeground(new java.awt.Color(255, 0, 0));
-        btnAccessoryPurchase.setText("Accessory Purchase");
-        btnAccessoryPurchase.setPreferredSize(new java.awt.Dimension(76, 35));
-        btnAccessoryPurchase.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAccessoryPurchaseActionPerformed(evt);
-            }
-        });
-
-        btnFoodPurchase.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        btnFoodPurchase.setForeground(new java.awt.Color(255, 0, 0));
-        btnFoodPurchase.setText("Food Purchase");
-        btnFoodPurchase.setPreferredSize(new java.awt.Dimension(76, 35));
-        btnFoodPurchase.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnFoodPurchaseActionPerformed(evt);
-            }
-        });
-
-        btnGroomingServices.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        btnGroomingServices.setForeground(new java.awt.Color(255, 0, 0));
-        btnGroomingServices.setText("Grooming Services");
-        btnGroomingServices.setPreferredSize(new java.awt.Dimension(76, 35));
-        btnGroomingServices.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGroomingServicesActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout userPastActivityControlAreaLayout = new javax.swing.GroupLayout(userPastActivityControlArea);
-        userPastActivityControlArea.setLayout(userPastActivityControlAreaLayout);
-        userPastActivityControlAreaLayout.setHorizontalGroup(
-            userPastActivityControlAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(userPastActivityControlAreaLayout.createSequentialGroup()
-                .addGap(185, 185, 185)
-                .addComponent(btnFoodPurchase, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(79, 79, 79)
-                .addComponent(btnAccessoryPurchase, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(78, 78, 78)
-                .addComponent(btnGroomingServices, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(320, Short.MAX_VALUE))
-        );
-        userPastActivityControlAreaLayout.setVerticalGroup(
-            userPastActivityControlAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(userPastActivityControlAreaLayout.createSequentialGroup()
-                .addGap(12, 12, 12)
-                .addGroup(userPastActivityControlAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAccessoryPurchase, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnFoodPurchase, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnGroomingServices, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(13, Short.MAX_VALUE))
-        );
-
-        userPastActivitySplitPane.setTopComponent(userPastActivityControlArea);
-
-        userPastActivityWorkArea.setBackground(new java.awt.Color(0, 255, 255));
-
-        javax.swing.GroupLayout userPastActivityWorkAreaLayout = new javax.swing.GroupLayout(userPastActivityWorkArea);
-        userPastActivityWorkArea.setLayout(userPastActivityWorkAreaLayout);
-        userPastActivityWorkAreaLayout.setHorizontalGroup(
-            userPastActivityWorkAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        userPastActivityWorkAreaLayout.setVerticalGroup(
-            userPastActivityWorkAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 509, Short.MAX_VALUE)
-        );
-
-        userPastActivitySplitPane.setRightComponent(userPastActivityWorkArea);
-
-        javax.swing.GroupLayout userPastActivityLayout = new javax.swing.GroupLayout(userPastActivity);
-        userPastActivity.setLayout(userPastActivityLayout);
-        userPastActivityLayout.setHorizontalGroup(
-            userPastActivityLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(userPastActivitySplitPane)
-        );
-        userPastActivityLayout.setVerticalGroup(
-            userPastActivityLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(userPastActivitySplitPane)
-        );
-
-        tabbedPane.addTab("Past Activity", userPastActivity);
 
         kennelSplitPane.setDividerLocation(0);
         kennelSplitPane.setDividerSize(0);
@@ -376,6 +290,173 @@ public class userJPanel extends javax.swing.JPanel {
         );
 
         tabbedPane.addTab("Vetenary", petVetenaryJPanel);
+
+        petAdoptionSplitPane.setDividerLocation(130);
+
+        petAdoptionSplitPaneWorkArea.setBackground(new java.awt.Color(102, 255, 102));
+
+        btnAdoptPet.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        btnAdoptPet.setForeground(new java.awt.Color(255, 0, 0));
+        btnAdoptPet.setText("Adopt a Pet");
+        btnAdoptPet.setPreferredSize(new java.awt.Dimension(76, 30));
+        btnAdoptPet.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAdoptPetActionPerformed(evt);
+            }
+        });
+
+        btnViewAdoptions.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        btnViewAdoptions.setForeground(new java.awt.Color(255, 0, 0));
+        btnViewAdoptions.setText("View Adoptions");
+        btnViewAdoptions.setPreferredSize(new java.awt.Dimension(76, 30));
+        btnViewAdoptions.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewAdoptionsActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout petAdoptionSplitPaneWorkAreaLayout = new javax.swing.GroupLayout(petAdoptionSplitPaneWorkArea);
+        petAdoptionSplitPaneWorkArea.setLayout(petAdoptionSplitPaneWorkAreaLayout);
+        petAdoptionSplitPaneWorkAreaLayout.setHorizontalGroup(
+            petAdoptionSplitPaneWorkAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(petAdoptionSplitPaneWorkAreaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(petAdoptionSplitPaneWorkAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnViewAdoptions, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)
+                    .addComponent(btnAdoptPet, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        petAdoptionSplitPaneWorkAreaLayout.setVerticalGroup(
+            petAdoptionSplitPaneWorkAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(petAdoptionSplitPaneWorkAreaLayout.createSequentialGroup()
+                .addGap(153, 153, 153)
+                .addComponent(btnAdoptPet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(64, 64, 64)
+                .addComponent(btnViewAdoptions, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(292, Short.MAX_VALUE))
+        );
+
+        petAdoptionSplitPane.setLeftComponent(petAdoptionSplitPaneWorkArea);
+
+        petAdoptionSplitPaneControlArea.setBackground(new java.awt.Color(0, 255, 255));
+
+        javax.swing.GroupLayout petAdoptionSplitPaneControlAreaLayout = new javax.swing.GroupLayout(petAdoptionSplitPaneControlArea);
+        petAdoptionSplitPaneControlArea.setLayout(petAdoptionSplitPaneControlAreaLayout);
+        petAdoptionSplitPaneControlAreaLayout.setHorizontalGroup(
+            petAdoptionSplitPaneControlAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 977, Short.MAX_VALUE)
+        );
+        petAdoptionSplitPaneControlAreaLayout.setVerticalGroup(
+            petAdoptionSplitPaneControlAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 569, Short.MAX_VALUE)
+        );
+
+        petAdoptionSplitPane.setRightComponent(petAdoptionSplitPaneControlArea);
+
+        javax.swing.GroupLayout shelterJPanelLayout = new javax.swing.GroupLayout(shelterJPanel);
+        shelterJPanel.setLayout(shelterJPanelLayout);
+        shelterJPanelLayout.setHorizontalGroup(
+            shelterJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(petAdoptionSplitPane)
+        );
+        shelterJPanelLayout.setVerticalGroup(
+            shelterJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(petAdoptionSplitPane)
+        );
+
+        tabbedPane.addTab("Shelter", shelterJPanel);
+
+        userPastActivity.setBackground(new java.awt.Color(0, 255, 255));
+
+        userPastActivitySplitPane.setDividerLocation(60);
+        userPastActivitySplitPane.setDividerSize(0);
+        userPastActivitySplitPane.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
+
+        userPastActivityControlArea.setBackground(new java.awt.Color(102, 255, 102));
+
+        btnAccessoryPurchase.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        btnAccessoryPurchase.setForeground(new java.awt.Color(255, 0, 0));
+        btnAccessoryPurchase.setText("Accessory Purchase");
+        btnAccessoryPurchase.setPreferredSize(new java.awt.Dimension(76, 35));
+        btnAccessoryPurchase.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAccessoryPurchaseActionPerformed(evt);
+            }
+        });
+
+        btnFoodPurchase.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        btnFoodPurchase.setForeground(new java.awt.Color(255, 0, 0));
+        btnFoodPurchase.setText("Food Purchase");
+        btnFoodPurchase.setPreferredSize(new java.awt.Dimension(76, 35));
+        btnFoodPurchase.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFoodPurchaseActionPerformed(evt);
+            }
+        });
+
+        btnGroomingServices.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        btnGroomingServices.setForeground(new java.awt.Color(255, 0, 0));
+        btnGroomingServices.setText("Grooming Services");
+        btnGroomingServices.setPreferredSize(new java.awt.Dimension(76, 35));
+        btnGroomingServices.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGroomingServicesActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout userPastActivityControlAreaLayout = new javax.swing.GroupLayout(userPastActivityControlArea);
+        userPastActivityControlArea.setLayout(userPastActivityControlAreaLayout);
+        userPastActivityControlAreaLayout.setHorizontalGroup(
+            userPastActivityControlAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(userPastActivityControlAreaLayout.createSequentialGroup()
+                .addGap(185, 185, 185)
+                .addComponent(btnFoodPurchase, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(79, 79, 79)
+                .addComponent(btnAccessoryPurchase, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(78, 78, 78)
+                .addComponent(btnGroomingServices, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(320, Short.MAX_VALUE))
+        );
+        userPastActivityControlAreaLayout.setVerticalGroup(
+            userPastActivityControlAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(userPastActivityControlAreaLayout.createSequentialGroup()
+                .addGap(12, 12, 12)
+                .addGroup(userPastActivityControlAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAccessoryPurchase, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnFoodPurchase, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnGroomingServices, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(13, Short.MAX_VALUE))
+        );
+
+        userPastActivitySplitPane.setTopComponent(userPastActivityControlArea);
+
+        userPastActivityWorkArea.setBackground(new java.awt.Color(0, 255, 255));
+
+        javax.swing.GroupLayout userPastActivityWorkAreaLayout = new javax.swing.GroupLayout(userPastActivityWorkArea);
+        userPastActivityWorkArea.setLayout(userPastActivityWorkAreaLayout);
+        userPastActivityWorkAreaLayout.setHorizontalGroup(
+            userPastActivityWorkAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        userPastActivityWorkAreaLayout.setVerticalGroup(
+            userPastActivityWorkAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 509, Short.MAX_VALUE)
+        );
+
+        userPastActivitySplitPane.setRightComponent(userPastActivityWorkArea);
+
+        javax.swing.GroupLayout userPastActivityLayout = new javax.swing.GroupLayout(userPastActivity);
+        userPastActivity.setLayout(userPastActivityLayout);
+        userPastActivityLayout.setHorizontalGroup(
+            userPastActivityLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(userPastActivitySplitPane)
+        );
+        userPastActivityLayout.setVerticalGroup(
+            userPastActivityLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(userPastActivitySplitPane)
+        );
+
+        tabbedPane.addTab("Past Activity", userPastActivity);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -506,9 +587,22 @@ public class userJPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnGroomingServicesActionPerformed
 
+    private void btnAdoptPetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdoptPetActionPerformed
+        // TODO add your handling code here:
+        petShelterJPanel1 adoptpet = new petShelterJPanel1(userID, databaseConnection);
+        petAdoptionSplitPane.setRightComponent(adoptpet);
+    }//GEN-LAST:event_btnAdoptPetActionPerformed
+
+    private void btnViewAdoptionsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewAdoptionsActionPerformed
+        // TODO add your handling code here:
+        adoptedUserPetsJPanel userPets = new adoptedUserPetsJPanel(databaseConnection, userID);
+        petAdoptionSplitPane.setRightComponent(userPets);
+    }//GEN-LAST:event_btnViewAdoptionsActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAccessoryPurchase;
+    private javax.swing.JButton btnAdoptPet;
     private javax.swing.JButton btnCreateEncounter;
     private javax.swing.JButton btnFoodPurchase;
     private javax.swing.JButton btnGroomingServices;
@@ -516,6 +610,7 @@ public class userJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnPetAccessories;
     private javax.swing.JButton btnPetFood;
     private javax.swing.JButton btnPetGrooming;
+    private javax.swing.JButton btnViewAdoptions;
     private javax.swing.JPanel foodAccsControlArea;
     private javax.swing.JPanel foodAccsJPanel;
     private javax.swing.JSplitPane foodAccsSplitPane;
@@ -523,7 +618,11 @@ public class userJPanel extends javax.swing.JPanel {
     private javax.swing.JPanel kennelJPanel;
     private javax.swing.JSplitPane kennelSplitPane;
     private javax.swing.JPanel kennelWorkArea;
+    private javax.swing.JSplitPane petAdoptionSplitPane;
+    private javax.swing.JPanel petAdoptionSplitPaneControlArea;
+    private javax.swing.JPanel petAdoptionSplitPaneWorkArea;
     private javax.swing.JPanel petVetenaryJPanel;
+    private javax.swing.JPanel shelterJPanel;
     private javax.swing.JTabbedPane tabbedPane;
     private javax.swing.JPanel userPastActivity;
     private javax.swing.JPanel userPastActivityControlArea;

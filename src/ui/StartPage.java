@@ -32,7 +32,8 @@ public class StartPage extends javax.swing.JFrame {
     private final Admin accessoryAdmin;
     private final Admin productSupplier;
     private final Admin groomingServiceAdmin;
-        
+    private final Admin shelterAdmin;
+    
     public StartPage() {
         initComponents();
         this.emailNotification = new sendEmail();
@@ -43,6 +44,7 @@ public class StartPage extends javax.swing.JFrame {
         this.accessoryAdmin = new Admin("Accessory Admin", "Accessory Admin", "Accessory Admin");
         this.productSupplier = new Admin("Product Supplier", "Product Supplier", "Product Supplier");
         this.groomingServiceAdmin = new Admin("Grooming Service Admin", "Grooming Service Admin", "Grooming Service Admin");
+        this.shelterAdmin = new Admin("Shelter Admin", "Shelter Admin", "Shelter Admin");
         this.databaseConnection = new databaseConnection();
     }
 
@@ -224,7 +226,7 @@ public class StartPage extends javax.swing.JFrame {
         loginAs.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         loginAs.setText("Role : ");
 
-        selectRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "User", "Food Store Admin", "Hospital Admin", "Kennel Admin", "Accessory Admin", "Product Supplier", "Doctor", "Grooming Service Admin" }));
+        selectRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "User", "Food Store Admin", "Hospital Admin", "Kennel Admin", "Accessory Admin", "Product Supplier", "Doctor", "Grooming Service Admin", "Shelter Admin" }));
         selectRole.setMinimumSize(new java.awt.Dimension(72, 30));
         selectRole.setPreferredSize(new java.awt.Dimension(72, 30));
 
@@ -461,6 +463,20 @@ public class StartPage extends javax.swing.JFrame {
                 splitPane.setRightComponent(petGroomingServiceAdminJPanel);
                 buttonLogOut.setVisible(true);
             } catch(Exception e){System.out.println(e);}
+        }
+        
+        else if(shelterAdmin.getAdminRole().equals(selectRole.getSelectedItem().toString()) && shelterAdmin.getAdminUserName().equals(txtloginUserName.getText()) && shelterAdmin.getAdminPassWord().equals(txtloginPassword.getText()))
+        {
+            try{
+                JOptionPane.showMessageDialog(this, "Logged In As Shelter Admin");
+                petShelterAdmin shelterAdminJPanel = new petShelterAdmin(databaseConnection);
+                splitPane.setRightComponent(shelterAdminJPanel);
+                buttonLogOut.setVisible(true);
+            } catch(Exception e){System.out.println(e);}
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(this, "Invalid Credentials!");
         }
     }//GEN-LAST:event_btnLogInActionPerformed
     
