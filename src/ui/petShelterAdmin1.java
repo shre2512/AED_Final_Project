@@ -19,7 +19,6 @@ public class petShelterAdmin1 extends javax.swing.JPanel {
     public petShelterAdmin1(databaseConnection databaseConnection) {
         initComponents();
                 this.databaseConnection = databaseConnection;
-
     }
 
     /**
@@ -34,6 +33,7 @@ public class petShelterAdmin1 extends javax.swing.JPanel {
         shelterAdminSplitPane = new javax.swing.JSplitPane();
         shelterAdminControlArea = new javax.swing.JPanel();
         btnAddPet = new javax.swing.JButton();
+        btnViewAdoptedPets = new javax.swing.JButton();
         shelterAdminWorkArea = new javax.swing.JPanel();
 
         btnAddPet.setText("Add pet");
@@ -43,20 +43,31 @@ public class petShelterAdmin1 extends javax.swing.JPanel {
             }
         });
 
+        btnViewAdoptedPets.setText("View adopted pets");
+        btnViewAdoptedPets.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewAdoptedPetsActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout shelterAdminControlAreaLayout = new javax.swing.GroupLayout(shelterAdminControlArea);
         shelterAdminControlArea.setLayout(shelterAdminControlAreaLayout);
         shelterAdminControlAreaLayout.setHorizontalGroup(
             shelterAdminControlAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(shelterAdminControlAreaLayout.createSequentialGroup()
-                .addComponent(btnAddPet)
-                .addGap(0, 23, Short.MAX_VALUE))
+                .addGroup(shelterAdminControlAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnAddPet)
+                    .addComponent(btnViewAdoptedPets))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         shelterAdminControlAreaLayout.setVerticalGroup(
             shelterAdminControlAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(shelterAdminControlAreaLayout.createSequentialGroup()
                 .addGap(86, 86, 86)
                 .addComponent(btnAddPet)
-                .addContainerGap(310, Short.MAX_VALUE))
+                .addGap(27, 27, 27)
+                .addComponent(btnViewAdoptedPets)
+                .addContainerGap(260, Short.MAX_VALUE))
         );
 
         shelterAdminSplitPane.setLeftComponent(shelterAdminControlArea);
@@ -94,9 +105,16 @@ public class petShelterAdmin1 extends javax.swing.JPanel {
         shelterAdminSplitPane.setRightComponent(addPets);
     }//GEN-LAST:event_btnAddPetActionPerformed
 
+    private void btnViewAdoptedPetsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewAdoptedPetsActionPerformed
+        // TODO add your handling code here:
+        adoptedPetsJPanel addPets = new adoptedPetsJPanel(databaseConnection);
+        shelterAdminSplitPane.setRightComponent(addPets);
+    }//GEN-LAST:event_btnViewAdoptedPetsActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddPet;
+    private javax.swing.JButton btnViewAdoptedPets;
     private javax.swing.JPanel shelterAdminControlArea;
     private javax.swing.JSplitPane shelterAdminSplitPane;
     private javax.swing.JPanel shelterAdminWorkArea;
