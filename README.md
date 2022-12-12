@@ -1,13 +1,18 @@
-# AED_Final_Project
+# Sagar_Mehta_002797484_Assignment_2
 
-# Pet Management 
+INFO 5100 Assignment 2 - Hospital Management System
 
-# Technologies: 
-# Java Swing
-# MySQL
 
-# Contributors
-# Sagar Mehta
-# Shreyas Gokhale
-# Babsy Babu 
+A hospital management system (HMS) is a tool that collects data about patients.
+When new patients come to the appointment, the Hospital registers them in the system. 
+The Hospital can make appointments and update patient profile.
+
+Based on the vitals taken, it can seggregate a list of abnormal patients according to different cities, communities.
+
+# How to run the code?
+  Clone the repo
+  
+  Install all dependencies
+  
+  Run the code
 
