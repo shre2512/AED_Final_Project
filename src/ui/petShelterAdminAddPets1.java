@@ -237,7 +237,7 @@ public class petShelterAdminAddPets1 extends javax.swing.JPanel {
 
     private void btnAddImageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddImageActionPerformed
         // TODO add your handling code here:
-                JFileChooser fchoser=new JFileChooser();
+        JFileChooser fchoser=new JFileChooser();
         fchoser.showOpenDialog(null);
         File f=fchoser.getSelectedFile();
         fname=f.getAbsolutePath();

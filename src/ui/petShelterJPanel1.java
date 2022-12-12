@@ -28,14 +28,16 @@ public class petShelterJPanel1 extends javax.swing.JPanel {
      * Creates new form petShelterJPanel
      */
     databaseConnection databaseConnection;
+    int userID;
        private ImageIcon format=null;
    String fname=null;
    int s=0;
    byte[] pimage=null;
 
-    public petShelterJPanel1(databaseConnection databaseConnection) {
+    public petShelterJPanel1(int userID,databaseConnection databaseConnection) {
         initComponents();
         this.databaseConnection=databaseConnection;
+        this.userID=userID;
         populateTable();
     }
     
@@ -157,7 +159,7 @@ public class petShelterJPanel1 extends javax.swing.JPanel {
     private void btnViewImageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewImageActionPerformed
         // TODO add your handling code here:
         int selectedRowIndex=tblPetAdoptionRecords.getSelectedRow();
-        String selectedCellValue = (String) tblPetAdoptionRecords.getValueAt(tblPetAdoptionRecords.getSelectedRow() , tblPetAdoptionRecords.getSelectedColumn());
+        String selectedCellValue = (String) tblPetAdoptionRecords.getValueAt(tblPetAdoptionRecords.getSelectedRow() , 1);
         System.out.println(selectedCellValue);
         if(selectedRowIndex<0){
             JOptionPane.showMessageDialog(this,"Please select a row to view");
@@ -188,6 +190,20 @@ public class petShelterJPanel1 extends javax.swing.JPanel {
 
     private void btnAdoptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdoptActionPerformed
         // TODO add your handling code here:
+        String selectedId = (String) tblPetAdoptionRecords.getValueAt(tblPetAdoptionRecords.getSelectedRow() , 0);
+        String selectedPetID = (String) tblPetAdoptionRecords.getValueAt(tblPetAdoptionRecords.getSelectedRow() , 1);
+        String selectedUserId = (String) tblPetAdoptionRecords.getValueAt(tblPetAdoptionRecords.getSelectedRow() , 2);
+        String selectedName = (String) tblPetAdoptionRecords.getValueAt(tblPetAdoptionRecords.getSelectedRow() , 3);
+
+        try {
+        databaseConnection.adoptedPets(selectedPetID,userID, selectedName);
+        } catch (Exception ex) {
+            Logger.getLogger(petShelterAdminAddPets1.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+
+
         
     }//GEN-LAST:event_btnAdoptActionPerformed
 
