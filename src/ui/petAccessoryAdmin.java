@@ -39,10 +39,11 @@ public class petAccessoryAdmin extends javax.swing.JPanel {
 
         petAccessoryAdminSplitPane.setDividerLocation(120);
 
-        petAccessoryAdminControlArea.setBackground(new java.awt.Color(102, 255, 102));
+        petAccessoryAdminControlArea.setBackground(new java.awt.Color(0, 51, 103));
 
+        btnUpdatePrice.setBackground(new java.awt.Color(51, 204, 255));
         btnUpdatePrice.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        btnUpdatePrice.setForeground(new java.awt.Color(255, 0, 0));
+        btnUpdatePrice.setForeground(new java.awt.Color(0, 51, 103));
         btnUpdatePrice.setText("Update Price");
         btnUpdatePrice.setPreferredSize(new java.awt.Dimension(76, 30));
         btnUpdatePrice.addActionListener(new java.awt.event.ActionListener() {
@@ -51,8 +52,9 @@ public class petAccessoryAdmin extends javax.swing.JPanel {
             }
         });
 
+        btnOrderProduct.setBackground(new java.awt.Color(51, 204, 255));
         btnOrderProduct.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        btnOrderProduct.setForeground(new java.awt.Color(255, 0, 0));
+        btnOrderProduct.setForeground(new java.awt.Color(0, 51, 103));
         btnOrderProduct.setText("Order Product");
         btnOrderProduct.setPreferredSize(new java.awt.Dimension(76, 30));
         btnOrderProduct.addActionListener(new java.awt.event.ActionListener() {
@@ -90,7 +92,7 @@ public class petAccessoryAdmin extends javax.swing.JPanel {
 
         petAccessoryAdminSplitPane.setLeftComponent(petAccessoryAdminControlArea);
 
-        petAccessoryAdminWorkArea.setBackground(new java.awt.Color(0, 255, 255));
+        petAccessoryAdminWorkArea.setBackground(new java.awt.Color(51, 204, 255));
 
         javax.swing.GroupLayout petAccessoryAdminWorkAreaLayout = new javax.swing.GroupLayout(petAccessoryAdminWorkArea);
         petAccessoryAdminWorkArea.setLayout(petAccessoryAdminWorkAreaLayout);

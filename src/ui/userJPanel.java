@@ -93,18 +93,19 @@ public class userJPanel extends javax.swing.JPanel {
         btnGroomingServices = new javax.swing.JButton();
         userPastActivityWorkArea = new javax.swing.JPanel();
 
-        setBackground(new java.awt.Color(255, 255, 102));
+        setBackground(new java.awt.Color(51, 204, 255));
 
-        tabbedPane.setBackground(new java.awt.Color(255, 255, 102));
+        tabbedPane.setBackground(new java.awt.Color(51, 204, 255));
         tabbedPane.setForeground(new java.awt.Color(0, 0, 255));
         tabbedPane.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
 
         foodAccsSplitPane.setDividerLocation(135);
 
-        foodAccsControlArea.setBackground(new java.awt.Color(102, 255, 102));
+        foodAccsControlArea.setBackground(new java.awt.Color(0, 51, 103));
 
+        btnPetFood.setBackground(new java.awt.Color(51, 204, 255));
         btnPetFood.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        btnPetFood.setForeground(new java.awt.Color(255, 0, 0));
+        btnPetFood.setForeground(new java.awt.Color(0, 51, 103));
         btnPetFood.setText("Pet Food");
         btnPetFood.setPreferredSize(new java.awt.Dimension(76, 35));
         btnPetFood.addActionListener(new java.awt.event.ActionListener() {
@@ -113,8 +114,9 @@ public class userJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnPetGrooming.setBackground(new java.awt.Color(51, 204, 255));
         btnPetGrooming.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        btnPetGrooming.setForeground(new java.awt.Color(255, 0, 0));
+        btnPetGrooming.setForeground(new java.awt.Color(0, 51, 103));
         btnPetGrooming.setText("Pet Grooming");
         btnPetGrooming.setPreferredSize(new java.awt.Dimension(76, 35));
         btnPetGrooming.addActionListener(new java.awt.event.ActionListener() {
@@ -123,8 +125,9 @@ public class userJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnPetAccessories.setBackground(new java.awt.Color(51, 204, 255));
         btnPetAccessories.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        btnPetAccessories.setForeground(new java.awt.Color(255, 0, 0));
+        btnPetAccessories.setForeground(new java.awt.Color(0, 51, 103));
         btnPetAccessories.setText("Pet Accessories");
         btnPetAccessories.setPreferredSize(new java.awt.Dimension(76, 35));
         btnPetAccessories.addActionListener(new java.awt.event.ActionListener() {
@@ -159,7 +162,7 @@ public class userJPanel extends javax.swing.JPanel {
 
         foodAccsSplitPane.setLeftComponent(foodAccsControlArea);
 
-        foodAccsWorkArea.setBackground(new java.awt.Color(0, 255, 255));
+        foodAccsWorkArea.setBackground(new java.awt.Color(51, 204, 255));
 
         javax.swing.GroupLayout foodAccsWorkAreaLayout = new javax.swing.GroupLayout(foodAccsWorkArea);
         foodAccsWorkArea.setLayout(foodAccsWorkAreaLayout);

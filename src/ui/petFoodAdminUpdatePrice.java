@@ -65,8 +65,9 @@ public class petFoodAdminUpdatePrice extends javax.swing.JPanel {
         txtFoodNewPrice = new javax.swing.JTextField();
         btnUpdateFoodPrice = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(0, 255, 255));
+        setBackground(new java.awt.Color(51, 204, 255));
 
+        tablePetFood.setForeground(new java.awt.Color(0, 51, 103));
         tablePetFood.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -96,7 +97,7 @@ public class petFoodAdminUpdatePrice extends javax.swing.JPanel {
 
         lblUpdateFoodPrice.setBackground(new java.awt.Color(255, 255, 255));
         lblUpdateFoodPrice.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        lblUpdateFoodPrice.setForeground(new java.awt.Color(255, 0, 0));
+        lblUpdateFoodPrice.setForeground(new java.awt.Color(0, 51, 103));
         lblUpdateFoodPrice.setText("                                                                  Select a Product to Update Price");
 
         lblFoodName.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
@@ -119,8 +120,9 @@ public class petFoodAdminUpdatePrice extends javax.swing.JPanel {
             }
         });
 
+        btnUpdateFoodPrice.setBackground(new java.awt.Color(0, 51, 103));
         btnUpdateFoodPrice.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        btnUpdateFoodPrice.setForeground(new java.awt.Color(255, 0, 0));
+        btnUpdateFoodPrice.setForeground(new java.awt.Color(51, 204, 255));
         btnUpdateFoodPrice.setText("Update Price");
         btnUpdateFoodPrice.setPreferredSize(new java.awt.Dimension(76, 30));
         btnUpdateFoodPrice.addActionListener(new java.awt.event.ActionListener() {

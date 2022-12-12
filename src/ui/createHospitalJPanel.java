@@ -46,7 +46,7 @@ public class createHospitalJPanel extends javax.swing.JPanel {
         txtCityName = new javax.swing.JTextField();
         txtCommunityName = new javax.swing.JTextField();
 
-        setBackground(new java.awt.Color(0, 255, 255));
+        setBackground(new java.awt.Color(51, 204, 255));
 
         lblHospitalName.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         lblHospitalName.setText("Pet Hospital Name :");
@@ -63,8 +63,9 @@ public class createHospitalJPanel extends javax.swing.JPanel {
             }
         });
 
+        hospitalAdminSubmitButton.setBackground(new java.awt.Color(0, 51, 103));
         hospitalAdminSubmitButton.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        hospitalAdminSubmitButton.setForeground(new java.awt.Color(255, 51, 51));
+        hospitalAdminSubmitButton.setForeground(new java.awt.Color(51, 204, 255));
         hospitalAdminSubmitButton.setText("Submit");
         hospitalAdminSubmitButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -74,7 +75,7 @@ public class createHospitalJPanel extends javax.swing.JPanel {
 
         lblCreateCommunity.setBackground(new java.awt.Color(255, 255, 255));
         lblCreateCommunity.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lblCreateCommunity.setForeground(new java.awt.Color(255, 0, 0));
+        lblCreateCommunity.setForeground(new java.awt.Color(0, 51, 103));
         lblCreateCommunity.setText("                                                                         Create Hospital");
 
         lblCityName.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N

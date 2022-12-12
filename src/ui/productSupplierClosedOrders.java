@@ -49,10 +49,11 @@ public class productSupplierClosedOrders extends javax.swing.JPanel {
         btnSuppliedFoodItems = new javax.swing.JButton();
         btnSuppliedAccessoryItems = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(0, 255, 255));
+        setBackground(new java.awt.Color(51, 204, 255));
 
+        btnSuppliedFoodItems.setBackground(new java.awt.Color(0, 51, 103));
         btnSuppliedFoodItems.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        btnSuppliedFoodItems.setForeground(new java.awt.Color(255, 0, 0));
+        btnSuppliedFoodItems.setForeground(new java.awt.Color(51, 204, 255));
         btnSuppliedFoodItems.setText("Supplied Food Items");
         btnSuppliedFoodItems.setPreferredSize(new java.awt.Dimension(76, 30));
         btnSuppliedFoodItems.addActionListener(new java.awt.event.ActionListener() {
@@ -61,8 +62,9 @@ public class productSupplierClosedOrders extends javax.swing.JPanel {
             }
         });
 
+        btnSuppliedAccessoryItems.setBackground(new java.awt.Color(0, 51, 103));
         btnSuppliedAccessoryItems.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        btnSuppliedAccessoryItems.setForeground(new java.awt.Color(255, 0, 0));
+        btnSuppliedAccessoryItems.setForeground(new java.awt.Color(51, 204, 255));
         btnSuppliedAccessoryItems.setText("Supplied Accessories");
         btnSuppliedAccessoryItems.setPreferredSize(new java.awt.Dimension(76, 30));
         btnSuppliedAccessoryItems.addActionListener(new java.awt.event.ActionListener() {

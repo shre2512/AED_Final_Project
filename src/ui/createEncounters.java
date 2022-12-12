@@ -58,7 +58,7 @@ public class createEncounters extends javax.swing.JPanel {
         dateChooserFromCreateEncounter = new com.toedter.calendar.JDateChooser();
         lblSelectDate = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(0, 255, 255));
+        setBackground(new java.awt.Color(51, 204, 255));
 
         lblSelectHospital.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         lblSelectHospital.setText("Select Hospital :");
@@ -88,8 +88,9 @@ public class createEncounters extends javax.swing.JPanel {
         lblSymptoms.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         lblSymptoms.setText("Enter Symptoms:");
 
+        btnCreateEncounter.setBackground(new java.awt.Color(0, 51, 103));
         btnCreateEncounter.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnCreateEncounter.setForeground(new java.awt.Color(255, 0, 0));
+        btnCreateEncounter.setForeground(new java.awt.Color(51, 204, 255));
         btnCreateEncounter.setText("Create Encounter");
         btnCreateEncounter.setPreferredSize(new java.awt.Dimension(104, 30));
         btnCreateEncounter.addActionListener(new java.awt.event.ActionListener() {
@@ -100,7 +101,7 @@ public class createEncounters extends javax.swing.JPanel {
 
         lblCreateEncounters.setBackground(new java.awt.Color(255, 255, 255));
         lblCreateEncounters.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lblCreateEncounters.setForeground(new java.awt.Color(255, 0, 0));
+        lblCreateEncounters.setForeground(new java.awt.Color(0, 51, 103));
         lblCreateEncounters.setText("                                                                                      Create Encounter");
 
         dateChooserFromCreateEncounter.setPreferredSize(new java.awt.Dimension(88, 30));

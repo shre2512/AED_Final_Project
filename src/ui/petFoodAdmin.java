@@ -40,10 +40,11 @@ public class petFoodAdmin extends javax.swing.JPanel {
 
         petFoodAdminSplitPane.setDividerLocation(120);
 
-        petFoodAdminControlArea.setBackground(new java.awt.Color(102, 255, 102));
+        petFoodAdminControlArea.setBackground(new java.awt.Color(0, 51, 103));
 
+        btnUpdatePrice.setBackground(new java.awt.Color(51, 204, 255));
         btnUpdatePrice.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        btnUpdatePrice.setForeground(new java.awt.Color(255, 0, 0));
+        btnUpdatePrice.setForeground(new java.awt.Color(0, 51, 103));
         btnUpdatePrice.setText("Update Price");
         btnUpdatePrice.setPreferredSize(new java.awt.Dimension(76, 30));
         btnUpdatePrice.addActionListener(new java.awt.event.ActionListener() {
@@ -52,8 +53,9 @@ public class petFoodAdmin extends javax.swing.JPanel {
             }
         });
 
+        btnOrderProduct.setBackground(new java.awt.Color(51, 204, 255));
         btnOrderProduct.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        btnOrderProduct.setForeground(new java.awt.Color(255, 0, 0));
+        btnOrderProduct.setForeground(new java.awt.Color(0, 51, 103));
         btnOrderProduct.setText("Order Product");
         btnOrderProduct.setPreferredSize(new java.awt.Dimension(76, 30));
         btnOrderProduct.addActionListener(new java.awt.event.ActionListener() {
@@ -91,11 +93,11 @@ public class petFoodAdmin extends javax.swing.JPanel {
 
         petFoodAdminSplitPane.setLeftComponent(petFoodAdminControlArea);
 
-        petFoodAdminWorkArea.setBackground(new java.awt.Color(0, 255, 255));
+        petFoodAdminWorkArea.setBackground(new java.awt.Color(51, 204, 255));
 
         lblFoodStoreAdmin.setBackground(new java.awt.Color(255, 255, 255));
         lblFoodStoreAdmin.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lblFoodStoreAdmin.setForeground(new java.awt.Color(255, 0, 0));
+        lblFoodStoreAdmin.setForeground(new java.awt.Color(0, 51, 103));
         lblFoodStoreAdmin.setText("                                                                           Food Store Admin");
 
         javax.swing.GroupLayout petFoodAdminWorkAreaLayout = new javax.swing.GroupLayout(petFoodAdminWorkArea);

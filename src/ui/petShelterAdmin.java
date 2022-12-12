@@ -36,10 +36,11 @@ public class petShelterAdmin extends javax.swing.JPanel {
         btnViewAdoptedPets = new javax.swing.JButton();
         shelterAdminWorkArea = new javax.swing.JPanel();
 
-        shelterAdminControlArea.setBackground(new java.awt.Color(102, 255, 102));
+        shelterAdminControlArea.setBackground(new java.awt.Color(0, 51, 103));
 
+        btnAddPet.setBackground(new java.awt.Color(51, 204, 255));
         btnAddPet.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        btnAddPet.setForeground(new java.awt.Color(255, 0, 0));
+        btnAddPet.setForeground(new java.awt.Color(0, 51, 103));
         btnAddPet.setText("Add pet");
         btnAddPet.setPreferredSize(new java.awt.Dimension(73, 30));
         btnAddPet.addActionListener(new java.awt.event.ActionListener() {
@@ -48,8 +49,9 @@ public class petShelterAdmin extends javax.swing.JPanel {
             }
         });
 
+        btnViewAdoptedPets.setBackground(new java.awt.Color(51, 204, 255));
         btnViewAdoptedPets.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        btnViewAdoptedPets.setForeground(new java.awt.Color(255, 0, 0));
+        btnViewAdoptedPets.setForeground(new java.awt.Color(0, 51, 103));
         btnViewAdoptedPets.setText("View Adopted Pets");
         btnViewAdoptedPets.setPreferredSize(new java.awt.Dimension(137, 30));
         btnViewAdoptedPets.addActionListener(new java.awt.event.ActionListener() {
@@ -80,7 +82,7 @@ public class petShelterAdmin extends javax.swing.JPanel {
 
         shelterAdminSplitPane.setLeftComponent(shelterAdminControlArea);
 
-        shelterAdminWorkArea.setBackground(new java.awt.Color(0, 255, 255));
+        shelterAdminWorkArea.setBackground(new java.awt.Color(51, 204, 255));
 
         javax.swing.GroupLayout shelterAdminWorkAreaLayout = new javax.swing.GroupLayout(shelterAdminWorkArea);
         shelterAdminWorkArea.setLayout(shelterAdminWorkAreaLayout);

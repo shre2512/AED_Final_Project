@@ -81,13 +81,14 @@ public class petGroomingJPanel extends javax.swing.JPanel {
         lblGroomingServiceCost = new javax.swing.JLabel();
         btnSubmitBooking = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(0, 255, 255));
+        setBackground(new java.awt.Color(51, 204, 255));
 
         lblSelectGroomingService.setBackground(new java.awt.Color(255, 255, 255));
         lblSelectGroomingService.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        lblSelectGroomingService.setForeground(new java.awt.Color(255, 0, 0));
+        lblSelectGroomingService.setForeground(new java.awt.Color(0, 51, 103));
         lblSelectGroomingService.setText("                                                                      Select a Grooming Service");
 
+        groomingServiceTable.setForeground(new java.awt.Color(0, 51, 103));
         groomingServiceTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -138,8 +139,9 @@ public class petGroomingJPanel extends javax.swing.JPanel {
         lblGroomingServiceCost.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         lblGroomingServiceCost.setText("Service Cost :");
 
+        btnSubmitBooking.setBackground(new java.awt.Color(0, 51, 103));
         btnSubmitBooking.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        btnSubmitBooking.setForeground(new java.awt.Color(255, 0, 0));
+        btnSubmitBooking.setForeground(new java.awt.Color(51, 204, 255));
         btnSubmitBooking.setText("Submit Booking");
         btnSubmitBooking.setPreferredSize(new java.awt.Dimension(76, 30));
         btnSubmitBooking.addActionListener(new java.awt.event.ActionListener() {

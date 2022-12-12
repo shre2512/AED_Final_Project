@@ -39,10 +39,11 @@ public class productSupplier extends javax.swing.JPanel {
 
         productSupplierAdminSplitPane.setDividerLocation(120);
 
-        productSupplierAdminControlArea.setBackground(new java.awt.Color(102, 255, 102));
+        productSupplierAdminControlArea.setBackground(new java.awt.Color(0, 51, 103));
 
+        btnOpenOrders.setBackground(new java.awt.Color(51, 204, 255));
         btnOpenOrders.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        btnOpenOrders.setForeground(new java.awt.Color(255, 0, 0));
+        btnOpenOrders.setForeground(new java.awt.Color(0, 51, 103));
         btnOpenOrders.setText("Open Orders");
         btnOpenOrders.setPreferredSize(new java.awt.Dimension(76, 30));
         btnOpenOrders.addActionListener(new java.awt.event.ActionListener() {
@@ -51,8 +52,9 @@ public class productSupplier extends javax.swing.JPanel {
             }
         });
 
+        btnClosedOrders.setBackground(new java.awt.Color(51, 204, 255));
         btnClosedOrders.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        btnClosedOrders.setForeground(new java.awt.Color(255, 0, 0));
+        btnClosedOrders.setForeground(new java.awt.Color(0, 51, 103));
         btnClosedOrders.setText("Closed Orders");
         btnClosedOrders.setPreferredSize(new java.awt.Dimension(76, 30));
         btnClosedOrders.addActionListener(new java.awt.event.ActionListener() {
@@ -90,7 +92,7 @@ public class productSupplier extends javax.swing.JPanel {
 
         productSupplierAdminSplitPane.setLeftComponent(productSupplierAdminControlArea);
 
-        productSupplierAdminWorkArea.setBackground(new java.awt.Color(0, 255, 255));
+        productSupplierAdminWorkArea.setBackground(new java.awt.Color(51, 204, 255));
 
         javax.swing.GroupLayout productSupplierAdminWorkAreaLayout = new javax.swing.GroupLayout(productSupplierAdminWorkArea);
         productSupplierAdminWorkArea.setLayout(productSupplierAdminWorkAreaLayout);

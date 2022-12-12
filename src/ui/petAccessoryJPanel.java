@@ -168,7 +168,9 @@ public class petAccessoryJPanel extends javax.swing.JPanel {
         qtyToBuyLatexToys = new javax.swing.JComboBox<>();
         btnPurchase = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(0, 255, 255));
+        setBackground(new java.awt.Color(51, 204, 255));
+
+        lblAccessoriesNylabone.setBackground(new java.awt.Color(51, 204, 255));
 
         lblPriceCollarNecklace.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lblPriceCollarNecklace.setText("Price :                 ");
@@ -286,8 +288,9 @@ public class petAccessoryJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnPurchase.setBackground(new java.awt.Color(0, 51, 103));
         btnPurchase.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        btnPurchase.setForeground(new java.awt.Color(255, 0, 0));
+        btnPurchase.setForeground(new java.awt.Color(51, 204, 255));
         btnPurchase.setText("Purchase");
         btnPurchase.setPreferredSize(new java.awt.Dimension(76, 35));
         btnPurchase.addActionListener(new java.awt.event.ActionListener() {

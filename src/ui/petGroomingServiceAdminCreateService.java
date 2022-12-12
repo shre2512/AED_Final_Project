@@ -45,11 +45,11 @@ public class petGroomingServiceAdminCreateService extends javax.swing.JPanel {
         lblServiceCost = new javax.swing.JLabel();
         txtServiceCost = new javax.swing.JTextField();
 
-        setBackground(new java.awt.Color(0, 255, 255));
+        setBackground(new java.awt.Color(51, 204, 255));
 
         lblUpdateFoodPrice.setBackground(new java.awt.Color(255, 255, 255));
         lblUpdateFoodPrice.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        lblUpdateFoodPrice.setForeground(new java.awt.Color(255, 0, 0));
+        lblUpdateFoodPrice.setForeground(new java.awt.Color(0, 51, 103));
         lblUpdateFoodPrice.setText("                                                                    Create Grooming Service");
 
         lblServiceName.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
@@ -72,8 +72,9 @@ public class petGroomingServiceAdminCreateService extends javax.swing.JPanel {
             }
         });
 
+        btnCreateService.setBackground(new java.awt.Color(0, 51, 103));
         btnCreateService.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        btnCreateService.setForeground(new java.awt.Color(255, 0, 0));
+        btnCreateService.setForeground(new java.awt.Color(51, 204, 255));
         btnCreateService.setText("Create Service");
         btnCreateService.setPreferredSize(new java.awt.Dimension(76, 30));
         btnCreateService.addActionListener(new java.awt.event.ActionListener() {
@@ -103,19 +104,16 @@ public class petGroomingServiceAdminCreateService extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblServiceCost, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblServiceTime, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtServiceCost, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtServiceTime, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(246, 246, 246))
+                            .addComponent(lblServiceTime, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 18, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lblServiceName)
-                        .addGap(87, 87, 87)
-                        .addComponent(txtServiceName, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtServiceCost, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtServiceTime, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtServiceName, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(246, 246, 246))
             .addGroup(layout.createSequentialGroup()
                 .addGap(373, 373, 373)
                 .addComponent(btnCreateService, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)

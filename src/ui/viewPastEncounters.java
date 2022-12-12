@@ -48,13 +48,14 @@ public class viewPastEncounters extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
 
-        setBackground(new java.awt.Color(0, 255, 255));
+        setBackground(new java.awt.Color(51, 204, 255));
 
         viewPastEncounters.setBackground(new java.awt.Color(255, 255, 255));
         viewPastEncounters.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        viewPastEncounters.setForeground(new java.awt.Color(255, 0, 0));
+        viewPastEncounters.setForeground(new java.awt.Color(0, 51, 103));
         viewPastEncounters.setText("                                                                               View Past Encounters");
 
+        jTable1.setForeground(new java.awt.Color(0, 51, 103));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},

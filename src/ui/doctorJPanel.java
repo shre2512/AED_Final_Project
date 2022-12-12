@@ -40,10 +40,11 @@ public class doctorJPanel extends javax.swing.JPanel {
 
         doctorSplitPane.setDividerLocation(140);
 
-        doctorControlArea.setBackground(new java.awt.Color(102, 255, 102));
+        doctorControlArea.setBackground(new java.awt.Color(0, 51, 103));
 
+        btnViewEncounters.setBackground(new java.awt.Color(51, 204, 255));
         btnViewEncounters.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        btnViewEncounters.setForeground(new java.awt.Color(255, 0, 0));
+        btnViewEncounters.setForeground(new java.awt.Color(0, 51, 103));
         btnViewEncounters.setText("Vital Signs");
         btnViewEncounters.setPreferredSize(new java.awt.Dimension(76, 30));
         btnViewEncounters.addActionListener(new java.awt.event.ActionListener() {
@@ -71,7 +72,7 @@ public class doctorJPanel extends javax.swing.JPanel {
 
         doctorSplitPane.setLeftComponent(doctorControlArea);
 
-        doctorWorkArea.setBackground(new java.awt.Color(0, 255, 255));
+        doctorWorkArea.setBackground(new java.awt.Color(51, 204, 255));
 
         javax.swing.GroupLayout doctorWorkAreaLayout = new javax.swing.GroupLayout(doctorWorkArea);
         doctorWorkArea.setLayout(doctorWorkAreaLayout);

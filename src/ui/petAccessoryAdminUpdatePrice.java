@@ -65,8 +65,9 @@ public class petAccessoryAdminUpdatePrice extends javax.swing.JPanel {
         txtAccessoryNewPrice = new javax.swing.JTextField();
         btnUpdateAccessoryPrice = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(0, 255, 255));
+        setBackground(new java.awt.Color(51, 204, 255));
 
+        tablePetAccessory.setForeground(new java.awt.Color(0, 51, 103));
         tablePetAccessory.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -96,7 +97,7 @@ public class petAccessoryAdminUpdatePrice extends javax.swing.JPanel {
 
         lblUpdateAccessoryPrice.setBackground(new java.awt.Color(255, 255, 255));
         lblUpdateAccessoryPrice.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        lblUpdateAccessoryPrice.setForeground(new java.awt.Color(255, 0, 0));
+        lblUpdateAccessoryPrice.setForeground(new java.awt.Color(0, 51, 103));
         lblUpdateAccessoryPrice.setText("                                                                 Select a Product to Update Price");
 
         lblAccessoryName.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
@@ -119,8 +120,9 @@ public class petAccessoryAdminUpdatePrice extends javax.swing.JPanel {
             }
         });
 
+        btnUpdateAccessoryPrice.setBackground(new java.awt.Color(0, 51, 103));
         btnUpdateAccessoryPrice.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        btnUpdateAccessoryPrice.setForeground(new java.awt.Color(255, 0, 0));
+        btnUpdateAccessoryPrice.setForeground(new java.awt.Color(51, 204, 255));
         btnUpdateAccessoryPrice.setText("Update Price");
         btnUpdateAccessoryPrice.setPreferredSize(new java.awt.Dimension(76, 30));
         btnUpdateAccessoryPrice.addActionListener(new java.awt.event.ActionListener() {

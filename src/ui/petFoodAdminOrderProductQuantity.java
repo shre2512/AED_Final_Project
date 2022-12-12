@@ -65,8 +65,9 @@ public class petFoodAdminOrderProductQuantity extends javax.swing.JPanel {
         txtFoodOrderQuantity = new javax.swing.JTextField();
         btnPlaceOrder = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(0, 255, 255));
+        setBackground(new java.awt.Color(51, 204, 255));
 
+        tablePetFood.setForeground(new java.awt.Color(0, 51, 103));
         tablePetFood.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -96,7 +97,7 @@ public class petFoodAdminOrderProductQuantity extends javax.swing.JPanel {
 
         lblFoodOrder.setBackground(new java.awt.Color(255, 255, 255));
         lblFoodOrder.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        lblFoodOrder.setForeground(new java.awt.Color(255, 0, 0));
+        lblFoodOrder.setForeground(new java.awt.Color(0, 51, 103));
         lblFoodOrder.setText("                                                                Select a Product to Place Order");
 
         lblFoodName.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
@@ -119,8 +120,9 @@ public class petFoodAdminOrderProductQuantity extends javax.swing.JPanel {
             }
         });
 
+        btnPlaceOrder.setBackground(new java.awt.Color(0, 51, 103));
         btnPlaceOrder.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        btnPlaceOrder.setForeground(new java.awt.Color(255, 0, 0));
+        btnPlaceOrder.setForeground(new java.awt.Color(51, 204, 255));
         btnPlaceOrder.setText("Place Order");
         btnPlaceOrder.setPreferredSize(new java.awt.Dimension(76, 30));
         btnPlaceOrder.addActionListener(new java.awt.event.ActionListener() {

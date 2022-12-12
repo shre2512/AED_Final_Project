@@ -65,8 +65,9 @@ public class kennelAdminUpdatePrice extends javax.swing.JPanel {
         txtKennelPrice = new javax.swing.JTextField();
         btnUpdatePrice = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(0, 255, 255));
+        setBackground(new java.awt.Color(51, 204, 255));
 
+        tblKennel.setForeground(new java.awt.Color(0, 51, 103));
         tblKennel.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -103,7 +104,7 @@ public class kennelAdminUpdatePrice extends javax.swing.JPanel {
 
         lblUpdateAccessoryPrice.setBackground(new java.awt.Color(255, 255, 255));
         lblUpdateAccessoryPrice.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        lblUpdateAccessoryPrice.setForeground(new java.awt.Color(255, 0, 0));
+        lblUpdateAccessoryPrice.setForeground(new java.awt.Color(0, 51, 103));
         lblUpdateAccessoryPrice.setText("                                                                  Select a Kennel to Update Price Per Day");
 
         lblKennelName.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
@@ -126,8 +127,9 @@ public class kennelAdminUpdatePrice extends javax.swing.JPanel {
             }
         });
 
+        btnUpdatePrice.setBackground(new java.awt.Color(0, 51, 103));
         btnUpdatePrice.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        btnUpdatePrice.setForeground(new java.awt.Color(255, 0, 0));
+        btnUpdatePrice.setForeground(new java.awt.Color(51, 204, 255));
         btnUpdatePrice.setText("Update Price");
         btnUpdatePrice.setPreferredSize(new java.awt.Dimension(76, 30));
         btnUpdatePrice.addActionListener(new java.awt.event.ActionListener() {

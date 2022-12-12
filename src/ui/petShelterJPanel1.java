@@ -85,8 +85,9 @@ public class petShelterJPanel1 extends javax.swing.JPanel {
         lblImg = new javax.swing.JLabel();
         btnViewImage = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(0, 255, 255));
+        setBackground(new java.awt.Color(51, 204, 255));
 
+        tblPetAdoptionRecords.setForeground(new java.awt.Color(0, 51, 102));
         tblPetAdoptionRecords.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null, null, null},
@@ -108,8 +109,9 @@ public class petShelterJPanel1 extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblPetAdoptionRecords);
 
+        btnAdopt.setBackground(new java.awt.Color(0, 51, 103));
         btnAdopt.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        btnAdopt.setForeground(new java.awt.Color(255, 0, 0));
+        btnAdopt.setForeground(new java.awt.Color(51, 204, 255));
         btnAdopt.setText("Adopt");
         btnAdopt.setPreferredSize(new java.awt.Dimension(72, 30));
         btnAdopt.addActionListener(new java.awt.event.ActionListener() {
@@ -118,8 +120,9 @@ public class petShelterJPanel1 extends javax.swing.JPanel {
             }
         });
 
+        btnViewImage.setBackground(new java.awt.Color(0, 51, 103));
         btnViewImage.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        btnViewImage.setForeground(new java.awt.Color(255, 0, 0));
+        btnViewImage.setForeground(new java.awt.Color(51, 204, 255));
         btnViewImage.setText("View Image");
         btnViewImage.setPreferredSize(new java.awt.Dimension(91, 30));
         btnViewImage.addActionListener(new java.awt.event.ActionListener() {
@@ -155,9 +158,9 @@ public class petShelterJPanel1 extends javax.swing.JPanel {
                 .addGap(43, 43, 43)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnViewImage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAdopt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnAdopt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnViewImage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblImg, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(30, Short.MAX_VALUE))

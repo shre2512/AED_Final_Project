@@ -67,7 +67,7 @@ public class createDoctorJPanel extends javax.swing.JPanel {
         lblDoctorPassword = new javax.swing.JLabel();
         txtDoctorPassword = new javax.swing.JPasswordField();
 
-        setBackground(new java.awt.Color(0, 255, 255));
+        setBackground(new java.awt.Color(51, 204, 255));
 
         lblContactNumber.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         lblContactNumber.setText("Contact Number :");
@@ -84,8 +84,9 @@ public class createDoctorJPanel extends javax.swing.JPanel {
             }
         });
 
+        hospitalAdminSubmitButton.setBackground(new java.awt.Color(0, 51, 103));
         hospitalAdminSubmitButton.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        hospitalAdminSubmitButton.setForeground(new java.awt.Color(255, 51, 51));
+        hospitalAdminSubmitButton.setForeground(new java.awt.Color(51, 204, 255));
         hospitalAdminSubmitButton.setText("Create Doctor");
         hospitalAdminSubmitButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -95,7 +96,7 @@ public class createDoctorJPanel extends javax.swing.JPanel {
 
         lblCreateCommunity.setBackground(new java.awt.Color(255, 255, 255));
         lblCreateCommunity.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lblCreateCommunity.setForeground(new java.awt.Color(255, 0, 0));
+        lblCreateCommunity.setForeground(new java.awt.Color(0, 51, 103));
         lblCreateCommunity.setText("                                                                         Create Doctor");
 
         lblFirstName.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
@@ -274,10 +275,6 @@ public class createDoctorJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel lblEmailID;
     private javax.swing.JLabel lblFirstName;
     private javax.swing.JLabel lblLastName;
-    private javax.swing.JComboBox<String> selectCommunityCombo;
-    private javax.swing.JComboBox<String> selectCommunityCombo1;
-    private javax.swing.JComboBox<String> selectCommunityCombo2;
-    private javax.swing.JComboBox<String> selectCommunityCombo3;
     private javax.swing.JComboBox<String> selectHospitalCombo;
     private javax.swing.JLabel selectHospitalComboBox;
     private javax.swing.JTextField txtContactNumber;

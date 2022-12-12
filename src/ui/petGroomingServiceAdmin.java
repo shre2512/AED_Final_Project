@@ -40,10 +40,11 @@ public class petGroomingServiceAdmin extends javax.swing.JPanel {
 
         petGroomingServiceAdminSplitPane.setDividerLocation(130);
 
-        petGroomingServiceAdminControlArea.setBackground(new java.awt.Color(102, 255, 102));
+        petGroomingServiceAdminControlArea.setBackground(new java.awt.Color(0, 51, 103));
 
+        btnUpdatePrice.setBackground(new java.awt.Color(51, 204, 255));
         btnUpdatePrice.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        btnUpdatePrice.setForeground(new java.awt.Color(255, 0, 0));
+        btnUpdatePrice.setForeground(new java.awt.Color(0, 51, 103));
         btnUpdatePrice.setText("Update Price");
         btnUpdatePrice.setPreferredSize(new java.awt.Dimension(76, 30));
         btnUpdatePrice.addActionListener(new java.awt.event.ActionListener() {
@@ -52,8 +53,9 @@ public class petGroomingServiceAdmin extends javax.swing.JPanel {
             }
         });
 
+        btnCreateService.setBackground(new java.awt.Color(51, 204, 255));
         btnCreateService.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        btnCreateService.setForeground(new java.awt.Color(255, 0, 0));
+        btnCreateService.setForeground(new java.awt.Color(0, 51, 103));
         btnCreateService.setText("Create Service");
         btnCreateService.setPreferredSize(new java.awt.Dimension(76, 30));
         btnCreateService.addActionListener(new java.awt.event.ActionListener() {
@@ -91,11 +93,11 @@ public class petGroomingServiceAdmin extends javax.swing.JPanel {
 
         petGroomingServiceAdminSplitPane.setLeftComponent(petGroomingServiceAdminControlArea);
 
-        petGroomingServiceAdminWorkArea.setBackground(new java.awt.Color(0, 255, 255));
+        petGroomingServiceAdminWorkArea.setBackground(new java.awt.Color(51, 204, 255));
 
         lblGroomingServiceAdmin.setBackground(new java.awt.Color(255, 255, 255));
         lblGroomingServiceAdmin.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lblGroomingServiceAdmin.setForeground(new java.awt.Color(255, 0, 0));
+        lblGroomingServiceAdmin.setForeground(new java.awt.Color(0, 51, 103));
         lblGroomingServiceAdmin.setText("                                                                         Grooming Service Admin");
 
         javax.swing.GroupLayout petGroomingServiceAdminWorkAreaLayout = new javax.swing.GroupLayout(petGroomingServiceAdminWorkArea);

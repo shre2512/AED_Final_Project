@@ -139,10 +139,8 @@ public class kennelJPanel extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         lblPickup = new javax.swing.JLabel();
         cmbPickup = new javax.swing.JComboBox<>();
-        jXMapViewer1 = new org.jxmapviewer.JXMapViewer();
-        btnKennelsOnMap = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(0, 255, 255));
+        setBackground(new java.awt.Color(51, 204, 255));
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel1.setText("Address :");
@@ -174,8 +172,9 @@ public class kennelJPanel extends javax.swing.JPanel {
         jLabel4.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel4.setText("To :");
 
+        btnSave.setBackground(new java.awt.Color(0, 51, 103));
         btnSave.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        btnSave.setForeground(new java.awt.Color(255, 0, 0));
+        btnSave.setForeground(new java.awt.Color(51, 204, 255));
         btnSave.setText("Book");
         btnSave.setPreferredSize(new java.awt.Dimension(72, 30));
         btnSave.addActionListener(new java.awt.event.ActionListener() {
@@ -200,37 +199,10 @@ public class kennelJPanel extends javax.swing.JPanel {
         cmbPickup.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Yes", "No" }));
         cmbPickup.setPreferredSize(new java.awt.Dimension(72, 30));
 
-        btnKennelsOnMap.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnKennelsOnMap.setText("View Kennels");
-        btnKennelsOnMap.setPreferredSize(new java.awt.Dimension(76, 30));
-        btnKennelsOnMap.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnKennelsOnMapActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jXMapViewer1Layout = new javax.swing.GroupLayout(jXMapViewer1);
-        jXMapViewer1.setLayout(jXMapViewer1Layout);
-        jXMapViewer1Layout.setHorizontalGroup(
-            jXMapViewer1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jXMapViewer1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnKennelsOnMap, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jXMapViewer1Layout.setVerticalGroup(
-            jXMapViewer1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jXMapViewer1Layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addComponent(btnKennelsOnMap, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(208, Short.MAX_VALUE))
-        );
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jXMapViewer1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -275,8 +247,7 @@ public class kennelJPanel extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jXMapViewer1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
+                .addGap(301, 301, 301)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(txtKennelName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txtKennelAddress, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -407,19 +378,8 @@ public class kennelJPanel extends javax.swing.JPanel {
         return null;
     }
     
-    private void btnKennelsOnMapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKennelsOnMapActionPerformed
-        // TODO add your handling code here:
-        waypoints.add(new MyWaypoint("The Mindful Mutt","16 Harvard Ave, Allston, MA 02134",event,new GeoPosition(42.36114667727058, -71.13242913502957)));
-        waypoints.add(new MyWaypoint("The Urban Hound Hotel & Daycare","129 W Malden St, Boston, MA 02118",event,new GeoPosition(42.3441904832612, -71.06726660373947)));
-        waypoints.add(new MyWaypoint("The Dog Port","236 Sumner St, East Boston, MA 02128",event,new GeoPosition(42.376150664565635, -71.03823688912777)));
-        waypoints.add(new MyWaypoint("Tails","385 Centre St, Jamaica Plain, MA 02130",event,new GeoPosition(42.36757788354394, -71.05820710298593)));
-
-        initWaypoint();
-    }//GEN-LAST:event_btnKennelsOnMapActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnKennelsOnMap;
     private javax.swing.JButton btnSave;
     private javax.swing.JComboBox<String> cmbPickup;
     private com.toedter.calendar.JDateChooser dateChooserFromDateKennel;
@@ -429,7 +389,6 @@ public class kennelJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private org.jxmapviewer.JXMapViewer jXMapViewer1;
     private javax.swing.JLabel lblPickup;
     private javax.swing.JTextField txtKennelAddress;
     private javax.swing.JTextField txtKennelName;

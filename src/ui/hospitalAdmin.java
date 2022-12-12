@@ -42,10 +42,11 @@ public class hospitalAdmin extends javax.swing.JPanel {
 
         hospitalAdminSplitPane.setDividerLocation(130);
 
-        hospitalAdminControlArea.setBackground(new java.awt.Color(102, 255, 102));
+        hospitalAdminControlArea.setBackground(new java.awt.Color(0, 51, 103));
 
+        btnCreateDoctor.setBackground(new java.awt.Color(51, 204, 255));
         btnCreateDoctor.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        btnCreateDoctor.setForeground(new java.awt.Color(255, 0, 0));
+        btnCreateDoctor.setForeground(new java.awt.Color(0, 51, 103));
         btnCreateDoctor.setText("Create Doctor");
         btnCreateDoctor.setPreferredSize(new java.awt.Dimension(76, 30));
         btnCreateDoctor.addActionListener(new java.awt.event.ActionListener() {
@@ -54,8 +55,9 @@ public class hospitalAdmin extends javax.swing.JPanel {
             }
         });
 
+        btnCreateHospital.setBackground(new java.awt.Color(51, 204, 255));
         btnCreateHospital.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        btnCreateHospital.setForeground(new java.awt.Color(255, 0, 0));
+        btnCreateHospital.setForeground(new java.awt.Color(0, 51, 103));
         btnCreateHospital.setText("Create Hospital");
         btnCreateHospital.setPreferredSize(new java.awt.Dimension(76, 30));
         btnCreateHospital.addActionListener(new java.awt.event.ActionListener() {
@@ -70,7 +72,7 @@ public class hospitalAdmin extends javax.swing.JPanel {
             hospitalAdminControlAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, hospitalAdminControlAreaLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btnCreateHospital, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)
+                .addComponent(btnCreateHospital, javax.swing.GroupLayout.PREFERRED_SIZE, 118, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(hospitalAdminControlAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(hospitalAdminControlAreaLayout.createSequentialGroup()
@@ -93,7 +95,7 @@ public class hospitalAdmin extends javax.swing.JPanel {
 
         hospitalAdminSplitPane.setLeftComponent(hospitalAdminControlArea);
 
-        hospitalAdminWorkArea.setBackground(new java.awt.Color(0, 255, 255));
+        hospitalAdminWorkArea.setBackground(new java.awt.Color(51, 204, 255));
 
         javax.swing.GroupLayout hospitalAdminWorkAreaLayout = new javax.swing.GroupLayout(hospitalAdminWorkArea);
         hospitalAdminWorkArea.setLayout(hospitalAdminWorkAreaLayout);
@@ -112,7 +114,7 @@ public class hospitalAdmin extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(hospitalAdminSplitPane, javax.swing.GroupLayout.DEFAULT_SIZE, 980, Short.MAX_VALUE)
+            .addComponent(hospitalAdminSplitPane)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

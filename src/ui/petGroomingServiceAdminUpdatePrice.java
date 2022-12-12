@@ -64,8 +64,9 @@ public class petGroomingServiceAdminUpdatePrice extends javax.swing.JPanel {
         txtServiceNewPrice = new javax.swing.JTextField();
         btnUpdateServicePrice = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(0, 255, 255));
+        setBackground(new java.awt.Color(51, 204, 255));
 
+        tablePetGroomingServices.setForeground(new java.awt.Color(0, 51, 103));
         tablePetGroomingServices.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
@@ -95,7 +96,7 @@ public class petGroomingServiceAdminUpdatePrice extends javax.swing.JPanel {
 
         lblUpdateFoodPrice.setBackground(new java.awt.Color(255, 255, 255));
         lblUpdateFoodPrice.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        lblUpdateFoodPrice.setForeground(new java.awt.Color(255, 0, 0));
+        lblUpdateFoodPrice.setForeground(new java.awt.Color(0, 51, 103));
         lblUpdateFoodPrice.setText("                                                         Select a Grooming Service to Update Price");
 
         lblServiceName.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
@@ -118,8 +119,9 @@ public class petGroomingServiceAdminUpdatePrice extends javax.swing.JPanel {
             }
         });
 
+        btnUpdateServicePrice.setBackground(new java.awt.Color(0, 51, 103));
         btnUpdateServicePrice.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        btnUpdateServicePrice.setForeground(new java.awt.Color(255, 0, 0));
+        btnUpdateServicePrice.setForeground(new java.awt.Color(51, 204, 255));
         btnUpdateServicePrice.setText("Update Price");
         btnUpdateServicePrice.setPreferredSize(new java.awt.Dimension(76, 30));
         btnUpdateServicePrice.addActionListener(new java.awt.event.ActionListener() {

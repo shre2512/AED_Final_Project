@@ -75,11 +75,11 @@ public class createVitalSigns extends javax.swing.JPanel {
         txtHeartRate = new javax.swing.JTextField();
         btnCreate = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(0, 255, 255));
+        setBackground(new java.awt.Color(51, 204, 255));
 
         selectEncounter.setBackground(new java.awt.Color(255, 255, 255));
         selectEncounter.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        selectEncounter.setForeground(new java.awt.Color(255, 0, 0));
+        selectEncounter.setForeground(new java.awt.Color(0, 51, 103));
         selectEncounter.setText("                                                                           Select an Encounter to create Vital Signs");
 
         tblEncounters.setModel(new javax.swing.table.DefaultTableModel(
@@ -139,8 +139,9 @@ public class createVitalSigns extends javax.swing.JPanel {
             }
         });
 
+        btnCreate.setBackground(new java.awt.Color(0, 51, 103));
         btnCreate.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnCreate.setForeground(new java.awt.Color(255, 0, 0));
+        btnCreate.setForeground(new java.awt.Color(51, 204, 255));
         btnCreate.setText("Create");
         btnCreate.setPreferredSize(new java.awt.Dimension(104, 30));
         btnCreate.addActionListener(new java.awt.event.ActionListener() {

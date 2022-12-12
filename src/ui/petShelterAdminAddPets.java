@@ -69,27 +69,27 @@ public class petShelterAdminAddPets extends javax.swing.JPanel {
         lblImage = new javax.swing.JLabel();
         lblWeight2 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(0, 255, 255));
+        setBackground(new java.awt.Color(51, 204, 255));
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel1.setForeground(new java.awt.Color(0, 51, 103));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Add pets for adoption");
 
         lblName.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        lblName.setForeground(new java.awt.Color(255, 0, 0));
+        lblName.setForeground(new java.awt.Color(0, 51, 103));
         lblName.setText("Gender");
 
         lblName1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        lblName1.setForeground(new java.awt.Color(255, 0, 0));
+        lblName1.setForeground(new java.awt.Color(0, 51, 103));
         lblName1.setText("Name");
 
         lblBreed.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        lblBreed.setForeground(new java.awt.Color(255, 0, 0));
+        lblBreed.setForeground(new java.awt.Color(0, 51, 103));
         lblBreed.setText("Type");
 
         lblpetID.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        lblpetID.setForeground(new java.awt.Color(255, 0, 0));
+        lblpetID.setForeground(new java.awt.Color(0, 51, 103));
         lblpetID.setText("ID");
 
         txtID.addActionListener(new java.awt.event.ActionListener() {
@@ -101,27 +101,28 @@ public class petShelterAdminAddPets extends javax.swing.JPanel {
         cmbGender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Female", "Male" }));
 
         lblHeight.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        lblHeight.setForeground(new java.awt.Color(255, 0, 0));
+        lblHeight.setForeground(new java.awt.Color(0, 51, 103));
         lblHeight.setText("Height");
 
         lblWeight.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        lblWeight.setForeground(new java.awt.Color(255, 0, 0));
+        lblWeight.setForeground(new java.awt.Color(0, 51, 103));
         lblWeight.setText("Weight");
 
         lblDOB1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        lblDOB1.setForeground(new java.awt.Color(255, 0, 0));
+        lblDOB1.setForeground(new java.awt.Color(0, 51, 103));
         lblDOB1.setText("Date of birth");
 
         lblpetID1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        lblpetID1.setForeground(new java.awt.Color(255, 0, 0));
+        lblpetID1.setForeground(new java.awt.Color(0, 51, 103));
         lblpetID1.setText("Age");
 
         lblVaccination.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        lblVaccination.setForeground(new java.awt.Color(255, 0, 0));
+        lblVaccination.setForeground(new java.awt.Color(0, 51, 103));
         lblVaccination.setText("Vaccination Status");
 
+        btnAdd.setBackground(new java.awt.Color(0, 51, 103));
         btnAdd.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        btnAdd.setForeground(new java.awt.Color(255, 0, 0));
+        btnAdd.setForeground(new java.awt.Color(51, 204, 255));
         btnAdd.setText("Add");
         btnAdd.setPreferredSize(new java.awt.Dimension(72, 30));
         btnAdd.addActionListener(new java.awt.event.ActionListener() {
@@ -132,8 +133,9 @@ public class petShelterAdminAddPets extends javax.swing.JPanel {
 
         lblWeight1.setText("kgs");
 
+        btnAddImage.setBackground(new java.awt.Color(0, 51, 103));
         btnAddImage.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        btnAddImage.setForeground(new java.awt.Color(255, 0, 0));
+        btnAddImage.setForeground(new java.awt.Color(51, 204, 255));
         btnAddImage.setText("Choose Image");
         btnAddImage.setPreferredSize(new java.awt.Dimension(111, 30));
         btnAddImage.addActionListener(new java.awt.event.ActionListener() {

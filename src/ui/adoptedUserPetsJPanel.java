@@ -72,8 +72,9 @@ public class adoptedUserPetsJPanel extends javax.swing.JPanel {
         tblPetAdoptionRecords = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(0, 255, 255));
+        setBackground(new java.awt.Color(51, 204, 255));
 
+        tblPetAdoptionRecords.setForeground(new java.awt.Color(0, 51, 103));
         tblPetAdoptionRecords.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
@@ -99,7 +100,7 @@ public class adoptedUserPetsJPanel extends javax.swing.JPanel {
         }
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel1.setForeground(new java.awt.Color(0, 51, 103));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("User Adopted Pets");
 

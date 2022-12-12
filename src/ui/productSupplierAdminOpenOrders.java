@@ -117,15 +117,16 @@ public class productSupplierAdminOpenOrders extends javax.swing.JPanel {
         tableAccessoryItem = new javax.swing.JTable();
         btnSupplyAccessoryItem = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(0, 255, 255));
+        setBackground(new java.awt.Color(51, 204, 255));
 
         lblFoodItemSupply.setBackground(new java.awt.Color(255, 255, 255));
         lblFoodItemSupply.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        lblFoodItemSupply.setForeground(new java.awt.Color(255, 0, 0));
+        lblFoodItemSupply.setForeground(new java.awt.Color(0, 51, 103));
         lblFoodItemSupply.setText("                                                                 Select a Food Item to Supply");
 
+        btnSupplyFoodItem.setBackground(new java.awt.Color(0, 51, 103));
         btnSupplyFoodItem.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        btnSupplyFoodItem.setForeground(new java.awt.Color(255, 0, 0));
+        btnSupplyFoodItem.setForeground(new java.awt.Color(51, 204, 255));
         btnSupplyFoodItem.setText("Supply Food Item");
         btnSupplyFoodItem.setPreferredSize(new java.awt.Dimension(76, 30));
         btnSupplyFoodItem.addActionListener(new java.awt.event.ActionListener() {
@@ -157,7 +158,7 @@ public class productSupplierAdminOpenOrders extends javax.swing.JPanel {
 
         lblAccessoryItemSupply.setBackground(new java.awt.Color(255, 255, 255));
         lblAccessoryItemSupply.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        lblAccessoryItemSupply.setForeground(new java.awt.Color(255, 0, 0));
+        lblAccessoryItemSupply.setForeground(new java.awt.Color(0, 51, 103));
         lblAccessoryItemSupply.setText("                                                             Select an Accessory Item to Supply");
 
         tableAccessoryItem.setModel(new javax.swing.table.DefaultTableModel(
@@ -181,8 +182,9 @@ public class productSupplierAdminOpenOrders extends javax.swing.JPanel {
         });
         jScrollPane2.setViewportView(tableAccessoryItem);
 
+        btnSupplyAccessoryItem.setBackground(new java.awt.Color(0, 51, 103));
         btnSupplyAccessoryItem.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        btnSupplyAccessoryItem.setForeground(new java.awt.Color(255, 0, 0));
+        btnSupplyAccessoryItem.setForeground(new java.awt.Color(51, 204, 255));
         btnSupplyAccessoryItem.setText("Supply Accessory Item");
         btnSupplyAccessoryItem.setPreferredSize(new java.awt.Dimension(76, 30));
         btnSupplyAccessoryItem.addActionListener(new java.awt.event.ActionListener() {

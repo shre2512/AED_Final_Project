@@ -87,10 +87,11 @@ public class StartPage extends javax.swing.JFrame {
 
         splitPane.setDividerLocation(120);
 
-        controlPanel.setBackground(new java.awt.Color(102, 255, 102));
+        controlPanel.setBackground(new java.awt.Color(0, 51, 103));
 
+        buttonLogOut.setBackground(new java.awt.Color(51, 204, 255));
         buttonLogOut.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        buttonLogOut.setForeground(new java.awt.Color(255, 0, 0));
+        buttonLogOut.setForeground(new java.awt.Color(0, 51, 103));
         buttonLogOut.setText("Log Out");
         buttonLogOut.setPreferredSize(new java.awt.Dimension(76, 30));
         buttonLogOut.addActionListener(new java.awt.event.ActionListener() {
@@ -118,15 +119,16 @@ public class StartPage extends javax.swing.JFrame {
 
         splitPane.setLeftComponent(controlPanel);
 
-        workArea.setBackground(new java.awt.Color(0, 255, 255));
+        workArea.setBackground(new java.awt.Color(51, 204, 255));
 
         lbl.setBackground(new java.awt.Color(255, 255, 255));
         lbl.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        lbl.setForeground(new java.awt.Color(255, 0, 0));
+        lbl.setForeground(new java.awt.Color(0, 51, 103));
         lbl.setText("                                                                                  Pet Management System");
 
+        btnLogIn.setBackground(new java.awt.Color(0, 51, 103));
         btnLogIn.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        btnLogIn.setForeground(new java.awt.Color(255, 0, 0));
+        btnLogIn.setForeground(new java.awt.Color(51, 204, 255));
         btnLogIn.setText("Log In");
         btnLogIn.setPreferredSize(new java.awt.Dimension(76, 30));
         btnLogIn.addActionListener(new java.awt.event.ActionListener() {
@@ -135,8 +137,9 @@ public class StartPage extends javax.swing.JFrame {
             }
         });
 
+        btnSignUp.setBackground(new java.awt.Color(0, 51, 103));
         btnSignUp.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        btnSignUp.setForeground(new java.awt.Color(255, 0, 0));
+        btnSignUp.setForeground(new java.awt.Color(51, 204, 255));
         btnSignUp.setText("Sign Up");
         btnSignUp.setPreferredSize(new java.awt.Dimension(76, 30));
         btnSignUp.addActionListener(new java.awt.event.ActionListener() {
