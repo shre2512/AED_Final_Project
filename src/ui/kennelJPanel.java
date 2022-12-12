@@ -336,7 +336,15 @@ public class kennelJPanel extends javax.swing.JPanel {
             if(emailID != null)
             {
                 try {
-                    emailNotification.sendEmail("Kennel Booked!", "You have booked a kennel from " + toDateString + " to " + fromDateString + ". Your rent amount is: $" + rent + ". The pickup service confirmation will be sent soon!", emailID);
+                    if(pickup.equals("Yes"))
+                    {
+                        emailNotification.sendEmail("Kennel Booked!", "You have booked a kennel from " + toDateString + " to " + fromDateString + ". Your rent amount is: $" + rent + ". The pickup service confirmation will be sent soon!", emailID);
+                    }
+                    else
+                    {
+                        emailNotification.sendEmail("Kennel Booked!", "You have booked a kennel from " + toDateString + " to " + fromDateString + ". Your rent amount is: $" + rent, emailID);
+                    }
+                    
                 } catch (Exception ex) {
                     Logger.getLogger(petFoodJPanel.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -346,7 +354,15 @@ public class kennelJPanel extends javax.swing.JPanel {
             if(phoneNumber != null)
             {
                 try {
-                    smsNotification.sendSMS("+1" + phoneNumber, "Kennel Booked! You have booked a kennel from " + toDateString + " to " + fromDateString + ". Your rent amount is: $" + rent + ". The pickup service confirmation will be sent soon!");
+                    if(pickup.equals("Yes"))
+                    {
+                        smsNotification.sendSMS("+1" + phoneNumber, "Kennel Booked! You have booked a kennel from " + toDateString + " to " + fromDateString + ". Your rent amount is: $" + rent + ". The pickup service confirmation will be sent soon!");
+                    }
+                    else
+                    {
+                        smsNotification.sendSMS("+1" + phoneNumber, "Kennel Booked! You have booked a kennel from " + toDateString + " to " + fromDateString + ". Your rent amount is: $" + rent);
+                    }
+                    
                 } catch (Exception ex) {
                     Logger.getLogger(petFoodJPanel.class.getName()).log(Level.SEVERE, null, ex);
                 }
