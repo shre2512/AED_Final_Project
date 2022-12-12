@@ -8,4 +8,4 @@ Java Swing and MySQL
 # Contributors
 Sagar Mehta, 
 Shreyas Gokhale and 
-Babsy Babu /n 
+Babsy Babu 
