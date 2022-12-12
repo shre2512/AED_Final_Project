@@ -3,10 +3,9 @@
 # Pet Management 
 
 Technologies: 
-Java Swing
-MySQL
+Java Swing and MySQL 
 
 # Contributors
-Sagar Mehta 
-Shreyas Gokhale
-Babsy Babu 
+Sagar Mehta, 
+Shreyas Gokhale and 
+Babsy Babu /n 
