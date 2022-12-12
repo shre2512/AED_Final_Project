@@ -1,4 +1,10 @@
-# AED_Final_Project
+# Pet Management System
+
+Team Members -
+
+1. Shreyas Gokhale - 002772026
+2. Babsy Vellera Babu - 002774501
+3. Sagar Mehta - 002797484
 
 UML Diagram - 
 
