@@ -454,4 +454,13 @@ public class databaseConnection {
         ResultSet result = select.executeQuery();
         return result;
     }
+    
+    public void executeGroomingServicePriceUpdate(String query, int newPrice, int serviceID) throws Exception
+    {
+        PreparedStatement update = con.prepareStatement(query);
+        update.setInt(1, newPrice);
+        update.setInt(2, serviceID);
+        update.executeUpdate();
+    }
+            
 }

@@ -14,38 +14,19 @@ import model.databaseConnection;
  *
  * @author shrey
  */
-public class petGroomingServiceAdminUpdatePrice extends javax.swing.JPanel {
+public class petGroomingServiceAdminCreateService extends javax.swing.JPanel {
 
     /**
      * Creates new form petFoodAdminUpdatePrice
      */
     databaseConnection databaseConnection;
     
-    public petGroomingServiceAdminUpdatePrice(databaseConnection databaseConnection) {
+    public petGroomingServiceAdminCreateService(databaseConnection databaseConnection) {
         initComponents();
         this.databaseConnection = databaseConnection;
-        txtServiceName.setEditable(false);
-        populateTable();
     }
     
-    private void populateTable()
-    {
-        try {
-            ResultSet result = databaseConnection.executeSelect("SELECT * FROM groomingservices");
-            DefaultTableModel model = (DefaultTableModel) tablePetGroomingServices.getModel();
-            model.setRowCount(0);
-            while(result.next())
-            {
-                Object[] row = new Object[3];
-                row[0] = result.getInt("id");
-                row[1] = result.getString("service_name");
-                row[2] = result.getInt("service_cost");
-                model.addRow(row);
-            }
-        } catch (Exception ex) {
-            Logger.getLogger(petGroomingServiceAdminUpdatePrice.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -55,8 +36,6 @@ public class petGroomingServiceAdminUpdatePrice extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane2 = new javax.swing.JScrollPane();
-        tablePetGroomingServices = new javax.swing.JTable();
         lblUpdateFoodPrice = new javax.swing.JLabel();
         lblServiceName = new javax.swing.JLabel();
         txtServiceName = new javax.swing.JTextField();
@@ -66,37 +45,10 @@ public class petGroomingServiceAdminUpdatePrice extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(0, 255, 255));
 
-        tablePetGroomingServices.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
-            },
-            new String [] {
-                "Service Id", "Service Name", "Service Cost"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
-        tablePetGroomingServices.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        tablePetGroomingServices.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tablePetGroomingServicesMouseClicked(evt);
-            }
-        });
-        jScrollPane2.setViewportView(tablePetGroomingServices);
-
         lblUpdateFoodPrice.setBackground(new java.awt.Color(255, 255, 255));
         lblUpdateFoodPrice.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         lblUpdateFoodPrice.setForeground(new java.awt.Color(255, 0, 0));
-        lblUpdateFoodPrice.setText("                                                         Select a Grooming Service to Update Price");
+        lblUpdateFoodPrice.setText("                                                                    Create Grooming Service");
 
         lblServiceName.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         lblServiceName.setText("Service Name :");
@@ -134,23 +86,17 @@ public class petGroomingServiceAdminUpdatePrice extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(lblUpdateFoodPrice, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 860, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(266, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane2)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblServiceNewPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(29, 29, 29)
-                                .addComponent(txtServiceNewPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblServiceName, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(29, 29, 29)
-                                .addComponent(txtServiceName, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(246, 246, 246))))
+                        .addComponent(lblServiceNewPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(29, 29, 29)
+                        .addComponent(txtServiceNewPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblServiceName, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(29, 29, 29)
+                        .addComponent(txtServiceName, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(246, 246, 246))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnUpdateServicePrice, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -161,9 +107,7 @@ public class petGroomingServiceAdminUpdatePrice extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(9, 9, 9)
                 .addComponent(lblUpdateFoodPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(96, 96, 96)
+                .addGap(284, 284, 284)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtServiceName, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblServiceName, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -186,41 +130,16 @@ public class petGroomingServiceAdminUpdatePrice extends javax.swing.JPanel {
     }//GEN-LAST:event_txtServiceNewPriceActionPerformed
 
     private void btnUpdateServicePriceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateServicePriceActionPerformed
-        try {
-            // TODO add your handling code here:
-            DefaultTableModel model = (DefaultTableModel) tablePetGroomingServices.getModel();
-            int selectedRowIndex = tablePetGroomingServices.getSelectedRow();
-            int serviceID = (int) model.getValueAt(selectedRowIndex, 0);
-            int newPrice = Integer.parseInt(txtServiceNewPrice.getText());
-            
-            databaseConnection.executeGroomingServicePriceUpdate("UPDATE groomingservices SET service_cost = ? WHERE id = ?", newPrice, serviceID);
-   
-            JOptionPane.showMessageDialog(this, "Price Updated Successfully!");
-            txtServiceName.setText("");
-            txtServiceNewPrice.setText("");
-            populateTable();
-        } catch (Exception ex) {
-            Logger.getLogger(petGroomingServiceAdminUpdatePrice.class.getName()).log(Level.SEVERE, null, ex);
-        }
+
         
     }//GEN-LAST:event_btnUpdateServicePriceActionPerformed
-
-    private void tablePetGroomingServicesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablePetGroomingServicesMouseClicked
-        // TODO add your handling code here:
-        DefaultTableModel model = (DefaultTableModel) tablePetGroomingServices.getModel();
-        int selectedRowIndex = tablePetGroomingServices.getSelectedRow();
-        String productName = (String) model.getValueAt(selectedRowIndex, 1);
-        txtServiceName.setText(productName);
-    }//GEN-LAST:event_tablePetGroomingServicesMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnUpdateServicePrice;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblServiceName;
     private javax.swing.JLabel lblServiceNewPrice;
     private javax.swing.JLabel lblUpdateFoodPrice;
-    private javax.swing.JTable tablePetGroomingServices;
     private javax.swing.JTextField txtServiceName;
     private javax.swing.JTextField txtServiceNewPrice;
     // End of variables declaration//GEN-END:variables

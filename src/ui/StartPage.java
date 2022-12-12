@@ -457,8 +457,8 @@ public class StartPage extends javax.swing.JFrame {
         {
             try{
                 JOptionPane.showMessageDialog(this, "Logged In As Grooming Service Admin");
-                petFoodAdmin petFoodAdminJPanel = new petFoodAdmin(databaseConnection);
-                splitPane.setRightComponent(petFoodAdminJPanel);
+                petGroomingServiceAdmin petGroomingServiceAdminJPanel = new petGroomingServiceAdmin(databaseConnection);
+                splitPane.setRightComponent(petGroomingServiceAdminJPanel);
                 buttonLogOut.setVisible(true);
             } catch(Exception e){System.out.println(e);}
         }
